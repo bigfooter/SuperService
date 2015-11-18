@@ -1,4 +1,4 @@
-﻿summary		Сводная информация
+summary		Сводная информация
 requests	Визиты
 clients	Клиенты
 vpVisits	заявок
@@ -12,3 +12,6 @@ requndone	осталось
 reqmth	за месяц
 sync	Синхронизация
 info	О программе
+today	Сегодня	
+requestsAll	Все
+search		Поиск

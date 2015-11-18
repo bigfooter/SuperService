@@ -4,7 +4,15 @@
   <bp:Workflow Name="Main" Controller="Main\Main.js">
 
     <bp:Step Name="Menu" Screen="Main.xml" Controller="Main\Main.js">
-      
+    	<bp:Action Name="Events" NextWorkflow="Events"></bp:Action>	      
+    </bp:Step>
+
+  </bp:Workflow>
+
+  <bp:Workflow Name="Events" Controller="Events\main.js">
+
+    <bp:Step Name="Main" Screen="main.xml" Controller="Events\main.js">
+      	
     </bp:Step>
 
   </bp:Workflow>
