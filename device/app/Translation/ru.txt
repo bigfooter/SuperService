@@ -15,3 +15,7 @@ info	О программе
 today	Сегодня	
 requestsAll	Все
 search		Поиск
+begin	Начало
+end	Окончание
+period	Период
+ClearFilter	Очистить фильтр

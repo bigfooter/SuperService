@@ -47,31 +47,7 @@ function GetToDayDoneRequestCount(){//(searchText - строка поиска, g
 	return q.ExecuteCount();
 }
 
-function GetToDayUnDoneRequestsMonthCount(){//(searchText - строка поиска, getCount - получать ли количество[1-ДА,0-НЕТ])
-	var q = new Query("SELECT Id FROM Document_Visit " +
-			"WHERE Document_Visit.PlanStartDataTime BETWEEN " +
-			"datetime('now', 'start of month') AND " +
-			"datetime('now', 'start of month', '+1 months') " +
-			"AND Document_Visit.Status = @StatusEx");
-	 
-	//q.AddParameter("StatusComp", DB.Current.Constant.VisitStatus.Completed);
-	q.AddParameter("StatusEx", DB.Current.Constant.VisitStatus.Expected);
-	return q.ExecuteCount();
-	
-}
 
-
-function GetToDayDoneRequestMonthCount(){//(searchText - строка поиска, getCount - получать ли количество[1-ДА,0-НЕТ])
-	var q = new Query("SELECT Id " +
-			"FROM Document_Visit " +
-			"WHERE Document_Visit.FactEndDataTime " +
-			"BETWEEN datetime('now', 'start of month') " +
-			"AND datetime('now', 'start of month', '+1 months') " +
-			"AND Document_Visit.Status = @StatusComp");
-	
-	q.AddParameter("StatusComp", DB.Current.Constant.VisitStatus.Completed);
-	return q.ExecuteCount();
-}
 
 function GetBeginOfCurrentMonth(){
 	var mth = "";

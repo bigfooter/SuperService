@@ -30,6 +30,74 @@ function filterDateCaption(dt){
 	}
 }
 
+function filterDate(dt){
+	if (dt != null){
+		return String.Format("{0:dd MMMM yyyy}", DateTime.Parse(dt));
+	} else {
+		return "";
+	}
+}
+
+function MakeFilterSettingsBackUp(){
+	
+	if ($.Exists("BUFilterCopy") == true){
+		$.Remove("BUFilterCopy");
+		$.Add("BUFilterCopy", new Dictionary());
+		$.BUFilterCopy.Add("Start", recvStartPeriod);
+		$.BUFilterCopy.Add("Stop", recvStopPeriod);
+	} else {
+		$.Add("BUFilterCopy", new Dictionary());
+		$.BUFilterCopy.Add("Start", recvStartPeriod);
+		$.BUFilterCopy.Add("Stop", recvStopPeriod);
+	}
+	
+}
+
+function RollBackAndBack(){
+	recvStartPeriod = $.BUFilterCopy.Start;
+	recvStopPeriod = $.BUFilterCopy.Stop;
+	Workflow.Back();
+	
+}
+
+function clearmyfilter(){
+	$.beginDate.Text = "";
+	recvStartPeriod = undefined;
+	$.endDate.Text = "";
+	recvStopPeriod = undefined;
+}
+
+function SetBeginDate() {
+	var header = Translate["#enterDateTime#"];
+	if(recvStartPeriod != undefined){
+		Dialog.ShowDateTime(header, recvStartPeriod, SetBeginDateNow);
+	} else {
+		Dialog.ShowDateTime(header, SetBeginDateNow);
+	}
+}
+
+function SetBeginDateNow(key) {
+	$.beginDate.Text = filterDate(key);
+	recvStartPeriod = BegOfDay(key);
+	//Workflow.Refresh([]);
+}
+
+function SetEndDate() {
+	var header = Translate["#enterDateTime#"];
+	if(recvStopPeriod != undefined){
+		Dialog.ShowDateTime(header, recvStopPeriod, SetEndDateNow);
+	} else {
+		Dialog.ShowDateTime(header, SetEndDateNow);
+	}
+}
+
+function SetEndDateNow(key) {
+	$.endDate.Text = filterDate(key);
+	recvStopPeriod = EndOfDay(key);
+	//Dialog.Debug(BegOfDay(key));
+	//Workflow.Refresh([]);
+}
+
 function ClearFilter(){
 	recvStartPeriod = undefined;
 	recvStopPeriod = undefined;
@@ -100,6 +168,20 @@ function GetAllsActiveTask() {
 			q.AddParameter("SearchText", searchString);
 			queryText = queryText + searchtail;
 		}
+
+	if (recvStartPeriod != undefined){
+		var starttail = " AND DE.StartDatePlan >= @DateStart";//AND REQ.PlanStartDataTime < @DateEnd
+		q.AddParameter("DateStart", recvStartPeriod);
+		queryText = queryText + starttail;
+		
+	}
+	
+	if (recvStopPeriod != undefined){
+		var stoptail = " AND DE.StartDatePlan < @DateEnd";//AND REQ.PlanStartDataTime < @DateEnd
+		q.AddParameter("DateEnd", recvStopPeriod);
+		queryText = queryText + stoptail;
+	}
+	
 	}
 	q.Text = queryText;
 	//q.AddParameter("StatusComp", DB.Current.Constant.VisitStatus.Completed);
