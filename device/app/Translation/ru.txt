@@ -31,3 +31,11 @@ contacts	Контакты
 devices	Оборудование
 visit	Визит
 call	Позвонить
+synchronizationData	СИНХРОНИЗАЦИЯ ДАННЫХ
+synchronizationPhoto	СИНХРОНИЗАЦИЯ ФОТОГРАФИЙ
+lastSync	Последняя синхронизация
+synchronize	Синхронизировать
+vpVisits	заявок
+at	в
+error	Ошибка
+SendLog	Отправить лог

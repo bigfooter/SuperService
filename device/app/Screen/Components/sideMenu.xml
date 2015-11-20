@@ -23,7 +23,7 @@
       <c:HorizontalLine/>
              	  
 	     <c:DockLayout CssClass="btn_item">
-        <c:HorizontalLayout>
+        <c:HorizontalLayout OnClickAction="$DoAction(Sync)">
           <c:Image CssClass="btn_sync"/>
           <c:TextView CssClass="menu_text" Text="#sync#"></c:TextView>
         </c:HorizontalLayout>

@@ -103,7 +103,6 @@ function SetEndDate() {
 function SetEndDateNow(key) {
 	$.endDate.Text = filterDate(key);
 	recvStopPeriod = EndOfDay(key);
-	//Dialog.Debug(BegOfDay(key));
 	//Workflow.Refresh([]);
 }
 
@@ -177,7 +176,7 @@ function GetAllsActiveTask() {
 			q.AddParameter("SearchText", searchString);
 			queryText = queryText + searchtail;
 		}
-		Dialog.Debug(Vars.getRecvStartPeriod());
+
 	if (recvStartPeriod() != undefined){
 		var starttail = " AND DE.StartDatePlan >= @DateStart";//AND REQ.PlanStartDataTime < @DateEnd
 		q.AddParameter("DateStart", recvStartPeriod);
