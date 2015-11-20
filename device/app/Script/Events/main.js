@@ -53,9 +53,18 @@ function MakeFilterSettingsBackUp(){
 	
 }
 
+function getGlobalStart(){
+	return Vars.getRecvStartPeriod();
+}
+
+
+function getGlobalStop(){
+	return Vars.getRecvStartPeriod();
+}
+
 function RollBackAndBack(){
-	recvStartPeriod = $.BUFilterCopy.Start;
-	recvStopPeriod = $.BUFilterCopy.Stop;
+	Vars.setRecvStartPeriod($.BUFilterCopy.Start);
+	Vars.setRecvStopPeriod($.BUFilterCopy.Stop);
 	Workflow.Back();
 	
 }
@@ -135,7 +144,7 @@ function GetTodaysActiveTask() {
 	}
 	q.Text = queryText;
 	//q.AddParameter("StatusComp", DB.Current.Constant.VisitStatus.Completed);
-	q.AddParameter("StatusEx", DB.Current.Constant.StatusyEvents.Done);
+	q.AddParameter("StatusEx", DB.Current.Constant.StatusyEvents.Appointed);
 	q.AddParameter("DateStart", DateTime.Now.Date);
 	q.AddParameter("DateEnd", DateTime.Now.Date.AddDays(1));
 	
@@ -157,7 +166,7 @@ function findinalltext(key){
 function GetAllsActiveTask() {
 	var q = new Query();
 
-	var queryText = "SELECT DE.id AS Id, CC.Description AS Description, strftime('%d.%m %H:%M', DE.StartDatePlan) AS StartTime, CC.Address AS Address" + 
+	var queryText = "SELECT DE.Id AS Id, CC.Description AS Description, strftime('%d.%m %H:%M', DE.StartDatePlan) AS StartTime, CC.Address AS Address" + 
 		" FROM Document_Event DE LEFT JOIN Catalog_Client CC ON DE.Client = CC.Id" + 
 		" WHERE DE.Status = @StatusEx";
 
@@ -168,15 +177,15 @@ function GetAllsActiveTask() {
 			q.AddParameter("SearchText", searchString);
 			queryText = queryText + searchtail;
 		}
-
-	if (recvStartPeriod != undefined){
+		Dialog.Debug(Vars.getRecvStartPeriod());
+	if (recvStartPeriod() != undefined){
 		var starttail = " AND DE.StartDatePlan >= @DateStart";//AND REQ.PlanStartDataTime < @DateEnd
 		q.AddParameter("DateStart", recvStartPeriod);
 		queryText = queryText + starttail;
 		
 	}
 	
-	if (recvStopPeriod != undefined){
+	if (recvStopPeriod() != undefined){
 		var stoptail = " AND DE.StartDatePlan < @DateEnd";//AND REQ.PlanStartDataTime < @DateEnd
 		q.AddParameter("DateEnd", recvStopPeriod);
 		queryText = queryText + stoptail;
@@ -185,7 +194,12 @@ function GetAllsActiveTask() {
 	}
 	q.Text = queryText;
 	//q.AddParameter("StatusComp", DB.Current.Constant.VisitStatus.Completed);
-	q.AddParameter("StatusEx", DB.Current.Constant.StatusyEvents.Done);
-	
+	q.AddParameter("StatusEx", DB.Current.Constant.StatusyEvents.Appointed);
+	Dialog.Debug("now");
 	return q.Execute().Unload();
+}
+
+function actionDoSelect(p){
+	Vars.setEvent(p);
+	Workflow.Action("DoSelect",[]);
 }

@@ -18,6 +18,11 @@ function test(a){
 	return a;
 }
 
+function testInDialog(s){
+	Dialog.Debug(s);
+	return s;
+}
+
 function Trans(txt){
 	return Translate["#" + txt + "#"];
 }

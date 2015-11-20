@@ -120,7 +120,7 @@ dl {
 	 	width: 20%;
         height: 100%;
         margin-left: 3.5%;
-        padding-top: 45%;
+        padding-top: 25%;
         color: #e6891b;
         font: 40% arial;
 }
@@ -128,7 +128,7 @@ dl {
 .filterarrow {
         height: 35%;
         margin-left: 15%;
-        margin-top: 50%;
+        margin-top: 25%;
         background-image: url(arrow.png);
         
     }
@@ -136,7 +136,7 @@ dl {
 .filtervalue {
 	width: 63%;
     height: 100%;
-    padding-top: 45%;
+    padding-top: 25%;
     white-space: normal;
     margin-right: -14%;
     font: 36% Arial;
@@ -153,6 +153,7 @@ dl {
         color: #e6891b;
         dock-align: left;
         font: 36% arial;
+       
     }
     
 .btn_left_footer {

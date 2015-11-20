@@ -19,3 +19,15 @@ begin	Начало
 end	Окончание
 period	Период
 ClearFilter	Очистить фильтр
+Clear	Очистить
+descriptioncust	Наименование клиента
+mainContact	Контакт
+address	Адрес
+Author	Автор
+eventComment	Комментарий
+back	Назад
+next	Вперед
+contacts	Контакты
+devices	Оборудование
+visit	Визит
+call	Позвонить
