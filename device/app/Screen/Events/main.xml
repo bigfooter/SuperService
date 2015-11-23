@@ -46,6 +46,7 @@
 			  <c:HorizontalLayout Id="unPlanned" CssClass="select_zone" OnClickAction="$ChangeListAndRefresh(unPlanned)">
 				<!-- <c:TextView Text="#requestsAll# ({$usv})"></c:TextView> -->
 				<c:TextView Text="#requestsAll# ({$count_allEvents})"></c:TextView>
+
 			  </c:HorizontalLayout>
 			</c:HorizontalLayout>
 		  </s:Else>
@@ -61,7 +62,7 @@
 			<c:Image />
 			<c:EditText Id="edtSearchToDay" Text="$searchToDay" Placeholder="#search#"></c:EditText>
 		  </c:DockLayout>
-		  <c:Button Id="btnSearch" Text="#search#" OnClickAction="$findtodaytext($edtSearchToDay.Text)"></c:Button>
+		  <c:Button Id="btnSearch" Text="#search#" OnClickAction="$findinalltext($edtSearchAll.Text)"></c:Button>
 		</c:HorizontalLayout>
 		<c:HorizontalLayout CssClass="shadowLine"></c:HorizontalLayout>
 		<!-- End Search field --> 
@@ -114,14 +115,14 @@
     
     <c:HorizontalLine/>
 	<!-- Begin Search field -->     	  
-	<c:HorizontalLayout CssClass="search">
-		  <c:DockLayout >
-			<c:Image />
-			<c:EditText Id="edtSearchAll" Text="$searchAll" Placeholder="#search#"></c:EditText>
-		  </c:DockLayout>
-		  <c:Button Id="btnSearch" Text="#search#" OnClickAction="$findinalltext($edtSearchAll.Text)"></c:Button>
-		</c:HorizontalLayout>
-		<c:HorizontalLayout CssClass="shadowLine"></c:HorizontalLayout>
+	<c:DockLayout CssClass="search">
+				<c:Button Id="btnSearch" Text="#search#" OnClickAction="$findinalltext($edtSearchAll.Text)"></c:Button>
+				<c:DockLayout>
+					<c:Image />
+					<c:EditText Id="edtSearchAll" Text="$search" Placeholder="#search#" ></c:EditText>
+				</c:DockLayout>			
+			</c:DockLayout>
+			<c:HorizontalLayout CssClass="shadowLine"></c:HorizontalLayout>
 	<!-- End Search field --> 	
 	<!-- Begin all visits screen -->
 		<s:If Test="$count_allEvents > 0">
@@ -133,10 +134,15 @@
 	            <c:VerticalLayout CssClass="no_mark"></c:VerticalLayout>
 	            <c:VerticalLayout>
 	              <c:TextView Text="$allEventsItem.Description" CssClass="main_row"></c:TextView>
+
+<c:HorizontalLayout CssClass="grid" >
+
+	              <c:TextView Text="$allEventsItem.StartTime" CssClass="bl_description_row"></c:TextView>
+
 	              <c:TextView Text="$allEventsItem.Address" CssClass="description_row"></c:TextView>
-				  <c:TextView Text="$allEventsItem.StartTime" CssClass="description_daterow"></c:TextView>
+				  </c:HorizontalLayout>
 	            </c:VerticalLayout>
-	            <c:Image/>
+	            <c:Image />
 	          </c:HorizontalLayout>
 	
 	        </s:Iterator>

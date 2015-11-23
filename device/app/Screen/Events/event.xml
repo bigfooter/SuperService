@@ -39,7 +39,7 @@
 	  <c:HorizontalLayout CssClass="grid">
 		<c:VerticalLayout CssClass="no_mark"></c:VerticalLayout>
 		<c:VerticalLayout CssClass="infoPlaceWithPhone">
-		  <c:TextView Text="#mainContact#" CssClass="description_row_contact"></c:TextView>
+		  <c:TextView Text="#mainContact#" CssClass="description_row"></c:TextView>
 		  <c:TextView Text="$event.ContactVisiting" CssClass="main_row_contact"></c:TextView>
 		  <c:TextView Text="$event.Call" CssClass="main_row_phone"></c:TextView>
 		</c:VerticalLayout>	
@@ -54,15 +54,17 @@
 	  
 		
 		<c:HorizontalLine/>
-	  <c:HorizontalLayout CssClass="memo_block">
+	  <c:HorizontalLayout CssClass="grid">
+	  <c:VerticalLayout CssClass="no_mark"></c:VerticalLayout>	
 		<c:VerticalLayout>
 		  <c:TextView Text="#address#" CssClass="description_row"></c:TextView>
-		  <c:TextView Id="Address" Text="$event.Client.Address" CssClass="main_row_reqtext"></c:TextView>		  
+		  <c:TextView Id="Address" Text="$event.Client.Address" CssClass="main_row_custname"></c:TextView>		  
 		</c:VerticalLayout>		
 	  </c:HorizontalLayout>
  
  	<c:HorizontalLine/>
 	  <c:HorizontalLayout CssClass="grid">
+	  	 <c:VerticalLayout CssClass="no_mark"></c:VerticalLayout>	
 		<c:VerticalLayout>
 		  <c:TextView Text="#Author#" CssClass="description_row"></c:TextView>
 		  <c:TextView Id="eventAuthor" Text="$event.Author.Description" CssClass="main_row_custname"></c:TextView>		  
@@ -70,10 +72,11 @@
 	  </c:HorizontalLayout>
 
 	  <c:HorizontalLine/>
-	  <c:HorizontalLayout CssClass="memo_block">
+	  <c:HorizontalLayout CssClass="grid">
+	  	 <c:VerticalLayout CssClass="no_mark"></c:VerticalLayout>	
 		<c:VerticalLayout>
 		  <c:TextView Text="#eventComment#" CssClass="description_row"></c:TextView>
-		  <c:TextView Id="eventComment" Text="$event.Comment" CssClass="main_row_reqtext"></c:TextView>		  
+		  <c:TextView Id="eventComment" Text="$event.Comment" CssClass="main_row_custname"></c:TextView>		  
 		</c:VerticalLayout>		
 	  </c:HorizontalLayout>
 	  
