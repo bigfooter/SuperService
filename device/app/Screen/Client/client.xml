@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<c:Screen xmlns:c="BitMobile.Controls" xmlns:s="BitMobile.ValueStack" StyleSheet="event.css">
-	<s:Push Id="event" Value="$GetEventDetails($param1)"></s:Push>
+<c:Screen xmlns:c="BitMobile.Controls" xmlns:s="BitMobile.ValueStack" StyleSheet="Client.css">
+	<s:Push Id="Client" Value="$GetClientDetails($param1)"></s:Push>
   <c:DockLayout>
 
     <c:DockLayout CssClass="top_navigator">
@@ -30,7 +30,7 @@
 		<c:VerticalLayout CssClass="no_mark"></c:VerticalLayout>
 		<c:VerticalLayout>
 		  <c:TextView Text="#descriptioncust#" CssClass="description_row"></c:TextView>
-		  <c:TextView Text="$event.Client.Description" CssClass="main_row_custname"></c:TextView>		   
+		  <c:TextView Text="$Client.Client.Description" CssClass="main_row_custname"></c:TextView>		   
 		</c:VerticalLayout>	
 		<c:Image/>	
 	  </c:HorizontalLayout>
@@ -40,12 +40,12 @@
 		<c:VerticalLayout CssClass="no_mark"></c:VerticalLayout>
 		<c:VerticalLayout CssClass="infoPlaceWithPhone">
 		  <c:TextView Text="#mainContact#" CssClass="description_row"></c:TextView>
-		  <c:TextView Text="$event.ContactVisiting" CssClass="main_row_contact"></c:TextView>
-		  <c:TextView Text="$event.Call" CssClass="main_row_phone"></c:TextView>
+		  <c:TextView Text="$Client.ContactVisiting" CssClass="main_row_contact"></c:TextView>
+		  <c:TextView Text="$Client.Call" CssClass="main_row_phone"></c:TextView>
 		</c:VerticalLayout>	
 		
-			<s:If Test="$PhoneExists($event.Call)">
-				<c:HorizontalLayout CssClass="phone"  OnClickAction="$MoreMakeContactCall($event.Call)">
+			<s:If Test="$PhoneExists($Client.Call)">
+				<c:HorizontalLayout CssClass="phone"  OnClickAction="$MoreMakeContactCall($Client.Call)">
 					<c:Image CssClass="iphone" />
 				</c:HorizontalLayout>	
 		  	</s:If>	  	
@@ -58,7 +58,7 @@
 	  <c:VerticalLayout CssClass="no_mark"></c:VerticalLayout>	
 		<c:VerticalLayout>
 		  <c:TextView Text="#address#" CssClass="description_row"></c:TextView>
-		  <c:TextView Id="Address" Text="$event.Client.Address" CssClass="main_row_custname"></c:TextView>		  
+		  <c:TextView Id="Address" Text="$Client.Client.Address" CssClass="main_row_custname"></c:TextView>		  
 		</c:VerticalLayout>		
 	  </c:HorizontalLayout>
  
@@ -67,7 +67,7 @@
 	  	 <c:VerticalLayout CssClass="no_mark"></c:VerticalLayout>	
 		<c:VerticalLayout>
 		  <c:TextView Text="#Author#" CssClass="description_row"></c:TextView>
-		  <c:TextView Id="eventAuthor" Text="$event.Author.Description" CssClass="main_row_custname"></c:TextView>		  
+		  <c:TextView Id="ClientAuthor" Text="$Client.Author.Description" CssClass="main_row_custname"></c:TextView>		  
 		</c:VerticalLayout>		
 	  </c:HorizontalLayout>
 
@@ -75,8 +75,8 @@
 	  <c:HorizontalLayout CssClass="grid">
 	  	 <c:VerticalLayout CssClass="no_mark"></c:VerticalLayout>	
 		<c:VerticalLayout>
-		  <c:TextView Text="#eventComment#" CssClass="description_row"></c:TextView>
-		  <c:TextView Id="eventComment" Text="$event.Comment" CssClass="main_row_custname"></c:TextView>		  
+		  <c:TextView Text="#ClientComment#" CssClass="description_row"></c:TextView>
+		  <c:TextView Id="ClientComment" Text="$Client.Comment" CssClass="main_row_custname"></c:TextView>		  
 		</c:VerticalLayout>		
 	  </c:HorizontalLayout>
 	  

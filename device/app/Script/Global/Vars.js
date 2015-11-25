@@ -36,3 +36,15 @@ function getEvent(){
 }
 // End Current Event ID
 
+// Begin Current Event ID
+var currentClient;
+
+function setEvent(a){
+	currentClient = a;
+}
+
+function getEvent(){
+	return currentClient;
+}
+// End Current Event ID
+
