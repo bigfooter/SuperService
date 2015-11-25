@@ -13,10 +13,11 @@
 
   <bp:Workflow Name="Events" Controller="Events\main.js">
 
-    <bp:Step Name="Main" Screen="main.xml" Controller="Events\main.js">
+    <bp:Step Name="Main" Screen="Events\main.xml" Controller="Events\main.js">
       <bp:Action Name="EditFilter" NextStep="EditFilter"></bp:Action>
       <bp:Action Name="DoSelect" NextWorkflow="Event"></bp:Action>
-        <bp:Action Name="Client" NextWorkflow="Client"></bp:Action>
+       <bp:Action Name="Client" NextWorkflow="Client"></bp:Action> 
+      
       <bp:Action Name="Sync" NextWorkflow="Sync"/>      	
     </bp:Step>
 
@@ -25,17 +26,19 @@
     </bp:Step>
 
   </bp:Workflow>
+
    <bp:Workflow Name="Event" Controller="Events\event.js">
-    <bp:Step Name="Main" Screen="event.xml" Controller="Events\event.js">
+    <bp:Step Name="Main" Screen="Events\event.xml" Controller="Events\event.js">
               
     </bp:Step>
    </bp:Workflow> 
 
   <bp:Workflow Name="Client" Controller="Client\main.js">
 
-    <bp:Step Name="Main" Screen="main.xml" Controller="Client\main.js">
+    <bp:Step Name="Main" Screen="Client\main.xml" Controller="Client\main.js">
       <bp:Action Name="EditFilter" NextStep="EditFilter"></bp:Action>
-      <bp:Action Name="DoSelect" NextWorkflow="Client"></bp:Action>
+      <bp:Action Name="Events" NextWorkflow="Events"></bp:Action>  
+      <bp:Action Name="DoSelect" NextWorkflow="ClentView"></bp:Action>
       
       <bp:Action Name="Sync" NextWorkflow="Sync"/>        
     </bp:Step>
@@ -46,15 +49,12 @@
 
   </bp:Workflow>
 
-
-
-
-
    <bp:Workflow Name="ClentView" Controller="Client\client.js">
-    <bp:Step Name="Main" Screen="client.xml" Controller="Client\client.js">
+    <bp:Step Name="Main" Screen="Client\client.xml" Controller="Client\client.js">
               
     </bp:Step>
    </bp:Workflow> 
+
   
 
 </bp:BusinessProcess>

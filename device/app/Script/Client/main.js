@@ -96,6 +96,6 @@ function GetAllsActiveTask() {
 }
 
 function actionDoSelect(p){
-	Vars.setEvent(p);
+	Vars.setClient(p);
 	Workflow.Action("DoSelect",[]);
 }

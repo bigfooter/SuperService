@@ -39,11 +39,11 @@ function getEvent(){
 // Begin Current Event ID
 var currentClient;
 
-function setEvent(a){
+function setClient(a){
 	currentClient = a;
 }
 
-function getEvent(){
+function getClient(){
 	return currentClient;
 }
 // End Current Event ID

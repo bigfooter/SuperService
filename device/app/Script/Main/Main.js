@@ -27,11 +27,6 @@ function OpenMenu() {
     }
 }
 
-
-function GetClientCount() {
-	return Indicators.GetOutletsCount();
-}
-
 //----------------Begin Info Block Visit---------------------------------
 function GetToDayUnDoneRequestsCount(){//(searchText - строка поиска, getCount - получать ли количество[1-ДА,0-НЕТ])
 	var q = new Query("SELECT DE.id FROM Document_Event DE WHERE DE.ActualEndDate >= @DateStart AND DE.ActualEndDate <= @DateEnd AND DE.Status = @StatusEx");
