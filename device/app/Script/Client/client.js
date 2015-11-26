@@ -1,3 +1,7 @@
+function OnLoad(){
+ GetClientDetails();
+}
+
 function DoBackAndClean(){	
 	Workflow.Back();
 	//DB.Rollback();
@@ -7,8 +11,13 @@ function DoActionAndSave(step, req, cust, outlet) {
 		
 }
 
-function GetEventDetails() {
-	return Vars.getEvent();
+function GetClientDetails() {
+	var client = Vars.getClient();
+
+	$.Description.Text = client.Description;
+$.Address.Text = client.Address;
+	return Vars.getClient();
+
 }
 
 function PhoneExists(call) {

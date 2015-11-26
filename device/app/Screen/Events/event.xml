@@ -45,7 +45,7 @@
 		</c:VerticalLayout>	
 		
 			<s:If Test="$PhoneExists($event.Call)">
-				<c:HorizontalLayout CssClass="phoneBox"  OnClickAction="$MoreMakeContactCall($event.Call)">
+				<c:HorizontalLayout CssClass="phone"  OnClickAction="$MoreMakeContactCall($event.Call)">
 					<c:Image CssClass="iphone" />
 				</c:HorizontalLayout>	
 		  	</s:If>	  	

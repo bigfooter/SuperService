@@ -1,6 +1,7 @@
 summary		Сводная информация
 requests	Визиты
 clients	Клиенты
+client	Клиент
 vpVisits	заявок
 vpPerformed	выполнено
 further	еще

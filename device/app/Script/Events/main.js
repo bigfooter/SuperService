@@ -108,8 +108,8 @@ function SetEndDateNow(key) {
 }
 
 function ClearFilter(){
-	recvStartPeriod = undefined;
-	recvStopPeriod = undefined;
+	recvStartPeriod = "";
+	recvStopPeriod = "";
 	Workflow.Refresh([]);
 }
 
@@ -181,14 +181,14 @@ function GetAllsActiveTask() {
 		//Dialog.Debug(recvStartPeriod());
 	//	Dialog.Debug(recvStartPeriod());
 	//	Dialog.Debug(Vars.getRecvStopPeriod());
-	if (recvStartPeriod() != null){
+	if (Vars.getRecvStartPeriod() != ""){
 		var starttail = " AND DE.StartDatePlan >= @DateStart";//AND REQ.PlanStartDataTime < @DateEnd
 		q.AddParameter("DateStart", recvStartPeriod);
 		queryText = queryText + starttail;
 		
 	}
 	
-	if (recvStopPeriod() != null){
+	if (Vars.getRecvStopPeriod() != ""){
 		var stoptail = " AND DE.StartDatePlan < @DateEnd";//AND REQ.PlanStartDataTime < @DateEnd
 		q.AddParameter("DateEnd", recvStopPeriod);
 		queryText = queryText + stoptail;

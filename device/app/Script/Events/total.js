@@ -86,7 +86,6 @@ function askCommit(sender, event){
 
 
 function CommitEvent(state, args){
-	Dialog.Debug("Now");
 	obj = state.GetObject();
 	obj.Status = DB.Current.Constant.StatusyEvents.Done;
 	obj.ActualdDate = DateTime.Now;

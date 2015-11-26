@@ -47,7 +47,7 @@
     white-space: normal;
     font: 40% Arial;
     margin-top: 0%;
-    
+
 	
 }
 
@@ -81,6 +81,7 @@
 	font: 80% Arial;
 	height: 18%;
 	width: 100%;
+
 	
 }
 
@@ -247,4 +248,10 @@ dock-align: right;
     white-space: normal;
     font: 80% Arial;
     color: #8e8e93;
+}
+
+.description_row {
+    height: 40%;
+    font: 42% Arial;
+
 }
