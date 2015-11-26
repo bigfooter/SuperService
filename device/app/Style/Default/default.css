@@ -1125,3 +1125,19 @@ MemoEdit {
             font: 12% Arial;
             color: #b96f18;
         }
+
+.btn_bottom_footer {
+    width: 100%;
+    height: 100%;
+    dock-align: bottom;
+}
+
+    .btn_bottom_footer TextView {
+        width: 100%;
+        height: 100%;
+        margin-left: 0%;
+        padding-top: 25%;
+        text-align: center;
+        color: #e6891b;
+        font: 38% Arial;
+    }

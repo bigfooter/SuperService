@@ -39,3 +39,7 @@ vpVisits	заявок
 at	в
 error	Ошибка
 SendLog	Отправить лог
+visitTotal	Итоги
+ready	Готово
+comment	Комментарий
+send	Отправить

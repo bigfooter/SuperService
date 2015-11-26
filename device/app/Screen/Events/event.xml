@@ -8,7 +8,7 @@
          <c:Image/>
         <c:TextView Text="#back#"/>
       </c:HorizontalLayout>     
-      	<c:Button Id="btnForward" Text="#next#" CssClass="btn_forward" OnClickAction="$DoActionAndSave(GoParams, $param1, $objCust, $objOutlet)"/>
+      	<c:Button Id="btnForward" Text="#next#" CssClass="btn_forward" OnClickAction="$DoAction(Total, $event)"/>
       <c:HorizontalLayout>
         <c:TextView Text="#visit#" />
       </c:HorizontalLayout>

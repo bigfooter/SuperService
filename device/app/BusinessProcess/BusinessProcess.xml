@@ -22,12 +22,18 @@
          
     </bp:Step>
 
+
+
   </bp:Workflow>
 
    <bp:Workflow Name="Event" Controller="Events\event.js">
-    <bp:Step Name="Main" Screen="event.xml" Controller="Events\event.js">
-              
-    </bp:Step>
+        <bp:Step Name="Main" Screen="event.xml" Controller="Events\event.js">
+            <bp:Action Name="Total" NextStep="Total"></bp:Action>
+        </bp:Step>
+
+        <bp:Step Name="Total" Screen="Events\total.xml" Controller="Events\total.js">
+         
+        </bp:Step>
    </bp:Workflow> 
 
 
