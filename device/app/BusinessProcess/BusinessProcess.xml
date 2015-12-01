@@ -25,10 +25,16 @@
          
     </bp:Step>
 
+
+
   </bp:Workflow>
 
    <bp:Workflow Name="Event" Controller="Events\event.js">
     <bp:Step Name="Main" Screen="Events\event.xml" Controller="Events\event.js">
+            <bp:Action Name="Total" NextStep="Total"></bp:Action>
+        </bp:Step>
+
+        <bp:Step Name="Total" Screen="Events\total.xml" Controller="Events\total.js">
               
     </bp:Step>
    </bp:Workflow> 
@@ -45,13 +51,17 @@
 
     <bp:Step Name="EditFilter" Screen="filter.xml" Controller="Client\main.js">
          
-    </bp:Step>
+        </bp:Step>
 
   </bp:Workflow>
 
    <bp:Workflow Name="ClentView" Controller="Client\client.js">
     <bp:Step Name="Main" Screen="Client\client.xml" Controller="Client\client.js">
-              
+       <bp:Action Name="ShowContacts" NextStep="contacts" />       
+    </bp:Step>
+
+    <bp:Step Name="contacts" Screen="Client\contacts.xml" Controller="Client\contacts.js">
+
     </bp:Step>
    </bp:Workflow> 
 

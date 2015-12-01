@@ -1,25 +1,26 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<c:Screen xmlns:c="BitMobile.Controls" xmlns:s="BitMobile.ValueStack" StyleSheet="Clients.css">
+<c:Screen xmlns:c="BitMobile.Controls" xmlns:s="BitMobile.ValueStack" StyleSheet="contacts.css">
 <!--<s:Push Id="init" Value="$initvalues()"/>
 <s:Push Id="search" Value="$param1"/>
 <s:Push Id="s" Value="$SetListType()"></s:Push> --> 
 <c:SwipeHorizontalLayout Id="swipe_layout" Index="1">
-    <s:Include File="\Components\sideMenu.xml"/>
+  <!--  <s:Include File="\Components\sideMenu.xml"/>-->
   
   <c:VerticalLayout>
 
     <c:DockLayout CssClass="top_navigator">
-      <c:HorizontalLayout CssClass="btn_menu" OnEvent="Back" OnClickAction="$OpenMenu()">
-        <c:Image CssClass="menuIcon"/>
-      </c:HorizontalLayout>
+         <c:HorizontalLayout CssClass="btn_back" OnEvent="Back" OnClickAction="$DoBackAndClean()">
+   <c:Image/>
+        <c:TextView Text="#back#"/>
+       </c:HorizontalLayout>
       <c:Button Id="btnForward" Text="" CssClass="btn_forward"/>
       <c:HorizontalLayout>
-        <c:TextView Text="#clients#" />
+        <c:TextView Text="Контакты" />
       </c:HorizontalLayout>
     </c:DockLayout>
 
     
-		  <s:Push Id="allClients" Value="$GetAllsActiveTask()"></s:Push>
+		  <s:Push Id="allClients" Value="$GetAllsActiveTask2()"></s:Push>
 		  <s:Push Id="count_allClients" Value="$GetUnloadCount($allClients)"></s:Push>
 
 	    
@@ -28,32 +29,23 @@
 	    
     
     <c:HorizontalLine/>
-	<!-- Begin Search field -->     	  
-	<c:DockLayout CssClass="search">
-				<c:Button Id="btnSearch" Text="#search#" OnClickAction="$findinalltext($edtSearchAll.Text)"></c:Button>
-				<c:DockLayout>
-					<c:Image />
-					<c:EditText Id="edtSearchAll" Text="$search" Placeholder="#search#" ></c:EditText>
-				</c:DockLayout>			
-			</c:DockLayout>
-			<c:HorizontalLayout CssClass="shadowLine"></c:HorizontalLayout>
-	<!-- End Search field --> 	
+
 	<!-- Begin all visits screen -->
 		<s:If Test="$count_allClients > 0">
 			<c:ScrollView Id="SVAll">
 				<s:Iterator Id="allClientsItem" Value="$allClients">      
 	
 	          <c:HorizontalLine/>
-	          <c:HorizontalLayout CssClass="grid" OnClickAction="$actionDoSelect($allClientsItem.Id)">
+	          <c:HorizontalLayout CssClass="grid">
 	            <c:VerticalLayout CssClass="no_mark"></c:VerticalLayout>
 	            <c:VerticalLayout>
-	              <c:TextView Text="$allClientsItem.Description" CssClass="main_row"></c:TextView>
+	              <c:TextView Text="$allClientsItem.FIO" CssClass="main_row"></c:TextView>
 
 
 
 	            
 
-	              <c:TextView Text="$allClientsItem.Address" CssClass="description_row"></c:TextView>
+	              <c:TextView Text="$allClientsItem.Tel" CssClass="description_row"></c:TextView>
 		
 	            </c:VerticalLayout>
 	            <c:Image />
@@ -72,7 +64,7 @@
 	      
     </s:If>
       <s:Else>
-				<c:TextView Text="Нет клиентов" CssClass="emptyRecordSetAllRequest"/>				
+				<c:TextView Text="Нет контактов" CssClass="emptyRecordSetAllRequest"/>				
 		</s:Else>
 
 	<!-- End Body screen   -->

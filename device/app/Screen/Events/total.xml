@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c:Screen xmlns:c="BitMobile.Controls" xmlns:s="BitMobile.ValueStack" StyleSheet="total.css">
+<!-- <s:Push Id="requestId" Value="$FillValue($param1)"></s:Push> -->
+
+  <c:DockLayout>
+
+    <c:DockLayout CssClass="top_navigator">
+      <c:HorizontalLayout CssClass="btn_back" OnEvent="Back" OnClickAction="$DoBack()">
+        <c:Image/>
+        <c:TextView Text="#back#"/>
+      </c:HorizontalLayout>
+      <c:Button Id="btnForward" Text="#ready#" CssClass="btn_forward" OnClick="$askCommit($param1)" />
+      <c:HorizontalLayout>
+        <c:TextView Text="#visitTotal#" />
+      </c:HorizontalLayout>
+    </c:DockLayout>
+
+    <c:DockLayout CssClass="footer" OnClickAction="$createReminder($param1)">
+		<c:DockLayout CssClass="btn_bottom_footer">
+			<c:TextView Text="#send#" />
+		</c:DockLayout>						
+	</c:DockLayout>
+
+    
+
+    <c:ScrollView>
+	
+	<c:DockLayout CssClass="gameBox">
+	<c:HorizontalLayout CssClass="buttonBox"> 
+		<!--  <s:If Test="$isProgress($requestId.Status)"> -->
+			<c:VerticalLayout CssClass="buttonBlock" OnClick="$isHungry()">
+				<c:Image Id="HungryImageFalse" CssClass="iconFalseMoney"/>
+				<c:Image Id="HungryImageTrue" CssClass="iconTrueMoney" Visible="false"/>
+			</c:VerticalLayout>
+		
+			
+			<c:VerticalLayout CssClass="buttonBlock" OnClick="$isAngry()">
+				<c:Image Id="AngryImageFalse" CssClass="iconFalseFace"/>
+				<c:Image Id="AngryImageTrue" CssClass="iconTrueFace" Visible="false"/>			
+			</c:VerticalLayout>
+		<!-- </s:If> -->
+		
+		<!--<s:Else>
+			<c:VerticalLayout CssClass="buttonBlock">
+				<c:Image Id="HungryImageFalse" CssClass="iconFalseMoney"/>
+				<c:Image Id="HungryImageTrue" CssClass="iconTrueMoney" Visible="false"/>			
+			</c:VerticalLayout>
+		
+			
+			<c:VerticalLayout CssClass="buttonBlock">
+				<c:Image Id="AngryImageFalse" CssClass="iconFalseFace"/>
+				<c:Image Id="AngryImageTrue" CssClass="iconTrueFace" Visible="false"/>
+			</c:VerticalLayout>
+		
+		</s:Else> -->
+	</c:HorizontalLayout>
+	</c:DockLayout>    
+     
+     <c:HorizontalLine/>
+     <c:HorizontalLayout CssClass="memo_block">
+        <c:VerticalLayout>
+          <c:TextView Text="#comment#" CssClass="description_row"></c:TextView>
+      	<!--  <s:If Test="$isProgress($requestId.Status)">  --> 
+          	<c:MemoEdit Id="RemindComment"  CssClass="main_row" OnChange="$checkCommentLength()"></c:MemoEdit>
+       	 <!-- </s:If>  --> 
+     <!-- <s:Else>
+          	<c:TextView Id="VisitComment" Text = "$requestId.AHComment"  CssClass="main_row"></c:TextView>
+         </s:Else> -->
+        </c:VerticalLayout>
+    </c:HorizontalLayout>
+    <c:HorizontalLine/> 
+    
+   
+     
+
+    </c:ScrollView>
+
+  </c:DockLayout>
+
+</c:Screen>
+
+
+
