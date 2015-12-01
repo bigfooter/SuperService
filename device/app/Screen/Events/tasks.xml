@@ -10,7 +10,7 @@
 	<c:VerticalLayout>
 
 		<c:DockLayout CssClass="top_navigator">
-			<c:DockLayout Id="btnBack" CssClass="btn_back" OnEvent="Back" OnClickAction="$DoBackTo(main)">
+			<c:DockLayout Id="btnBack" CssClass="btn_back" OnEvent="Back" OnClickAction="$DoBackTo(event)">
 				<c:Image />
 				<c:TextView Text="#back#" />
 			</c:DockLayout>
