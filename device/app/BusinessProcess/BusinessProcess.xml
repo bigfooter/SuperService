@@ -31,12 +31,12 @@
 
    <bp:Workflow Name="Event" Controller="Events\event.js">
     <bp:Step Name="Main" Screen="Events\event.xml" Controller="Events\event.js">
-           <bp:Action Name="Forward" NextStep="Tasks" />
-            <bp:Action Name="Total" NextStep="Total"></bp:Action>
+           <bp:Action Name="tasks" NextStep="tasks"></bp:Action>
+         
         </bp:Step>
 
-         <bp:Step Name="Tasks" Screen="Events\tasks.xml" Controller="Events\tasks.js">
-
+         <bp:Step Name="tasks" Screen="Events\tasks.xml" Controller="Events\tasks.js">
+<bp:Action Name="Total" NextStep="Total"></bp:Action>
           </bp:Step>
 
 

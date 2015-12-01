@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <c:Screen xmlns:c="BitMobile.Controls" xmlns:s="BitMobile.ValueStack" StyleSheet="tasks.css">
 
-	<s:Push Id="main" Value="$workflow.main"></s:Push>
-	<s:Push Id="event" Value="$workflow.event"></s:Push>
-	<s:Push Id="exTasks" Value="$GetExecutedTasks($workflow.main)"></s:Push>
-	<s:Push Id="newTasks" Value="$GetNotExecutedTasks($workflow.main)"></s:Push>
+<!--	<s:Push Id="main" Value="$workflow.main"></s:Push>-->
+	<!--<s:Push Id="Event" Value="$workflow.Event"></s:Push>-->
+	<!--<s:Push Id="exTasks" Value="$GetExecutedTasks($workflow.Event)"></s:Push>
+	<s:Push Id="newTasks" Value="$GetNotExecutedTasks($workflow.Event)"></s:Push>-->
 
 
 	<c:VerticalLayout>
 
 		<c:DockLayout CssClass="top_navigator">
-			<c:DockLayout Id="btnBack" CssClass="btn_back" OnEvent="Back" OnClickAction="$DoBackTo(event)">
+			<c:DockLayout Id="btnBack" CssClass="btn_back" OnEvent="Back" OnClickAction="$DoBackTo(Event)">
 				<c:Image />
 				<c:TextView Text="#back#" />
 			</c:DockLayout>
