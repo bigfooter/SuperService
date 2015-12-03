@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <c:Screen xmlns:c="BitMobile.Controls" xmlns:s="BitMobile.ValueStack" StyleSheet="client.css">
-
+	
   <c:DockLayout>
 
     <c:DockLayout CssClass="top_navigator">
@@ -18,11 +18,11 @@
 		<c:DockLayout CssClass="btn_left_footer" OnClickAction="$DoAction(ShowContacts)">
 			<c:TextView Text="#contacts#" />
 		</c:DockLayout>
-
+		
 		<c:DockLayout CssClass="btn_right_footer" OnClickAction="$DoAction(Equipment)">
 			<c:TextView Text="#devices#" />
 		</c:DockLayout>
-
+		
 	</c:DockLayout>
 	<c:ScrollView>
 	 <c:HorizontalLine/>
@@ -30,28 +30,28 @@
 		<c:VerticalLayout CssClass="no_mark"></c:VerticalLayout>
 		<c:VerticalLayout>
 		  <c:TextView Text="#descriptioncust#" CssClass="description_row"></c:TextView>
-		  <c:TextView Id= "Description" CssClass="main_row_custname"></c:TextView>
-		</c:VerticalLayout>
-		<c:Image/>
+		  <c:TextView Id= "Description" CssClass="main_row_custname"></c:TextView>		   
+		</c:VerticalLayout>	
+		<c:Image/>	
 	  </c:HorizontalLayout>
+	  
 
-
-
+		
 		<c:HorizontalLine/>
 	  <c:HorizontalLayout CssClass="grid">
-	  <c:VerticalLayout CssClass="no_mark"></c:VerticalLayout>
+	  <c:VerticalLayout CssClass="no_mark"></c:VerticalLayout>	
 		<c:VerticalLayout>
 		  <c:TextView Text="#address#" CssClass="description_row"></c:TextView>
-		  <c:TextView Id="Address" CssClass="main_row_custname"></c:TextView>
-		</c:VerticalLayout>
+		  <c:TextView Id="Address" CssClass="main_row_custname"></c:TextView>		  
+		</c:VerticalLayout>		
 	  </c:HorizontalLayout>
+ 
 
-
-
-
-
-
-
+	  
+	  
+	 
+	
+	
 	</c:ScrollView>
 </c:DockLayout>
 
