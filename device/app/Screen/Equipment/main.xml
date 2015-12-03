@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<c:Screen xmlns:c="BitMobile.Controls" xmlns:s="BitMobile.ValueStack" StyleSheet="eqList.css">
+  <c:DockLayout>
+
+    <c:DockLayout CssClass="top_navigator">
+      <c:HorizontalLayout CssClass="btn_back" OnEvent="Back" OnClickAction="$DoBack()">
+         <c:Image/>
+        <c:TextView Text="#back#"/>
+      </c:HorizontalLayout>     
+      <c:HorizontalLayout>
+        <c:TextView Text="#equipment#" />
+      </c:HorizontalLayout>
+    </c:DockLayout>
+
+
+	<c:ScrollView>
+
+	<s:Iterator Id="Eq" Value="$getEquipmentList($param1)">
+
+	 <c:HorizontalLine/>
+	  <c:DockLayout CssClass="grid" onClickAction="$DoAction(equipmentDetails, $Eq.Id)">
+		<c:VerticalLayout CssClass="no_mark"></c:VerticalLayout>
+		<c:Image/>
+		<c:VerticalLayout>
+		  <c:TextView Text="$Eq.Description" CssClass="main_row"></c:TextView>
+		  <c:TextView Text="$Eq.SerialNumber" CssClass="main_row"></c:TextView>
+		</c:VerticalLayout>
+
+	  </c:DockLayout>
+
+
+ 	</s:Iterator>
+
+	</c:ScrollView>
+</c:DockLayout>
+
+
+
+</c:Screen>

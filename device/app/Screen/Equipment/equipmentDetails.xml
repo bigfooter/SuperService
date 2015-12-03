@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<c:Screen xmlns:c="BitMobile.Controls" xmlns:s="BitMobile.ValueStack" StyleSheet="equipmentDetails.css">
+  <c:DockLayout>
+
+    <c:DockLayout CssClass="top_navigator">
+      <c:HorizontalLayout CssClass="btn_back" OnEvent="Back" OnClickAction="$DoBack()">
+         <c:Image/>
+        <c:TextView Text="#back#"/>
+      </c:HorizontalLayout>
+      <c:HorizontalLayout>
+        <c:TextView Text="#device#" />
+      </c:HorizontalLayout>
+    </c:DockLayout>
+
+    <c:DockLayout CssClass="footer" OnClickAction="$DoAction(eqHistory, $param1)">
+		<c:DockLayout CssClass="btn_bottom_footer">
+			<c:TextView Text="#history#" />
+		</c:DockLayout>
+	</c:DockLayout>
+
+
+	<c:ScrollView>
+
+
+	 <c:HorizontalLine/>
+   <c:HorizontalLayout CssClass="grid">
+   <c:VerticalLayout CssClass="no_mark"></c:VerticalLayout>
+   <c:VerticalLayout>
+     <c:TextView Text="#descriptionEQ#" CssClass="description_row"></c:TextView>
+     <c:TextView Id="DescEQ" CssClass="main_row_custname"></c:TextView>
+   </c:VerticalLayout>
+   <c:Image/>
+   </c:HorizontalLayout>
+
+  <c:HorizontalLine/>
+
+  <c:HorizontalLayout CssClass="grid">
+  <c:VerticalLayout CssClass="no_mark"></c:VerticalLayout>
+  <c:VerticalLayout>
+    <c:TextView Text="#serialNum#" CssClass="description_row"></c:TextView>
+    <c:TextView Id="SN" CssClass="main_row_custname"></c:TextView>
+  </c:VerticalLayout>
+  <c:Image/>
+  </c:HorizontalLayout>
+<c:HorizontalLine/>
+  <c:HorizontalLayout CssClass="grid">
+  <c:VerticalLayout CssClass="no_mark"></c:VerticalLayout>
+  <c:VerticalLayout>
+    <c:TextView Text="#softVersion#" CssClass="description_row"></c:TextView>
+    <c:TextView Id="ver" CssClass="main_row_custname"></c:TextView>
+  </c:VerticalLayout>
+  <c:Image/>
+  </c:HorizontalLayout>
+
+ <c:HorizontalLine/>
+
+ <c:HorizontalLayout CssClass="grid">
+ <c:VerticalLayout CssClass="no_mark"></c:VerticalLayout>
+ <c:VerticalLayout>
+   <c:TextView Text="#remote#" CssClass="description_row"></c:TextView>
+   <c:TextView Id="remote" CssClass="main_row_custname"></c:TextView>
+ </c:VerticalLayout>
+ <c:Image/>
+ </c:HorizontalLayout>
+<c:HorizontalLine/>
+
+<c:HorizontalLayout Id="remoteDateBlock" CssClass="grid" Visible="false">
+<c:VerticalLayout CssClass="no_mark"></c:VerticalLayout>
+<c:VerticalLayout>
+  <c:TextView Text="#remoteData#" CssClass="description_row"></c:TextView>
+  <c:TextView Id="remoteData" CssClass="main_row_custname"></c:TextView>
+</c:VerticalLayout>
+<c:Image/>
+</c:HorizontalLayout>
+<c:HorizontalLine/>
+
+
+
+
+
+
+	</c:ScrollView>
+</c:DockLayout>
+
+
+
+</c:Screen>

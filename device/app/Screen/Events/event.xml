@@ -19,7 +19,7 @@
 			<c:TextView Text="#contacts#" />
 		</c:DockLayout>
 		
-		<c:DockLayout CssClass="btn_right_footer" OnClickAction="$DoAction(Options)">
+		<c:DockLayout CssClass="btn_right_footer" OnClickAction="$DoAction(Equipment, $event.Client.Id)">
 			<c:TextView Text="#devices#" />
 		</c:DockLayout>
 		

@@ -13,7 +13,7 @@ requndone	осталось
 reqmth	за месяц
 sync	Синхронизация
 info	О программе
-today	Сегодня	
+today	Сегодня
 requestsAll	Все
 search		Поиск
 begin	Начало
@@ -44,3 +44,11 @@ visitTotal	Итоги
 ready	Готово
 comment	Комментарий
 send	Отправить
+equipment	Оборудование
+descriptionEQ	Наименование
+SerialNum	Серийный номер
+softVersion	Версия ПО
+remote	Удаленный доступ
+remoteData	Данные для удаленного доступа
+history	История
+device  Прибор
