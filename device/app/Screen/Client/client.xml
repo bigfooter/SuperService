@@ -2,20 +2,21 @@
 <c:Screen xmlns:c="BitMobile.Controls" xmlns:s="BitMobile.ValueStack" StyleSheet="client.css">
 
   <c:DockLayout>
+<c:DockLayout CssClass="top_navigator">
+				<c:HorizontalLayout Id="btnBack" CssClass="btn_back" OnEvent="Back" OnClickAction="$DoBackAndClean()">
+					<c:Image />
+					<c:TextView Text="#back#" />
+				</c:HorizontalLayout>
+				<c:HorizontalLayout CssClass="btn_forward" />
+				<c:HorizontalLayout>
+					<c:TextView Text="#client#" />
+				</c:HorizontalLayout>
+			</c:DockLayout>
 
-    <c:DockLayout CssClass="top_navigator">
-      <c:HorizontalLayout CssClass="btn_back" OnEvent="Back" OnClickAction="$DoBackAndClean()">
-         <c:Image/>
-        <c:TextView Text="#back#"/>
-      </c:HorizontalLayout>
-      	<c:Button Id="btnForward" Text="#next#" CssClass="btn_forward" OnClickAction="$DoActionAndSave(GoParams, $param1, $objCust, $objOutlet)"/>
-      <c:HorizontalLayout>
-        <c:TextView Text="#client#" />
-      </c:HorizontalLayout>
-    </c:DockLayout>
 
+	
 	<c:DockLayout CssClass="footer">
-		<c:DockLayout CssClass="btn_left_footer" OnClickAction="$DoAction(Contacts)">
+		<c:DockLayout CssClass="btn_left_footer" id="btnContacts" OnClickAction="$DoAction(ShowContacts)">
 			<c:TextView Text="#contacts#" />
 		</c:DockLayout>
 

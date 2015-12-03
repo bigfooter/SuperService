@@ -51,4 +51,11 @@ softVersion	Версия ПО
 remote	Удаленный доступ
 remoteData	Данные для удаленного доступа
 history	История
+tasks		Задачи
+task		Задача
+todoDone	Задач выполнено
+execute		Выполнить
+retrieve	Вернуть
+newTasks	НЕВЫПОЛНЕННЫЕ
+executedtask	ВЫПОЛНЕННЫЕ
 device  Прибор
