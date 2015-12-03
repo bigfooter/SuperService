@@ -44,3 +44,10 @@ visitTotal	Итоги
 ready	Готово
 comment	Комментарий
 send	Отправить
+tasks		Задачи
+task		Задача
+todoDone	Задач выполнено
+execute		Выполнить
+retrieve	Вернуть
+newTasks	НЕВЫПОЛНЕННЫЕ
+executedtask	ВЫПОЛНЕННЫЕ
