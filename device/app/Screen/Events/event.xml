@@ -15,11 +15,11 @@
     </c:DockLayout>
 	
 	<c:DockLayout CssClass="footer">
-		<c:DockLayout CssClass="btn_left_footer" OnClickAction="$DoAction(ShowContacts)">
+		<c:DockLayout CssClass="btn_left_footer" OnClickAction="$DoAction(ShowContacts, $event.Client)">
 			<c:TextView Text="#contacts#" />
 		</c:DockLayout>
 		
-		<c:DockLayout CssClass="btn_right_footer" OnClickAction="$DoAction(Equipment)">
+		<c:DockLayout CssClass="btn_right_footer" OnClickAction="$DoAction(Equipment, $event.Client)">
 			<c:TextView Text="#devices#" />
 		</c:DockLayout>
 		
