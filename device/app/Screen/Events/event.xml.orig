@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<c:Screen xmlns:c="BitMobile.Controls" xmlns:s="BitMobile.ValueStack" StyleSheet="event.css">
+	<s:Push Id="event" Value="$GetEventDetails($param1)"></s:Push>
+  <c:DockLayout>
+
+    <c:DockLayout CssClass="top_navigator">
+      <c:HorizontalLayout CssClass="btn_back" OnEvent="Back" OnClickAction="$DoBackAndClean()">
+         <c:Image/>
+        <c:TextView Text="#back#"/>
+      </c:HorizontalLayout>     
+      	<c:Button Id="btnForward" Text="#next#" CssClass="btn_forward" OnClickAction="$DoAction(tasks, $event)"/>
+      <c:HorizontalLayout>
+        <c:TextView Text="#visit#" />
+      </c:HorizontalLayout>
+    </c:DockLayout>
+	
+	<c:DockLayout CssClass="footer">
+		<c:DockLayout CssClass="btn_left_footer" OnClickAction="$DoAction(ShowContacts)">
+			<c:TextView Text="#contacts#" />
+		</c:DockLayout>
+		
+<<<<<<< HEAD
+		<c:DockLayout CssClass="btn_right_footer" OnClickAction="$DoAction(Equipment, $event.Client.Id)">
+=======
+		<c:DockLayout CssClass="btn_right_footer" OnClickAction="$DoAction(Equipment)">
+>>>>>>> develop_Denis
+			<c:TextView Text="#devices#" />
+		</c:DockLayout>
+		
+	</c:DockLayout>
+	<c:ScrollView>
+	 <c:HorizontalLine/>
+	  <c:HorizontalLayout CssClass="grid">
+		<c:VerticalLayout CssClass="no_mark"></c:VerticalLayout>
+		<c:VerticalLayout>
+		  <c:TextView Text="#descriptioncust#" CssClass="description_row"></c:TextView>
+		  <c:TextView Text="$event.Client.Description" CssClass="main_row_custname"></c:TextView>		   
+		</c:VerticalLayout>	
+		<c:Image/>	
+	  </c:HorizontalLayout>
+	  
+	 <c:HorizontalLine/>
+	  <c:HorizontalLayout CssClass="grid">
+		<c:VerticalLayout CssClass="no_mark"></c:VerticalLayout>
+		<c:VerticalLayout CssClass="infoPlaceWithPhone">
+		  <c:TextView Text="#mainContact#" CssClass="description_row"></c:TextView>
+		  <c:TextView Text="$event.ContactVisiting" CssClass="main_row_contact"></c:TextView>
+		  <c:TextView Text="$event.Call" CssClass="main_row_phone"></c:TextView>
+		</c:VerticalLayout>	
+		
+			<s:If Test="$PhoneExists($event.Call)">
+				<c:HorizontalLayout CssClass="phone"  OnClickAction="$MoreMakeContactCall($event.Call)">
+					<c:Image CssClass="iphone" />
+				</c:HorizontalLayout>	
+		  	</s:If>	  	
+	  	
+	  </c:HorizontalLayout>
+	  
+		
+		<c:HorizontalLine/>
+	  <c:HorizontalLayout CssClass="grid">
+	  <c:VerticalLayout CssClass="no_mark"></c:VerticalLayout>	
+		<c:VerticalLayout>
+		  <c:TextView Text="#address#" CssClass="description_row"></c:TextView>
+		  <c:TextView Id="Address" Text="$event.Client.Address" CssClass="main_row_custname"></c:TextView>		  
+		</c:VerticalLayout>		
+	  </c:HorizontalLayout>
+ 
+ 	<c:HorizontalLine/>
+	  <c:HorizontalLayout CssClass="grid">
+	  	 <c:VerticalLayout CssClass="no_mark"></c:VerticalLayout>	
+		<c:VerticalLayout>
+		  <c:TextView Text="#Author#" CssClass="description_row"></c:TextView>
+		  <c:TextView Id="eventAuthor" Text="$event.Author.Description" CssClass="main_row_custname"></c:TextView>		  
+		</c:VerticalLayout>		
+	  </c:HorizontalLayout>
+
+	  <c:HorizontalLine/>
+	  <c:HorizontalLayout CssClass="grid">
+	  	 <c:VerticalLayout CssClass="no_mark"></c:VerticalLayout>	
+		<c:VerticalLayout>
+		  <c:TextView Text="#eventComment#" CssClass="description_row"></c:TextView>
+		  <c:TextView Id="eventComment" Text="$event.Comment" CssClass="main_row_custname"></c:TextView>		  
+		</c:VerticalLayout>		
+	  </c:HorizontalLayout>
+	  
+	  
+	 
+	
+	
+	</c:ScrollView>
+</c:DockLayout>
+
+
+
+</c:Screen>

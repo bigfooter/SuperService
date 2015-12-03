@@ -1,0 +1,61 @@
+summary		Сводная информация
+requests	Визиты
+clients	Клиенты
+client	Клиент
+vpVisits	заявок
+vpPerformed	выполнено
+further	еще
+scheduled	запланировано
+planned	плановых
+vpUnplanned	внеплановых
+reqdone	закрыто
+requndone	осталось
+reqmth	за месяц
+sync	Синхронизация
+info	О программе
+today	Сегодня
+requestsAll	Все
+search		Поиск
+begin	Начало
+end	Окончание
+period	Период
+ClearFilter	Очистить фильтр
+Clear	Очистить
+descriptioncust	Наименование клиента
+mainContact	Контакт
+address	Адрес
+Author	Автор
+eventComment	Комментарий
+back	Назад
+next	Вперед
+contacts	Контакты
+devices	Оборудование
+visit	Визит
+call	Позвонить
+synchronizationData	СИНХРОНИЗАЦИЯ ДАННЫХ
+synchronizationPhoto	СИНХРОНИЗАЦИЯ ФОТОГРАФИЙ
+lastSync	Последняя синхронизация
+synchronize	Синхронизировать
+vpVisits	заявок
+at	в
+error	Ошибка
+SendLog	Отправить лог
+visitTotal	Итоги
+ready	Готово
+comment	Комментарий
+send	Отправить
+equipment	Оборудование
+descriptionEQ	Наименование
+SerialNum	Серийный номер
+softVersion	Версия ПО
+remote	Удаленный доступ
+remoteData	Данные для удаленного доступа
+history	История
+tasks		Задачи
+task		Задача
+todoDone	Задач выполнено
+execute		Выполнить
+retrieve	Вернуть
+newTasks	НЕВЫПОЛНЕННЫЕ
+executedtask	ВЫПОЛНЕННЫЕ
+device  Прибор
