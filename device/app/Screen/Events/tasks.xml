@@ -40,13 +40,13 @@
 			<s:Iterator Id="itask" Value="$newTasks">
 
 				<c:SwipeHorizontalLayout Id="swipe_layout1" CssClass="swipe_layout" Index="1">
-					<c:HorizontalLayout CssClass="green_swipe" OnClickAction="$CompleteTheTask($itask.Id, $workflow.visit)">
+					<c:HorizontalLayout CssClass="green_swipe" OnClickAction="$CompleteTheTask($itask.Id, $workflow.tasks)">
 						<c:VerticalLayout>
 							<c:Image></c:Image>
 							<c:TextView Text="#execute#"></c:TextView>
 						</c:VerticalLayout>
 					</c:HorizontalLayout>
-					<c:DockLayout CssClass="grid" OnClickAction="$DoAction(Select, $itask.Id, null, $itask.Terget)">
+					<c:DockLayout CssClass="grid" OnClickAction="$DoAction(task, $itask.Id, null)">
 						<c:Image />
 						<c:VerticalLayout>
 							<c:TextView Text="$itask.Description" CssClass="description_row"></c:TextView>
@@ -70,7 +70,7 @@
 			<s:Iterator Id="eTask" Value="$exTasks">
 
 			<c:SwipeHorizontalLayout Id="swipe_layout2" CssClass="swipe_layout">
-					<c:DockLayout CssClass="grid" OnClickAction="$DoAction(Select, $eTask.Id)">
+					<c:DockLayout CssClass="grid" OnClickAction="$DoAction(task, $eTask.Id, null)">
 						<c:Image />
 						<c:VerticalLayout>
 							<c:TextView Text="$eTask.Description" CssClass="description_row"></c:TextView>
