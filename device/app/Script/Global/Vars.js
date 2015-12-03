@@ -48,3 +48,17 @@ function getClient(){
 }
 // End Current Event ID
 
+
+
+// Begin Current Event ID
+var currentTask;
+
+function setTask(a){
+	currentTask = a;
+}
+
+function getTask(){
+	return currentTask;
+}
+// End Current Event ID
+

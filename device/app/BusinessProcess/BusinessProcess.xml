@@ -40,7 +40,8 @@
 <bp:Action Name="task" NextStep="task"></bp:Action>
           </bp:Step>
 
-  <bp:Step Name="task" Screen="Visit\Task.xml" Controller="Tasks\tasks.js">
+  <bp:Step Name="task" Screen="Events\task.xml" Controller="Events\tasks.js">
+
       <bp:Action Name="Forward" NextStep="tasks" />
     </bp:Step>
 

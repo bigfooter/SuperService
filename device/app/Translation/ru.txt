@@ -39,10 +39,12 @@ synchronize	Синхронизировать
 vpVisits	заявок
 at	в
 error	Ошибка
+Terget	Цель
+
 SendLog	Отправить лог
 visitTotal	Итоги
 ready	Готово
-comment	Комментарий
+comment Комментарий
 send	Отправить
 tasks		Задачи
 task		Задача
