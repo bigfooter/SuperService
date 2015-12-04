@@ -46,7 +46,7 @@ comment	Комментарий
 send	Отправить
 equipment	Оборудование
 descriptionEQ	Наименование
-SerialNum	Серийный номер
+serialNum	Серийный номер
 softVersion	Версия ПО
 remote	Удаленный доступ
 remoteData	Данные для удаленного доступа
@@ -58,4 +58,6 @@ execute		Выполнить
 retrieve	Вернуть
 newTasks	НЕВЫПОЛНЕННЫЕ
 executedtask	ВЫПОЛНЕННЫЕ
-device  Прибор
+device	Прибор
+Yes	Да
+deviceHistory	История

@@ -32,7 +32,7 @@
         <bp:Step Name="Main" Screen="Events\event.xml" Controller="Events\event.js">
           <bp:Action Name="Equipment" NextStep="Equipment"></bp:Action>
            <bp:Action Name="tasks" NextStep="tasks"></bp:Action>
-         
+
         </bp:Step>
 
          <bp:Step Name="tasks" Screen="Events\tasks.xml" Controller="Events\tasks.js">
@@ -44,7 +44,6 @@
       <bp:Action Name="Forward" NextStep="tasks" />
     </bp:Step>
 
-        <bp:Step Name="Total" Screen="Events\total.xml" Controller="Events\total.js">
 
         <bp:Step Name="Total" Screen="Events\total.xml" Controller="Events\total.js">
         </bp:Step>
@@ -53,7 +52,11 @@
           <bp:Action Name="equipmentDetails" NextStep="equipmentDetails"></bp:Action>
         </bp:Step>
 
-        <bp:Step Name="equipmentDetails" Screen="Equipment\equipmentDetails.xml" Controller="Equipment\equipmentDetails.js">              
+        <bp:Step Name="equipmentDetails" Screen="Equipment\equipmentDetails.xml" Controller="Equipment\equipmentDetails.js">
+          <bp:Action Name="eqHistory" NextStep="eqHistory"></bp:Action>
+        </bp:Step>
+
+        <bp:Step Name="eqHistory" Screen="Equipment\eqHistory.xml" Controller="Equipment\eqHistory.js">
         </bp:Step>
    </bp:Workflow>
 
@@ -74,7 +77,8 @@
 
    <bp:Workflow Name="ClentView" Controller="Client\client.js">
     <bp:Step Name="Main" Screen="Client\client.xml" Controller="Client\client.js">
-       <bp:Action Name="ShowContacts" NextStep="contacts" />       
+       <bp:Action Name="ShowContacts" NextStep="contacts" />
+       <bp:Action Name="Equipment" NextStep="Equipment"></bp:Action>
     </bp:Step>
 
     <bp:Step Name="contacts" Screen="Client\contacts.xml" Controller="Client\contacts.js">
@@ -85,6 +89,17 @@
    <bp:Workflow Name="Sync">
     <bp:Step Name="Sync" Screen="Sync\Sync.xml" Controller="Sync\Main.js">
       <bp:Action Name="Events" NextWorkflow="Events"></bp:Action>
+    </bp:Step>
+
+    <bp:Step Name="Equipment" Screen="Equipment\main.xml" Controller="Equipment\main.js">
+      <bp:Action Name="equipmentDetails" NextStep="equipmentDetails"></bp:Action>
+    </bp:Step>
+
+    <bp:Step Name="equipmentDetails" Screen="Equipment\equipmentDetails.xml" Controller="Equipment\equipmentDetails.js">
+      <bp:Action Name="eqHistory" NextStep="eqHistory"></bp:Action>
+    </bp:Step>
+
+    <bp:Step Name="eqHistory" Screen="Equipment\eqHistory.xml" Controller="Equipment\eqHistory.js">
     </bp:Step>
   </bp:Workflow>
 

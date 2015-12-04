@@ -14,14 +14,14 @@
 			</c:DockLayout>
 
 
-	
+
 	<c:DockLayout CssClass="footer">
 		<c:DockLayout CssClass="btn_left_footer" id="btnContacts" OnClickAction="$DoAction(ShowContacts)">
 			<c:TextView Text="#contacts#" />
 		</c:DockLayout>
 
 		<c:DockLayout CssClass="btn_right_footer" OnClickAction="$DoAction(Options)">
-			<c:TextView Text="#devices#" />
+			<c:TextView Text="#devices#"  OnClickAction="$DoAction(eqHistory, $param1)"/>
 		</c:DockLayout>
 
 	</c:DockLayout>
