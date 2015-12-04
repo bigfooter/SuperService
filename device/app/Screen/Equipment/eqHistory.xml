@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<c:Screen xmlns:c="BitMobile.Controls" xmlns:s="BitMobile.ValueStack" StyleSheet="equipmentDetails.css">
+<c:Screen xmlns:c="BitMobile.Controls" xmlns:s="BitMobile.ValueStack" StyleSheet="eqHistory.css">
   <c:DockLayout>
     <c:DockLayout CssClass="top_navigator">
       <c:HorizontalLayout CssClass="btn_back" OnEvent="Back" OnClickAction="$DoBack()">
@@ -16,12 +16,11 @@
     <s:Iterator Id="HistoryItem" Value="$getEqHistory($param1)">
 
            <c:HorizontalLayout CssClass="grid">
-           <c:VerticalLayout CssClass="no_mark"></c:VerticalLayout>
+           <c:VerticalLayout CssClass="$getStatusStyle($HistoryItem.Result)"></c:VerticalLayout>
            <c:VerticalLayout>
              <c:TextView Text="{$HistoryItem.Period} {$HistoryItem.Executor}" CssClass="description_row"></c:TextView>
-             <c:TextView Id="DescEQ" CssClass="main_row_custname"></c:TextView>
+             <c:TextView Id="EQComment" Text="$HistoryItem.Comment" CssClass="main_row_custname"></c:TextView>
            </c:VerticalLayout>
-           <c:Image/>
            </c:HorizontalLayout>
 
           <c:HorizontalLine/>
@@ -29,6 +28,7 @@
     </s:Iterator>
 	</c:ScrollView>
 </c:DockLayout>
+
 
 
 

@@ -1,0 +1,13 @@
+.green_mark {
+  height: 100%;
+  width: 4.7mm;
+  dock-align: left;
+  background-color: #00a86b;
+}
+
+.red_mark {
+  height: 100%;
+  width: 4.7mm;
+  dock-align: left;
+  background-color: #ffc0cb;
+}
