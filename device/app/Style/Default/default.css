@@ -607,11 +607,45 @@ MemoEdit {
     }
 
 .empty_caption_grid {
-    height: 3.8sp;
+    height: 3.3mm;
     selected-color: #bacdce;
     background-color: #efeff4;
     dock-align: top;
 }
+
+.half_grid {
+    height: 6.7mm;
+    width: 100%;
+    background-color: #ffffff;
+    padding-left: 2.4mm;
+    padding-right: 2.4mm;
+}
+
+.half_grid Button {
+    height: 100%;
+    width: 100%;
+    vertical-align: central;
+    font: 37% arial;
+}
+
+.half_grid TextView {
+    height: 40%;
+    width: 45%;
+    vertical-align: central;
+    white-space: nowrap;
+    font: 80% Arial;
+    color: #2d89cf;
+}
+
+.half_grid hlf_value {
+    text-align: right;
+    color: #8e8e93;
+}
+
+.positive_decision {
+    color: #32CD32;
+}
+
 
 .margin_top {
     height: 5sp;
@@ -1114,9 +1148,16 @@ MemoEdit {
         padding-left: 0%;
     }
 
-        .memo_block vl description_row {
-            height: 9%;
-        }
+.memo_block vl description_row {
+    height: 3.2mm;
+}
+
+.memo_block vl main_row {
+    height: 78%;
+    width: 100%;
+    margin-left: 0%;
+    font: 2.2mm Arial;
+}
 
         .memo_block vl MemoEdit {
             height: 80%;

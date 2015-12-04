@@ -17,7 +17,7 @@
     
       <c:DockLayout CssClass="btn_item">
         <c:HorizontalLayout OnClickAction="$DoAction(Client)">
-          <c:Image CssClass="btn_requests"/>        
+          <c:Image CssClass="btn_clients"/>        
       <c:TextView CssClass="menu_text" Text="#clients#"></c:TextView>
     </c:HorizontalLayout>
       </c:DockLayout>

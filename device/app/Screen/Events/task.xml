@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<c:Screen xmlns:c="BitMobile.Controls" xmlns:s="BitMobile.ValueStack" StyleSheet="CreateOutlet.css">
+<c:Screen xmlns:c="BitMobile.Controls" xmlns:s="BitMobile.ValueStack" StyleSheet="tasks.css">
 
 	<s:Push Id="task" Value="$param1" />
-	<s:Push Id="visitTask" Value="$param2" />
-	<s:Push Id="target" Value="$param3"></s:Push>
+	<s:Push Id="visitTask" Value="$param3" />
 
 	<c:DockLayout>
 
@@ -25,17 +24,28 @@
 			<c:HorizontalLayout CssClass="margin_top" />
 			<c:HorizontalLine />
 			
-			<c:HorizontalLayout CssClass="half_grid">
-				<c:TextView Text="#turnaroundTime#" />
-				<s:Push Id="date" Value="$FormatDate($task.PlanDate)"></s:Push>
-				<c:TextView Text="$date" CssClass="hlf_value" />
+			
+
+			<c:HorizontalLayout CssClass="grid">
+				<c:VerticalLayout>
+					<c:TextView Text="#devices#" CssClass="description_row"></c:TextView>
+					<c:TextView Text="$task.Equipment.Description" CssClass="main_row" />
+				</c:VerticalLayout>
 			</c:HorizontalLayout>
 			<c:HorizontalLine />
 
 			<c:HorizontalLayout CssClass="grid">
 				<c:VerticalLayout>
-					<c:TextView Text="#target#" CssClass="description_row"></c:TextView>
-					<c:TextView Text="$task.TextTask" CssClass="main_row" />
+					<c:TextView Text="#Terget#" CssClass="description_row"></c:TextView>
+					<c:TextView Text="$task.Terget" CssClass="main_row" />
+				</c:VerticalLayout>
+			</c:HorizontalLayout>
+			<c:HorizontalLine />
+
+			<c:HorizontalLayout CssClass="memo_block">
+				<c:VerticalLayout>
+					<c:TextView Text="#Comment#" CssClass="description_row"></c:TextView>
+					<c:TextView Text="$task.Comment" CssClass="main_row" />
 				</c:VerticalLayout>
 			</c:HorizontalLayout>
 			<c:HorizontalLine />
@@ -45,15 +55,15 @@
 			<c:HorizontalLayout CssClass="empty_caption_grid" />
 			<c:HorizontalLine />
 
-			<c:VerticalLayout CssClass="half_grid">
-				<s:If Test="$visitTask != null">
+			<!--<c:VerticalLayout CssClass="half_grid">
+				<s:If Test="$task.Result.Name != null">
 					<c:Button Text="#noteAsNew#" CssClass="negative_decision" OnClickAction="$RetrieveTask($visitTask.Id)" />
 				</s:If>
 				<s:Else>
-					<c:Button Text="#noteAsExecuted#" CssClass="positive_decision" OnClickAction="$CompleteTheTask($task.Id, $workflow.visit)" />
+					<c:Button Text="#noteAsExecuted#" CssClass="positive_decision" OnClickAction="$CompleteTheTask($task.Id, $workflow.tasks)" />
 				</s:Else>
 			</c:VerticalLayout>
-			<c:HorizontalLine />
+			<c:HorizontalLine />-->
 
 			<c:HorizontalLayout CssClass="end_of_block" />
 

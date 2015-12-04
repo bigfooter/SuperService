@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <c:Screen xmlns:c="BitMobile.Controls" xmlns:s="BitMobile.ValueStack" StyleSheet="eqList.css">
   <c:DockLayout>
-
+<s:Push Id="sv" Value="$getEquipmentList($param1)"></s:Push>
     <c:DockLayout CssClass="top_navigator">
       <c:HorizontalLayout CssClass="btn_back" OnEvent="Back" OnClickAction="$DoBack()">
          <c:Image/>
@@ -15,7 +15,7 @@
 
 	<c:ScrollView>
 
-	<s:Iterator Id="Eq" Value="$getEquipmentList($param1)">
+	<s:Iterator Id="Eq" Value="$sv">
 
 	 <c:HorizontalLine/>
 	  <c:DockLayout CssClass="grid" onClickAction="$DoAction(equipmentDetails, $Eq.Id)">

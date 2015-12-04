@@ -101,3 +101,11 @@ function GetTargetText(text) {
 	else
 		return text;
 }
+
+
+function actionDoSelect(p){
+	
+	Vars.setTask(p);
+	Dialog.Debug(Vars.setTask(p));
+	Workflow.Action("Task",[]);
+}
