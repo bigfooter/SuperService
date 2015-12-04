@@ -6,7 +6,7 @@
       <c:HorizontalLayout CssClass="btn_back" OnEvent="Back" OnClickAction="$DoBack()">
          <c:Image/>
         <c:TextView Text="#back#"/>
-      </c:HorizontalLayout>     
+      </c:HorizontalLayout>
       <c:HorizontalLayout>
         <c:TextView Text="#equipment#" />
       </c:HorizontalLayout>
@@ -19,7 +19,6 @@
 
 	 <c:HorizontalLine/>
 	  <c:DockLayout CssClass="grid" onClickAction="$DoAction(equipmentDetails, $Eq.Id)">
-		<c:VerticalLayout CssClass="no_mark"></c:VerticalLayout>
 		<c:Image/>
 		<c:VerticalLayout>
 		  <c:TextView Text="$Eq.Description" CssClass="main_row"></c:TextView>

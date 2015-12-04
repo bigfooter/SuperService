@@ -2,13 +2,13 @@ function OnLoad(){
  GetClientDetails();
 }
 
-function DoBackAndClean(){	
+function DoBackAndClean(){
 	Workflow.Back();
 	//DB.Rollback();
 }
 
 function DoActionAndSave(step, req, cust, outlet) {
-		
+
 }
 
 function GetClientDetails() {
@@ -20,12 +20,27 @@ $.Address.Text = client.Address;
 
 }
 
+
+function GetAllsActiveTask() {
+	var q = new Query();
+
+	var queryText = "SELECT Id, Description, Address" +
+		" FROM Catalog_Client";
+
+
+	q.Text = queryText;
+	//q.AddParameter("StatusComp", DB.Current.Constant.VisitStatus.Completed);
+
+	//Dialog.Debug("now");
+	return q.Execute().Unload();
+}
+
 function PhoneExists(call) {
 	if (IsNullOrEmpty(call)){
 		return false;
 	} else {
 		return true;
-	}	
+	}
 }
 
 

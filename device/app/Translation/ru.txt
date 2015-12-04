@@ -13,7 +13,7 @@ requndone	осталось
 reqmth	за месяц
 sync	Синхронизация
 info	О программе
-today	Сегодня	
+today	Сегодня
 requestsAll	Все
 search		Поиск
 begin	Начало
@@ -60,3 +60,6 @@ executedtask	ВЫПОЛНЕННЫЕ
 device	Прибор
 Yes	Да
 deviceHistory	История
+equipment	Оборудование
+descriptionEQ	Наименование
+No	Нет

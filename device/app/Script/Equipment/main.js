@@ -3,7 +3,6 @@ function getEquipmentList(clientId) {
 		"FROM Catalog_Equipment_Equiements CEE LEFT JOIN Catalog_Equipment CE " +
 		"ON CEE.Ref = CE.Id " +
 		"WHERE CEE.Clients = @Client");
-Dialog.Debug(clientId);
 	q.AddParameter("Client", clientId);
 
 	return q.Execute();
