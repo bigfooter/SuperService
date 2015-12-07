@@ -39,7 +39,7 @@ function filterDate(dt){
 }
 
 function MakeFilterSettingsBackUp(){
-	
+
 	if ($.Exists("BUFilterCopy") == true){
 		$.Remove("BUFilterCopy");
 		$.Add("BUFilterCopy", new Dictionary());
@@ -50,7 +50,7 @@ function MakeFilterSettingsBackUp(){
 		$.BUFilterCopy.Add("Start", recvStartPeriod);
 		$.BUFilterCopy.Add("Stop", recvStopPeriod);
 	}
-	
+
 }
 
 function getGlobalStart(){
@@ -66,7 +66,7 @@ function RollBackAndBack(){
 	Vars.setRecvStartPeriod($.BUFilterCopy.Start);
 	Vars.setRecvStopPeriod($.BUFilterCopy.Stop);
 	Workflow.Back();
-	
+
 }
 
 function clearmyfilter(){
@@ -130,9 +130,9 @@ function ChangeListAndRefresh(control) {
 function GetTodaysActiveTask() {
 	var q = new Query();
 
-	var queryText = "SELECT DE.id AS Id, CC.Description AS Description, strftime('%d.%m %H:%M', DE.StartDatePlan) AS StartTime, CC.Address AS Address" + 
-		" FROM Document_Event DE LEFT JOIN Catalog_Client CC ON DE.Client = CC.Id" + 
-		" WHERE DE.ActualEndDate >= @DateStart AND DE.ActualEndDate <= @DateEnd AND DE.Status = @StatusEx";
+	var queryText = "SELECT DE.Id AS Id, CC.Description AS Description, strftime('%d.%m %H:%M', DE.StartDatePlan) AS StartTime, CC.Address AS Address" +
+		" FROM Document_Event DE LEFT JOIN Catalog_Client CC ON DE.Client = CC.Id" +
+		" WHERE DE.StartDatePlan >= @DateStart AND DE.StartDatePlan <= @DateEnd AND DE.Status = @StatusEx";
 
 	if ($.Exists("searchToDay")) {
 		var searchString = $.searchToDay;
@@ -147,7 +147,7 @@ function GetTodaysActiveTask() {
 	q.AddParameter("StatusEx", DB.Current.Constant.StatusyEvents.Appointed);
 	q.AddParameter("DateStart", DateTime.Now.Date);
 	q.AddParameter("DateEnd", DateTime.Now.Date.AddDays(1));
-	
+
 	return q.Execute().Unload();
 }
 
@@ -166,8 +166,8 @@ function findinalltext(key){
 function GetAllsActiveTask() {
 	var q = new Query();
 
-	var queryText = "SELECT DE.Id AS Id, CC.Description AS Description, strftime('%d.%m %H:%M', DE.StartDatePlan) AS StartTime, CC.Address AS Address" + 
-		" FROM Document_Event DE LEFT JOIN Catalog_Client CC ON DE.Client = CC.Id" + 
+	var queryText = "SELECT DE.Id AS Id, CC.Description AS Description, strftime('%d.%m %H:%M', DE.StartDatePlan) AS StartTime, CC.Address AS Address" +
+		" FROM Document_Event DE LEFT JOIN Catalog_Client CC ON DE.Client = CC.Id" +
 		" WHERE DE.Status = @StatusEx";
 
 	if ($.Exists("searchAll")) {
@@ -185,15 +185,15 @@ function GetAllsActiveTask() {
 		var starttail = " AND DE.StartDatePlan >= @DateStart";//AND REQ.PlanStartDataTime < @DateEnd
 		q.AddParameter("DateStart", recvStartPeriod);
 		queryText = queryText + starttail;
-		
+
 	}
-	
+
 	if (Vars.getRecvStopPeriod() != ""){
 		var stoptail = " AND DE.StartDatePlan < @DateEnd";//AND REQ.PlanStartDataTime < @DateEnd
 		q.AddParameter("DateEnd", recvStopPeriod);
 		queryText = queryText + stoptail;
 	}
-	
+
 	}
 	q.Text = queryText;
 	//q.AddParameter("StatusComp", DB.Current.Constant.VisitStatus.Completed);
