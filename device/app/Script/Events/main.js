@@ -53,18 +53,10 @@ function MakeFilterSettingsBackUp(){
 
 }
 
-function getGlobalStart(){
-	return Vars.getRecvStartPeriod();
-}
-
-
-function getGlobalStop(){
-	return Vars.getRecvStartPeriod();
-}
 
 function RollBackAndBack(){
-	Vars.setRecvStartPeriod($.BUFilterCopy.Start);
-	Vars.setRecvStopPeriod($.BUFilterCopy.Stop);
+	recvStartPeriod = backupStartPeriod;
+	recvStopPeriod = backupStopPeriod;
 	Workflow.Back();
 
 }
@@ -86,6 +78,7 @@ function SetBeginDate() {
 }
 
 function SetBeginDateNow(key) {
+	backupStartPeriod = recvStartPeriod;
 	$.beginDate.Text = filterDate(key);
 	recvStartPeriod = BegOfDay(key);
 	//Workflow.Refresh([]);
@@ -101,6 +94,7 @@ function SetEndDate() {
 }
 
 function SetEndDateNow(key) {
+	backupStopPeriod = recvStopPeriod;
 	$.endDate.Text = filterDate(key);
 	recvStopPeriod = EndOfDay(key);
 	//Dialog.Debug(BegOfDay(key));
@@ -165,7 +159,6 @@ function findinalltext(key){
 
 function GetAllsActiveTask() {
 	var q = new Query();
-
 	var queryText = "SELECT DE.Id AS Id, CC.Description AS Description, strftime('%d.%m %H:%M', DE.StartDatePlan) AS StartTime, CC.Address AS Address" +
 		" FROM Document_Event DE LEFT JOIN Catalog_Client CC ON DE.Client = CC.Id" +
 		" WHERE DE.Status = @StatusEx";
@@ -178,22 +171,19 @@ function GetAllsActiveTask() {
 			q.AddParameter("SearchText", searchString);
 			queryText = queryText + searchtail;
 		}
-		//Dialog.Debug(recvStartPeriod());
-	//	Dialog.Debug(recvStartPeriod());
-	//	Dialog.Debug(Vars.getRecvStopPeriod());
-	if (Vars.getRecvStartPeriod() != ""){
+}
+
+	if (!IsNullOrEmpty(recvStartPeriod)){
 		var starttail = " AND DE.StartDatePlan >= @DateStart";//AND REQ.PlanStartDataTime < @DateEnd
 		q.AddParameter("DateStart", recvStartPeriod);
 		queryText = queryText + starttail;
 
 	}
 
-	if (Vars.getRecvStopPeriod() != ""){
+	if (!IsNullOrEmpty(recvStopPeriod)){
 		var stoptail = " AND DE.StartDatePlan < @DateEnd";//AND REQ.PlanStartDataTime < @DateEnd
 		q.AddParameter("DateEnd", recvStopPeriod);
 		queryText = queryText + stoptail;
-	}
-
 	}
 	q.Text = queryText;
 	//q.AddParameter("StatusComp", DB.Current.Constant.VisitStatus.Completed);
