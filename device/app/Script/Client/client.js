@@ -1,3 +1,7 @@
+function OnLoading(){
+$.Add("clientRef", Vars.getClient());
+}
+
 function OnLoad(){
  GetClientDetails();
 }
@@ -15,11 +19,9 @@ function GetClientDetails() {
 	var client = Vars.getClient();
 
 	$.Description.Text = client.Description;
-$.Address.Text = client.Address;
-	return Vars.getClient();
+  $.Address.Text = client.Address;
 
 }
-
 
 function GetAllsActiveTask() {
 	var q = new Query();
