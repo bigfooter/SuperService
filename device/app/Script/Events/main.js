@@ -73,30 +73,30 @@ function clearmyfilter(){
 function SetBeginDate() {
 	var header = Translate["#enterDateTime#"];
 	if(recvStartPeriod != undefined){
-		Dialog.ShowDateTime(header, recvStartPeriod, SetBeginDateNow);
+		Dialog.DateTime(header, recvStartPeriod, SetBeginDateNow);
 	} else {
-		Dialog.ShowDateTime(header, SetBeginDateNow);
+		Dialog.DateTime(header, SetBeginDateNow);
 	}
 }
 
-function SetBeginDateNow(key) {
-	$.beginDate.Text = filterDate(key);
-	recvStartPeriod = BegOfDay(key);
+function SetBeginDateNow(state, args) {
+	$.beginDate.Text = filterDate(args.Result);
+	recvStartPeriod = BegOfDay(args.Result);
 	//Workflow.Refresh([]);
 }
 
 function SetEndDate() {
 	var header = Translate["#enterDateTime#"];
 	if(recvStopPeriod != undefined){
-		Dialog.ShowDateTime(header, recvStopPeriod, SetEndDateNow);
+		Dialog.DateTime(header, recvStopPeriod, SetEndDateNow);
 	} else {
-		Dialog.ShowDateTime(header, SetEndDateNow);
+		Dialog.DateTime(header, SetEndDateNow);
 	}
 }
 
-function SetEndDateNow(key) {
-	$.endDate.Text = filterDate(key);
-	recvStopPeriod = EndOfDay(key);
+function SetEndDateNow(state, args) {
+	$.endDate.Text = filterDate(args.Result);
+	recvStopPeriod = EndOfDay(args.Result);
 	//Dialog.Debug(BegOfDay(key));
 	//Workflow.Refresh([]);
 }
