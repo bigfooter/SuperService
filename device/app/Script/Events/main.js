@@ -1,5 +1,7 @@
 function OnLoading(){
 	SetListType();
+	backupStartPeriod = recvStartPeriod;
+	backupStopPeriod = recvStopPeriod;
 }
 
 function CloseMenu() {
@@ -78,7 +80,6 @@ function SetBeginDate() {
 }
 
 function SetBeginDateNow(key) {
-	backupStartPeriod = recvStartPeriod;
 	$.beginDate.Text = filterDate(key);
 	recvStartPeriod = BegOfDay(key);
 	//Workflow.Refresh([]);
@@ -94,7 +95,6 @@ function SetEndDate() {
 }
 
 function SetEndDateNow(key) {
-	backupStopPeriod = recvStopPeriod;
 	$.endDate.Text = filterDate(key);
 	recvStopPeriod = EndOfDay(key);
 	//Dialog.Debug(BegOfDay(key));
