@@ -7,6 +7,7 @@
     	<bp:Action Name="Events" NextWorkflow="Events"></bp:Action>
       <bp:Action Name="Client" NextWorkflow="Client"></bp:Action>
       <bp:Action Name="Sync" NextWorkflow="Sync"></bp:Action>
+      <bp:Action Name="About" NextWorkflow="About"></bp:Action>
     </bp:Step>
 
   </bp:Workflow>
@@ -18,12 +19,12 @@
       <bp:Action Name="DoSelect" NextWorkflow="Event"></bp:Action>
        <bp:Action Name="Client" NextWorkflow="Client"></bp:Action>
       <bp:Action Name="Sync" NextWorkflow="Sync"></bp:Action>
+      <bp:Action Name="About" NextWorkflow="About"></bp:Action>
     </bp:Step>
 
     <bp:Step Name="EditFilter" Screen="filter.xml" Controller="Events\main.js">
 
     </bp:Step>
-
 
 
   </bp:Workflow>
@@ -72,10 +73,14 @@
       <bp:Action Name="Events" NextWorkflow="Events"></bp:Action>
       <bp:Action Name="DoSelect" NextWorkflow="ClentView"></bp:Action>
       <bp:Action Name="Sync" NextWorkflow="Sync"></bp:Action>
+      <bp:Action Name="About" NextWorkflow="About"></bp:Action>
     </bp:Step>
 
     <bp:Step Name="EditFilter" Screen="filter.xml" Controller="Client\main.js">
+
     </bp:Step>
+
+
   </bp:Workflow>
 
 
@@ -83,6 +88,19 @@
     <bp:Step Name="Sync" Screen="Sync\Sync.xml" Controller="Sync\Main.js">
       <bp:Action Name="Events" NextWorkflow="Events"></bp:Action>
       <bp:Action Name="DoSelect" NextWorkflow="ClentView"></bp:Action>
+      <bp:Action Name="Client" NextWorkflow="Client"></bp:Action>
+      <bp:Action Name="Sync" NextWorkflow="Sync"></bp:Action>
+      <bp:Action Name="About" NextWorkflow="About"></bp:Action>
+    </bp:Step>
+
+  </bp:Workflow>
+
+   <bp:Workflow Name="About">
+    <bp:Step Name="About" Screen="About\About.xml" Controller="About\Main.js">
+      <bp:Action Name="Events" NextWorkflow="Events"></bp:Action>
+      <bp:Action Name="Client" NextWorkflow="Client"></bp:Action>
+      <bp:Action Name="Sync" NextWorkflow="Sync"></bp:Action>
+      <bp:Action Name="About" NextWorkflow="About"></bp:Action>
     </bp:Step>
 
   </bp:Workflow>
@@ -98,9 +116,6 @@
 
     </bp:Step>
 
-    <bp:Step Name="Map" Screen="Common\mapview.xml" Controller="Common\mapview.js">
-    </bp:Step>
-
     <bp:Step Name="Equipment" Screen="Equipment\main.xml" Controller="Equipment\main.js">
           <bp:Action Name="equipmentDetails" NextStep="equipmentDetails"></bp:Action>
     </bp:Step>
@@ -110,6 +125,9 @@
     </bp:Step>
 
     <bp:Step Name="eqHistory" Screen="Equipment\eqHistory.xml" Controller="Equipment\eqHistory.js">
+    </bp:Step>
+
+    <bp:Step Name="Map" Screen="Common\mapview.xml" Controller="Common\mapview.js">
     </bp:Step>
    </bp:Workflow>
 
