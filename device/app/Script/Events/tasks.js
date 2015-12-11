@@ -38,11 +38,11 @@ function GetNotExecutedTasks(event) {
 
 function CompleteTheTask(itask, event) {
 //	Dialog.Debug(itask);
-	var event_task = CreateVisitTaskValueIfNotExists(itask, event);
+	//var event_task = CreateVisitTaskValueIfNotExists(itask, event);
 
-	var event_task_obj = event_task.GetObject();
-	event_task_obj.Result = "@ref[Enum_StatusyEvents]:81998d6c-e971-8f4d-4fbb-bd4d3b61e737";
-	DB.Delete(itask);
+	var event_task_obj = itask.GetObject();
+	event_task_obj.Result = DB.Current.Constant.StatusyEvents.Done;
+	//DB.Delete(itask);
 	event_task_obj.Save();
 //Dialog.Debug(itask);
 	if (Variables.Exists("itask"))
@@ -115,19 +115,6 @@ function AddSnapshot(sender, objectRef, eqRef) { // optional: title, path
 		listChoice.Add([1, Translate["#makeSnapshot#"]]);
 
 		Dialog.Choose(Translate["#snapshot#"], listChoice, AddSnapshotHandler, [objectRef,eqRef]);
-}
-
-function SnapshotActions(sender, objectRef, eqRef, pictId) { // optional: title, path
-		var listChoice = new List;
-		listChoice.Add([0, Translate["#DeleteSnapShot#"]]);
-
-		Dialog.Choose(Translate["#snapshot#"], listChoice, SnapshotActionsHandler, [objectRef, eqRef, pictId]);
-}
-
-function SnapshotActionsHandler(state, args){
-		if (parseInt(args.Result)==parseInt(0)){
-				DeleteSnapShot(state[0], state[1], state[2]);
-		}
 }
 
 function AddSnapshotHandler(state, args) {
@@ -206,13 +193,14 @@ function SaveImage(state, args){
 			objSnapShot.Equipment = state[1];
 			objSnapShot.UIDPhoto = state[2];
 			objSnapShot.Save(false);
-			Workflow.Refresh();
+			Workflow.Refresh([$.task]);
 		}
 }
 
-function isSnapShotInEventExists(event){
-		var q = new Query("Select DEP.Id From Document_Event_Photos DEP WHERE DEP.Ref == @event");
+function isSnapShotInEventExists(event, eq){
+		var q = new Query("Select DEP.Id From Document_Event_Photos DEP WHERE DEP.Ref == @event AND DEP.Equipment == @eq");
 		q.AddParameter("event", event);
+		q.AddParameter("eq", eq);
 		if (q.ExecuteCount() > 0) {
 			return true;
 		} else {
@@ -239,13 +227,30 @@ function SnapshotExists(event, eq, pictId) {
 		return fileFound && fileExists;
 }
 
+function SnapshotActions(sender, objectRef, eqRef, pictId) { // optional: title, path
+		var listChoice = new List;
+		listChoice.Add([0, Translate["#DeleteSnapShot#"]]);
+
+		Dialog.Choose(Translate["#snapshot#"], listChoice, SnapshotActionsHandler, [objectRef, eqRef, pictId]);
+}
+
+function SnapshotActionsHandler(state, args){
+		if (parseInt(args.Result)==parseInt(0)){
+				DeleteSnapShot(state[0], state[1], state[2]);
+		}
+}
+
 function DeleteSnapShot(event, eq, pictId) {
-	q = new Query("Select DEP.Id Document_Event_Photos DEP WHERE DEP.Ref == @event AND DEP.Equipment == @eq AND DEP.UIDPhoto == @pict");
+	q = new Query("SELECT DEP.Id FROM Document_Event_Photos DEP WHERE DEP.Ref == @event AND DEP.Equipment == @eq AND DEP.UIDPhoto == @pict");
 	q.AddParameter("event", event);
 	q.AddParameter("eq", eq);
 	q.AddParameter("pict", pictId);
 	res = q.ExecuteScalar();
 	DB.Delete(res);
-	FileSystem.Delete(GetPrivateImagePath(event, pictId, ".jpg"));
-	Workflow.Refresh();
+	
+	if (FileSystem.Exists(GetPrivateImagePath(event, pictId, ".jpg"))){
+	 	FileSystem.Delete(GetPrivateImagePath(event, pictId, ".jpg"));
+	}
+
+	Workflow.Refresh([$.task]);
 }

@@ -37,10 +37,10 @@ function SyncData() {
 	}
 
 	function SyncDataFinish() {
-	
+
 		$.dataSyncIndicator.Stop();
 		$.dataSyncLayout.Visible = false;
-	 
+
 		DrawDataReport();
 	}
 
@@ -54,7 +54,7 @@ function SyncData() {
 	  $.dataSyncReport.Visible = true;
 	  $.dataSyncError.Visible = false;
 	  $.buttonSendLog.Visible = false;
-	  	
+
 	 } else {
 	  $.dataSyncError.Text = Translate["#error#"] + ": " + date + at + time;
 	  $.dataSyncError.Visible = true;
@@ -64,6 +64,7 @@ function SyncData() {
 	}
 
 // -------------------- Sync Ftp ------------
+
 
 function SyncFtp() {
 	$.ftpSyncReport.Visible = false;
@@ -76,6 +77,8 @@ function SyncFtp() {
 
 function UploadPrivateCallback(args) {
 	if (args.Result) {
+		// Remove private files
+		FileSystem.ClearPrivate();
 		FileSystem.SyncShared(SyncSharedCallback);
 	} else {
 		FileSystem.HandleLastError();
@@ -94,26 +97,33 @@ function SyncSharedCallback(args) {
 function SyncFtpFinish() {
 	$.ftpSyncIndicator.Stop();
 	$.ftpSyncLayout.Visible = false;
-	$.Remove("lastFtpSync");
-	$.AddGlobal("lastFtpSync", DateTime.Now.ToString("dd MMM HH:mm"));
-	$.Remove("ftpSyncSuccess");
-	$.AddGlobal("ftpSyncSuccess", FileSystem.LastError == null);
 
 	DrawFtpReport();
 }
 
 function DrawFtpReport() {
-	if ($.ftpSyncSuccess) {
-		$.ftpSyncReport.Text = $.lastFtpSync;
+
+	var at = Translate["#at#"];
+	var date = FileSystem.LastSyncTime.ToString("dd.MM.yy ");
+	var time = FileSystem.LastSyncTime.ToString(" HH:mm");
+
+	if (FileSystem.SuccessSync) {
+
+		$.ftpSyncReport.Text = date + at + time;
 		$.ftpSyncReport.Visible = true;
 		$.ftpSyncError.Visible = false;
-	} else {		
-		$.ftpSyncError.Text = Translate["#error#"] + ": " + $.lastFtpSync;
+
+	} else {
+
+		if (isDefault(FileSystem.LastSyncTime))
+			$.ftpSyncError.Text = Translate["#Synchronization_has_not_been_performed#"];
+		else
+			$.ftpSyncError.Text = Translate["#error#"] + ": " + date + at + time;
 		$.ftpSyncError.Visible = true;
 		$.ftpSyncReport.Visible = false;
+
 	}
 }
-
 function SendLog() {
 	var result = Application.SendDatabase();
 

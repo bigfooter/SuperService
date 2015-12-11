@@ -15,13 +15,13 @@
               </c:HorizontalLayout>
             </c:DockLayout>
             <c:HorizontalLine/>
-        	
+
         	<c:DockLayout Id="buttonSendLog" CssClass="footer" OnClick="$SendLog()">
         		<c:DockLayout CssClass="btn_one_footer">
         			<c:TextView Text="#SendLog#" />
-        		</c:DockLayout>			
+        		</c:DockLayout>
         	</c:DockLayout>
-        	
+
             <c:HorizontalLayout CssClass="caption_grid">
               <c:TextView Text="#synchronizationData#:"/>
             </c:HorizontalLayout>
@@ -35,7 +35,7 @@
                 </c:DockLayout>
 
                 <c:TextView Id="dataSyncReport" CssClass="main_row"/>
-        		
+
         		<c:TextView Id="dataSyncError" CssClass="red_row"/>
 
                 <c:HorizontalLayout Id="dataSyncLayout" Visible="false">
@@ -45,7 +45,31 @@
               </c:VerticalLayout>
             </c:HorizontalLayout>
             <c:HorizontalLine/>
-            <c:HorizontalLayout CssClass="free_space"/>
+          <!--  <c:HorizontalLayout CssClass="free_space"/>-->
+            <c:HorizontalLayout CssClass="caption_grid">
+      <c:TextView Text="#synchronizationPhoto#:" />
+    </c:HorizontalLayout>
+    <c:HorizontalLine />
+
+    <c:HorizontalLayout CssClass="grid">
+      <c:VerticalLayout>
+        <c:DockLayout>
+          <c:TextView Text="#lastSync#" />
+          <c:Button Text="#synchronize#" OnClick="$SyncFtp()" />
+        </c:DockLayout>
+
+        <c:TextView Id="ftpSyncReport" CssClass="main_row" />
+
+        <c:TextView Id="ftpSyncError" CssClass="red_row" />
+
+        <c:HorizontalLayout Id="ftpSyncLayout" Visible="false">
+          <c:Indicator Id="ftpSyncIndicator" />
+          <c:TextView Text="#sync#..." />
+        </c:HorizontalLayout>
+      </c:VerticalLayout>
+    </c:HorizontalLayout>
+    <c:HorizontalLine />
+
           </c:DockLayout>
       </c:VerticalLayout>
   </c:SwipeHorizontalLayout>

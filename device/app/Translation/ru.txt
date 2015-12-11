@@ -77,3 +77,11 @@ firstBIT	Первый БИТ — эффективные решения для в
 webSite	Сайт разработчика
 others	Другие приложения
 developer	Разработчик
+Snapshots	Фотографии
+add	Добавить
+snapshot	Изображение
+outletSnapshots	Фотографии торговой точки
+addFromGallery	Выбрать из галереи
+makeSnapshot	Сделать снимок
+DeleteSnapShot		Удалить изображение
+Synchronization_has_not_been_performed	Синхронизация не была выполнена

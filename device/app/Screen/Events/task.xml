@@ -2,8 +2,8 @@
 <c:Screen xmlns:c="BitMobile.Controls" xmlns:s="BitMobile.ValueStack" StyleSheet="tasks.css">
 
 	<s:Push Id="task" Value="$param1" />
-	<s:Push Id="visitTask" Value="$param2" />
-	<s:Push Id="event" Value="$param3" />
+	<!--<s:Push Id="visitTask" Value="$param2" />
+	<s:Push Id="event" Value="$param3" />-->
 
 	<c:DockLayout>
 
@@ -54,7 +54,7 @@
 					<c:Button Text="#add#" OnClick="$AddSnapshot($task.Ref, $task.Equipment)"/>
 					<c:TextView Text="#Snapshots#" />
 			</c:DockLayout>
-			<s:If Test="$isSnapShotInEventExists($task.Ref)">
+			<s:If Test="$isSnapShotInEventExists($task.Ref, $task.Equipment)">
 						<c:SwipeHorizontalLayout Id="snapshotLayout" CssClass="carousel" Alignment="Center">
 							<s:Iterator Id="snapshot" Value="$GetSnapShots($task.Ref, $task.Equipment)" Status="statusCount">
 								<s:Push Id="index" Value="$statusCount.Index" />
