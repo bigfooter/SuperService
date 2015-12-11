@@ -9,25 +9,31 @@ function GetEventDetails() {
 }
 
 function GetExecutedTasks(event) {
-	var query = new Query("SELECT Document_Event_Equipments.Id, Document_Event_Equipments.Ref, Catalog_Equipment.Description, Document_Event_Equipments.Terget, Document_Event_Equipments.Comment, Enum_StatusyEvents.Name FROM   Document_Event_Equipments LEFT JOIN Catalog_Equipment ON Document_Event_Equipments.Equipment = Catalog_Equipment.Id LEFT JOIN Enum_StatusyEvents ON Document_Event_Equipments.Result = Enum_StatusyEvents.Id WHERE Document_Event_Equipments.Ref = @ref AND  Enum_StatusyEvents.Name = @result ");
+	var query = new Query("SELECT DEE.Id, DEE.Ref, CE.Description, DEE.Terget, DEE.Comment " +
+	"FROM Document_Event_Equipments DEE " +
+	"LEFT JOIN Catalog_Equipment CE " +
+	"ON DEE.Equipment = CE.Id " +
+	"WHERE DEE.Ref = @ref AND (DEE.Result = @done OR DEE.Result = @undone)");
 //		var query = new Query("select * from Document_Event_Equipments WHERE Ref = @ref AND  Result = @result");
 
 
 	query.AddParameter("ref", event);
-	query.AddParameter("result", "Done");
-
+	query.AddParameter("done",  DB.Current.Constant.ResultEvent.Done);
+	query.AddParameter("undone",  DB.Current.Constant.ResultEvent.NotDone);
 //Dialog.Debug(event);
 
 	return query.Execute();
 }
 
 function GetNotExecutedTasks(event) {
-	var q = new Query("SELECT Document_Event_Equipments.Id, Document_Event_Equipments.Ref, Catalog_Equipment.Description, Document_Event_Equipments.Terget, Document_Event_Equipments.Comment, Enum_StatusyEvents.Name FROM   Document_Event_Equipments LEFT JOIN Catalog_Equipment ON Document_Event_Equipments.Equipment = Catalog_Equipment.Id LEFT JOIN Enum_StatusyEvents ON Document_Event_Equipments.Result = Enum_StatusyEvents.Id WHERE Document_Event_Equipments.Ref = @ref AND  Enum_StatusyEvents.Name = @result ");
+	var q = new Query("SELECT DEE.Id, DEE.Ref, CE.Description, DEE.Terget, DEE.Comment " +
+	"FROM  Document_Event_Equipments DEE " +
+	"LEFT JOIN Catalog_Equipment CE " +
+	"ON DEE.Equipment = CE.Id " +
+	"WHERE DEE.Ref = @ref AND DEE.Result = @result");
 //		var query = new Query("select * from Document_Event_Equipments WHERE Ref = @ref AND  Result = @result");
-
-
 	q.AddParameter("ref", event);
-	q.AddParameter("result", "Appointed");
+	q.AddParameter("result",  DB.Current.Constant.ResultEvent.New);
 
 	//q.AddParameter("planDate", DateTime.Now.Date);
 	//q.AddParameter("outlet", visit.Outlet);
@@ -41,7 +47,7 @@ function CompleteTheTask(itask, event) {
 	//var event_task = CreateVisitTaskValueIfNotExists(itask, event);
 
 	var event_task_obj = itask.GetObject();
-	event_task_obj.Result = DB.Current.Constant.StatusyEvents.Done;
+	event_task_obj.Result = DB.Current.Constant.ResultEvent.Done;
 	//DB.Delete(itask);
 	event_task_obj.Save();
 //Dialog.Debug(itask);
@@ -82,7 +88,7 @@ function CreateVisitTaskValueIfNotExists(itask, event) {
 
 function RetrieveTask(executedTask) {
 	var task_obj = executedTask.GetObject();
-	task_obj.Result = "@ref[Enum_StatusyEvents]:8d300e1c-3261-e745-4046-0ae57541898b";
+	task_obj.Result = DB.Current.Constant.ResultEvent.New;
 	task_obj.Save();
 
 	if (Variables.Exists("itask"))
@@ -225,6 +231,7 @@ function SnapshotExists(event, eq, pictId) {
 		var fileFound = !String.IsNullOrEmpty(filename);
 		var fileExists = (fileFound ? FileSystem.Exists(GetPrivateImagePath(event, pictId, ".jpg")) : false);
 		return fileFound && fileExists;
+
 }
 
 function SnapshotActions(sender, objectRef, eqRef, pictId) { // optional: title, path
@@ -247,7 +254,7 @@ function DeleteSnapShot(event, eq, pictId) {
 	q.AddParameter("pict", pictId);
 	res = q.ExecuteScalar();
 	DB.Delete(res);
-	
+
 	if (FileSystem.Exists(GetPrivateImagePath(event, pictId, ".jpg"))){
 	 	FileSystem.Delete(GetPrivateImagePath(event, pictId, ".jpg"));
 	}
