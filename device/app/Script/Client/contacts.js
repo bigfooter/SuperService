@@ -1,20 +1,20 @@
 
 
-function DoBackAndClean(){	
+function DoBackAndClean(){
 	Workflow.Back();
 	//DB.Rollback();
 }
 
 
 
-function GetAllsActiveContact() {
-	var q = new Query();
+function GetAllsActiveContact(ref) {
+	Dialog.Debug(ref);
+	var q = new Query("SELECT Id, FIO, Tel" +
+		" FROM Catalog_Client_Contact " +
+		"WHERE Ref = @ref");
 
-	var queryText = "SELECT Id, FIO, Tel" + 
-		" FROM Catalog_Client_Contact";
+	q.AddParameter("ref", ref);
 
-
-	q.Text = queryText;
 	return q.Execute().Unload();
 }
 

@@ -37,16 +37,9 @@
 
 	          <c:HorizontalLine/>
 	          <c:HorizontalLayout CssClass="grid">
-	            <c:VerticalLayout CssClass="no_mark"></c:VerticalLayout>
 	            <c:VerticalLayout>
 	              <c:TextView Text="$allClientsItem.FIO" CssClass="main_row"></c:TextView>
-
-
-
-
-
 	              <c:TextView Text="$allClientsItem.Tel" CssClass="description_row"></c:TextView>
-
 	            </c:VerticalLayout>
 	            <c:Image />
 	          </c:HorizontalLayout>

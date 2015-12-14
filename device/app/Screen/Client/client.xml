@@ -15,15 +15,15 @@
     </c:DockLayout>
 
 	<c:DockLayout CssClass="footer">
-		<c:DockLayout CssClass="btn_left_footer" OnClickAction="$DoAction(ShowContacts)">
+		<c:DockLayout CssClass="btn_left_footer" OnClickAction="$DoAction(ShowContacts, $clientRef)">
 			<c:TextView Text="#contacts#" />
 		</c:DockLayout>
 
-		<c:DockLayout CssClass="btn_right_footer" OnClickAction="$DoAction(Equipment)">
+		<c:DockLayout CssClass="btn_right_footer" OnClickAction="$DoAction(Equipment, $clientRef)">
 			<c:TextView Text="#devices#" />
 		</c:DockLayout>
-
 	</c:DockLayout>
+
 	<c:ScrollView>
 	 <c:HorizontalLine/>
     <c:HorizontalLayout CssClass="grid">
