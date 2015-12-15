@@ -8,7 +8,9 @@
          <c:Image/>
         <c:TextView Text="#back#"/>
       </c:HorizontalLayout>
-      	<c:Button Id="btnForward" Text="#next#" CssClass="btn_forward" OnClickAction="$DoAction(tasks, $event)"/>
+				<c:HorizontalLayout CssClass="btn_forward" OnEvent="Back" OnClickAction="$DoAction(tasks, $event)">
+				<c:TextView Text="#next#"/>
+				</c:HorizontalLayout>
       <c:HorizontalLayout>
         <c:TextView Text="#visit#" />
       </c:HorizontalLayout>

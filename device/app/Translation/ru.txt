@@ -27,7 +27,7 @@ address	Адрес
 Author	Автор
 eventComment	Комментарий
 back	Назад
-next	Вперед
+next	Далее
 contacts	Контакты
 devices	Оборудование
 visit	Визит
