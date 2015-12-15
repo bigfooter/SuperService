@@ -71,6 +71,7 @@
 
 			<c:SwipeHorizontalLayout Id="swipe_layout2" CssClass="swipe_layout">
 					<c:DockLayout CssClass="grid" OnClickAction="$DoAction(task, $eTask.Id, null)">
+						<c:VerticalLayout CssClass="$getStatusStyle($eTask.Result)"></c:VerticalLayout>
 						<c:Image />
 						<c:VerticalLayout>
 							<c:TextView Text="$eTask.Description" CssClass="description_row"></c:TextView>

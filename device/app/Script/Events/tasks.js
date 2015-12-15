@@ -9,7 +9,7 @@ function GetEventDetails() {
 }
 
 function GetExecutedTasks(event) {
-	var query = new Query("SELECT DEE.Id, DEE.Ref, CE.Description, DEE.Terget, DEE.Comment " +
+	var query = new Query("SELECT DEE.Id, DEE.Ref, CE.Description, DEE.Terget, DEE.Comment, DEE.Result " +
 	"FROM Document_Event_Equipments DEE " +
 	"LEFT JOIN Catalog_Equipment CE " +
 	"ON DEE.Equipment = CE.Id " +
@@ -47,8 +47,41 @@ function CompleteTheTask(itask, event) {
 
 	else
 		Workflow.Refresh([]);
-
 }
+
+function checkCommentLength(sender){
+	if (StrLen(sender.Text) > 250){
+	sender.Text = Left(sender.Text, StrLen(sender.Text) - 1);
+	}
+}
+
+function SaveAndBack(task){
+	var objtask = task.GetObject();
+	objtask.Comment = $.taskComment.Text;
+	objtask.Save();
+	Workflow.Back();
+}
+
+function CompleteTask(sender, task) {
+	var objtask = task.GetObject();
+	objtask.Result = DB.Current.Constant.ResultEvent.Done;
+	objtask.Comment = $.taskComment.Text;
+	objtask.Save();
+	Workflow.Back();
+}
+
+function NotDoneTask(sender, task) {
+	if (!IsNullOrEmpty($.taskComment.Text)){
+		var objtask = task.GetObject();
+		objtask.Result = DB.Current.Constant.ResultEvent.NotDone;
+		objtask.Comment = $.taskComment.Text;
+		objtask.Save();
+		Workflow.Back();
+	} else {
+		Dialog.Message("Для невыполненной задачи указание комментария обязательно.");
+	}
+}
+
 
 function CreateVisitTaskValueIfNotExists(itask, event) {
 	var query = new Query("SELECT Document_Event_Equipments.Id FROM Document_Event_Equipments WHERE Document_Event_Equipments.Ref = @Event AND  Document_Event_Equipments.Comment = @Text");
@@ -246,4 +279,12 @@ function DeleteSnapShot(event, eq, pictId) {
 	}
 
 	Workflow.Refresh([$.task]);
+}
+
+function getStatusStyle(status){
+  if (status == DB.Current.Constant.ResultEvent.Done){
+    return "green_mark";
+  } else {
+    return "red_mark";
+  }
 }

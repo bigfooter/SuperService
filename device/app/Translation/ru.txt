@@ -85,3 +85,5 @@ addFromGallery	Выбрать из галереи
 makeSnapshot	Сделать снимок
 DeleteSnapShot		Удалить изображение
 Synchronization_has_not_been_performed	Синхронизация не была выполнена
+done		Выполнено
+Undone		Не выполнено

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<c:Screen xmlns:c="BitMobile.Controls" xmlns:s="BitMobile.ValueStack" StyleSheet="tasks.css">
+<c:Screen xmlns:c="BitMobile.Controls" xmlns:s="BitMobile.ValueStack" StyleSheet="task.css">
 
 	<s:Push Id="task" Value="$param1" />
 	<!--<s:Push Id="visitTask" Value="$param2" />
@@ -8,6 +8,10 @@
 	<c:DockLayout>
 
 		<c:DockLayout CssClass="top_navigator">
+			<c:HorizontalLayout CssClass="btn_back" OnEvent="Back" OnClickAction="$SaveAndBack($task.Id)">
+         <c:Image/>
+        <c:TextView Text="#back#"/>
+      </c:HorizontalLayout>
 			<c:HorizontalLayout>
 				<c:TextView Text="#task#" />
 			</c:HorizontalLayout>
@@ -15,10 +19,17 @@
 
 		<c:HorizontalLine />
 
-		<c:HorizontalLayout Id="btnDone" CssClass="bottom_btn" OnEvent="Back" OnClickAction="$DoBack()">
-			<c:TextView Text="#ready#" />
-		</c:HorizontalLayout>
-		<c:HorizontalLine CssClass="b_line" />
+		<c:DockLayout CssClass="footer">
+			<c:HorizontalLine />
+			<c:DockLayout CssClass="btn_left_footer" OnClick="$NotDoneTask($task.Id)">
+				<c:TextView Text="#Undone#" />
+			</c:DockLayout>
+
+			<c:DockLayout CssClass="btn_right_footer" OnClick="$CompleteTask($task.Id)">
+				<c:TextView Text="#done#"/>
+			</c:DockLayout>
+
+		</c:DockLayout>
 
 		<c:ScrollView Id="grScrollView">
 
@@ -46,7 +57,7 @@
 			<c:HorizontalLayout CssClass="memo_block">
 				<c:VerticalLayout>
 					<c:TextView Text="#comment#" CssClass="description_row"></c:TextView>
-					<c:TextView Text="$task.Comment" CssClass="main_row" />
+					<c:MemoEdit Id="taskComment" Value="$task.Comment" CssClass="main_row" Placeholder="—" OnChange="$checkCommentLength()"></c:MemoEdit>
 				</c:VerticalLayout>
 			</c:HorizontalLayout>
 			<c:HorizontalLine />
@@ -68,7 +79,7 @@
 											<c:VerticalLayout CssClass="no_image">
 												<c:Image Id="image{$index}" />
 												<c:TextView Text="#imageNotAvailable#" CssClass="text"></c:TextView>
-											</c:VerticalLayout> 
+											</c:VerticalLayout>
 										</s:Else>
 							</s:Iterator>
 						</c:SwipeHorizontalLayout>
