@@ -31,26 +31,15 @@ function GetNotExecutedTasks(event) {
 	"LEFT JOIN Catalog_Equipment CE " +
 	"ON DEE.Equipment = CE.Id " +
 	"WHERE DEE.Ref = @ref AND DEE.Result = @result");
-//		var query = new Query("select * from Document_Event_Equipments WHERE Ref = @ref AND  Result = @result");
 	q.AddParameter("ref", event);
 	q.AddParameter("result",  DB.Current.Constant.ResultEvent.New);
-
-	//q.AddParameter("planDate", DateTime.Now.Date);
-	//q.AddParameter("outlet", visit.Outlet);
-	//q.AddParameter("ref", visit);
-	//q.AddParameter("result", true);
 	return q.Execute();
 }
 
 function CompleteTheTask(itask, event) {
-//	Dialog.Debug(itask);
-	//var event_task = CreateVisitTaskValueIfNotExists(itask, event);
-
 	var event_task_obj = itask.GetObject();
 	event_task_obj.Result = DB.Current.Constant.ResultEvent.Done;
-	//DB.Delete(itask);
 	event_task_obj.Save();
-//Dialog.Debug(itask);
 	if (Variables.Exists("itask"))
 
 		Workflow.Refresh([ $.itask, event_task_obj.Id ]);
@@ -65,7 +54,6 @@ function CreateVisitTaskValueIfNotExists(itask, event) {
 	var query = new Query("SELECT Document_Event_Equipments.Id FROM Document_Event_Equipments WHERE Document_Event_Equipments.Ref = @Event AND  Document_Event_Equipments.Comment = @Text");
 	query.AddParameter("Event", itask);
 
-	///Dialog.Debug(itask);
 	query.AddParameter("Text", itask.Comment);
 	var taskValue = query.ExecuteScalar();
 	if (taskValue == null) {
@@ -79,8 +67,6 @@ function CreateVisitTaskValueIfNotExists(itask, event) {
 		taskValue.TaskRef = itask;
 		taskValue.Save();
 		taskValue = taskValue.Id;
-		//Dialog.Debug(taskValue.Id);
-		//Dialog.Debug("comment ", taskValue.TextTask);
 	}
 
 	return taskValue;

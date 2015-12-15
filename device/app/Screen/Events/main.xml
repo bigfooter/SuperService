@@ -77,8 +77,23 @@
         <s:Iterator Id="eventsToDay" Value="$sv">
 
 
+
           <c:HorizontalLine/>
           <c:HorizontalLayout CssClass="grid" OnClickAction="$actionDoSelect($eventsToDay.Id)">
+          <c:VerticalLayout>
+              <c:TextView Text="$eventsToDay.Description" CssClass="main_row"></c:TextView>
+
+              <c:HorizontalLayout CssClass="grid" >
+
+              <c:TextView Text="$eventsToDay.StartTime" CssClass="bl_description_row"></c:TextView>
+
+              <c:TextView Text="$eventsToDay.Address" CssClass="description_row"></c:TextView>
+              </c:HorizontalLayout>
+            </c:VerticalLayout>
+            <c:Image />
+          </c:HorizontalLayout>
+
+          <!-- <c:HorizontalLayout CssClass="grid" OnClickAction="$actionDoSelect($eventsToDay.Id)">
 
             <c:VerticalLayout>
               <c:TextView Text="$eventsToDay.Description" CssClass="main_row"></c:TextView>
@@ -86,7 +101,7 @@
 			  <c:TextView Text="$eventsToDay.StartTime" CssClass="description_daterow"></c:TextView>
             </c:VerticalLayout>
             <c:Image/>
-          </c:HorizontalLayout>
+          </c:HorizontalLayout> -->
 
         </s:Iterator>
 		<c:HorizontalLine/>
@@ -134,12 +149,12 @@
 	          <c:VerticalLayout>
 	              <c:TextView Text="$allEventsItem.Description" CssClass="main_row"></c:TextView>
 
-<c:HorizontalLayout CssClass="grid" >
+                <c:HorizontalLayout CssClass="grid" >
 
 	              <c:TextView Text="$allEventsItem.StartTime" CssClass="bl_description_row"></c:TextView>
 
 	              <c:TextView Text="$allEventsItem.Address" CssClass="description_row"></c:TextView>
-				  </c:HorizontalLayout>
+				        </c:HorizontalLayout>
 	            </c:VerticalLayout>
 	            <c:Image />
 	          </c:HorizontalLayout>

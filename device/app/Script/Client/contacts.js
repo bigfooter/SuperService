@@ -8,7 +8,6 @@ function DoBackAndClean(){
 
 
 function GetAllsActiveContact(ref) {
-	Dialog.Debug(ref);
 	var q = new Query("SELECT Id, FIO, Tel" +
 		" FROM Catalog_Client_Contact " +
 		"WHERE Ref = @ref");
