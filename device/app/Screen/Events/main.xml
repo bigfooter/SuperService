@@ -57,13 +57,13 @@
 	<!-- Begin Body screen   -->
 		<s:If Test="$visitsType=='planned'">
 		<!-- Begin Search field -->
-		<c:HorizontalLayout CssClass="search">
-		  <c:DockLayout >
+		<c:DockLayout CssClass="search">
+      <c:Button Id="btnSearch" Text="#search#" OnClickAction="$findinalltext($edtSearchAll.Text)"></c:Button>
+      <c:DockLayout >
 			<c:Image />
 			<c:EditText Id="edtSearchToDay" Text="$searchToDay" Placeholder="#search#"></c:EditText>
 		  </c:DockLayout>
-		  <c:Button Id="btnSearch" Text="#search#" OnClickAction="$findinalltext($edtSearchAll.Text)"></c:Button>
-		</c:HorizontalLayout>
+		</c:DockLayout>
 		<c:HorizontalLayout CssClass="shadowLine"></c:HorizontalLayout>
 		<!-- End Search field -->
 
