@@ -58,7 +58,7 @@
 		<s:If Test="$visitsType=='planned'">
 		<!-- Begin Search field -->
 		<c:DockLayout CssClass="search">
-      <c:Button Id="btnSearch" Text="#search#" OnClickAction="$findinalltext($edtSearchAll.Text)"></c:Button>
+      <c:Button Id="btnSearch" Text="#search#" OnClickAction="$findtodaytext($edtSearchToDay.Text)"></c:Button>
       <c:DockLayout >
 			<c:Image />
 			<c:EditText Id="edtSearchToDay" Text="$searchToDay" Placeholder="#search#"></c:EditText>
@@ -134,7 +134,7 @@
 				<c:Button Id="btnSearch" Text="#search#" OnClickAction="$findinalltext($edtSearchAll.Text)"></c:Button>
 				<c:DockLayout>
 					<c:Image />
-					<c:EditText Id="edtSearchAll" Text="$search" Placeholder="#search#" ></c:EditText>
+					<c:EditText Id="edtSearchAll" Text="$searchAll" Placeholder="#search#" ></c:EditText>
 				</c:DockLayout>
 			</c:DockLayout>
 			<c:HorizontalLayout CssClass="shadowLine"></c:HorizontalLayout>
