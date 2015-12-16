@@ -240,3 +240,32 @@ dock-align: right;
     font: 80% Arial;
     color: #8e8e93;
 }
+
+
+.grid Button {
+	width: 10.3mm;
+	height: 9mm;
+	margin-top: 16%;
+	margin-right: 2.4mm;
+	dock-align: right;
+	background-image: url(geo_set.png);
+}
+
+.grid img{
+	width: 10.3mm;
+	height: 9mm;
+	dock-align: right;
+	background-image: url(geo_empty.png);
+}
+
+.CoordinatsPlace{
+	width: 100%;
+	height: 100%;
+}
+
+.CoordinatsPlace .main_row {
+    width: 100%;
+    height: 60%;
+    white-space: normal;
+    font: 42% Arial;
+}

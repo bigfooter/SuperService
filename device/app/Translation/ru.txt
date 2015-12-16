@@ -87,3 +87,5 @@ DeleteSnapShot		Удалить изображение
 Synchronization_has_not_been_performed	Синхронизация не была выполнена
 done		Выполнено
 Undone		Не выполнено
+set	Установить
+Сoordinates		Координаты

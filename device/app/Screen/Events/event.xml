@@ -54,24 +54,37 @@
 
 
 		<c:HorizontalLine/>
-		<s:If Test="$isEmptyCoordinats($event.Client.Id)">
+
 				<c:DockLayout CssClass="grid">
 				<c:VerticalLayout>
 				  <c:TextView Text="#address#" CssClass="description_row"></c:TextView>
 				  <c:TextView Id="Address" Text="$event.Client.Address" CssClass="main_row"></c:TextView>
 				</c:VerticalLayout>
 			  </c:DockLayout>
-		</s:If>
-		<s:Else>
-			<c:DockLayout CssClass="grid" OnClickAction="$DoAction(Map, $event.Client.Id)">
-					<c:Image CssClass="coord" />
-			<c:VerticalLayout>
-				<c:TextView Text="#address#" CssClass="description_row"></c:TextView>
-				<c:TextView Id="Address" Text="$event.Client.Address" CssClass="main_row"></c:TextView>
-			</c:VerticalLayout>
+ 			<c:HorizontalLine/>
+
+				<c:DockLayout CssClass="grid">
+				<s:If Test="$isEmptyCoordinats($event.Client.Id)">
+					<c:Image />
+				</s:If>
+				<s:Else>
+					<c:Button OnClickAction="$DoAction(Map, $event.Client.Id)" />
+				</s:Else>
+				<c:VerticalLayout>
+					<c:TextView Text="#Сoordinates#" CssClass="description_row"></c:TextView>
+					<s:If Test="$isEmptyCoordinats($event.Client.Id)">
+						<c:Button  Text="#set#" CssClass="coordButton" OnClick="$setCoordinats($event.Client.Id, $event)"/>
+					</s:If>
+					<s:Else>
+								<c:VerticalLayout OnClickAction="$updateCoordinats($event.Client.Id, $event)" CssClass="CoordinatsPlace">
+										<c:TextView Text="{$event.Client.Latitude}; {$event.Client.Longitude}" CssClass="main_row"></c:TextView>
+							<!--	<c:TextView Id="outletCoord" Text="{$workflow.outlet.Lattitude}; {$workflow.outlet.Longitude}" CssClass="main_row"></c:TextView> -->
+								</c:VerticalLayout>
+					</s:Else>
+				</c:VerticalLayout>
 			</c:DockLayout>
-		</s:Else>
- 	<c:HorizontalLine/>
+			<c:HorizontalLine />
+
 	  <c:HorizontalLayout CssClass="grid">
 
 		<c:VerticalLayout>

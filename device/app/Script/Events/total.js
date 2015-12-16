@@ -81,7 +81,15 @@ function createReminder(event){
 }
 
 function askCommit(sender, event){
-	Dialog.Ask("После завершения визита его нельзя будет отредактировать. Вы хотите завершить визит?", CommitEvent, event);
+	q = new Query("SELECT DEE.Id FROM Document_Event_Equipments DEE WHERE DEE.Result = @newStatus AND DEE.Ref = @Ref");
+	q.AddParameter("newStatus", DB.Current.Constant.ResultEvent.New);
+	q.AddParameter("Ref", event);
+	cnt = q.ExecuteCount();
+	if(cnt == 0){
+		Dialog.Ask("После завершения визита его нельзя будет отредактировать. Вы хотите завершить визит?", CommitEvent, event);
+	} else {
+		Dialog.Message("Для завершения визита необходимо завершить все задачи.");
+	}
 }
 
 

@@ -67,3 +67,12 @@ function isEmptyCoordinats(client){
 		return false;
 	}
 }
+
+function ActualLocation(location){
+    var actualTime;
+    var locTime = location.Time.ToLocalTime();
+    var maxTime = DateTime.Now.AddMinutes(-5);
+    actualTime = locTime > maxTime;
+
+    return (location.NotEmpty && actualTime);
+}
