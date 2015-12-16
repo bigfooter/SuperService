@@ -63,8 +63,8 @@ function findtodaytext(key){
 }
 
 function findinalltext(key){
-	$.Remove("searchAll");
-	$.AddGlobal("searchAll", key);
+	$.Remove("search");
+	$.AddGlobal("search", key);
 	Workflow.Refresh([]);
 }
 
@@ -74,10 +74,10 @@ function GetAllsActiveTask() {
 	var queryText = "SELECT Id, Description, Address" +
 		" FROM Catalog_Client";
 
-	if ($.Exists("searchAll")) {
-		var searchString = $.searchAll;
+	if ($.Exists("search")) {
+		var searchString = $.search;
 		//	Dialog.Debug(searchString());
-		if ($.searchAll != null && $.searchAll != ""){
+		if (searchString != null && searchString != ""){
 			var searchtail = " WHERE  (Contains(Description, @SearchText) OR Contains(Address , @SearchText))";
 			q.AddParameter("SearchText", searchString);
 			queryText = queryText + searchtail;
