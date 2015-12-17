@@ -29,7 +29,6 @@
       </c:HorizontalLayout>
     </c:DockLayout>
 
-		<c:Image CssClass="2_scroll"></c:Image>
 		<c:HorizontalLine />
 
 			<c:ScrollView Id="grScrollView">

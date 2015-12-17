@@ -73,3 +73,8 @@
   dock-align: left;
   background-color: #ffc0cb;
 }
+
+.description_row {
+	height: 45%;
+	font: 40% Arial;
+}
