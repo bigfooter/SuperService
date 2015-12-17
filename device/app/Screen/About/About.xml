@@ -31,7 +31,7 @@
 					</c:HorizontalLayout>
 				</c:VerticalLayout>
 
-				<c:TextView	Text="#version# {$sessionConst.solVersion}" CssClass="main_row" />
+				<c:TextView	Text="#version# {$getAppVersion()}" CssClass="main_row" />
 				<c:TextView	Text="#superDescription#" CssClass="description_row" />
 
 				<c:VerticalLayout CssClass="extra_padding">
