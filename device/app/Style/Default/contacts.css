@@ -16,10 +16,10 @@ dl {
     font: 42% Arial;
 }
 
-.description_row {
+/*.description_row {
     height: 40%;
-    font: 42% Arial;
-}
+    font: 90% Arial;
+}*/
 
 .grid vl hl {
     height: 100%;
@@ -55,7 +55,7 @@ dl {
     height: 100%;
     text-align: center;
     color: #FF0000;
-    
+
 }
 
 .emptyRecordSetAllRequest {
@@ -64,7 +64,7 @@ dl {
 	text-align: center;
 	margin-top: -10%;
 	color: #c0c0c0;
-	padding-top: 80%;	
+	padding-top: 80%;
 }
 
 .top_navigator {
@@ -135,7 +135,7 @@ dl {
 		        height: 100%;
 		        width: 174px;
 		    }
-		    
+
 		.grey_swipe vl TextView {
 		            height: 27%;
 		            width: 174px;
@@ -193,7 +193,7 @@ dl {
     /*margin-top: 30%;*/
     horizontal-align: central;
     background-image: url(arrow.png);
-    
+
     }
 
 .filtervalue {
@@ -204,7 +204,7 @@ dl {
     margin-right: -14%;
     font: 36% Arial;
     color: #8e8e93;
-    
+
     text-align: right;
 }
 
@@ -216,9 +216,9 @@ dl {
         color: #e6891b;
         dock-align: left;
         font: 36% arial;
-       
+
     }
-    
+
 .btn_left_footer {
 	width: 40%;
 	height: 100%;
@@ -244,7 +244,7 @@ height: 100%;
 dock-align: right;
 background-color: #ffffff;
 }
-	
+
 	.btn_right_footer TextView {
             width: 100%;
             height: 100%;
@@ -254,3 +254,38 @@ background-color: #ffffff;
             color: #e6891b;
             font: 38% Arial;
         }
+
+
+
+.phone {
+    width: 3.5mm;
+    height: 3.5mm;
+    margin-top: 37%;
+    margin-right: 3mm;
+    dock-align: right;
+}
+
+/*.phone vl{
+    background-image: url(phone.png);
+    height: 0%;
+    width: 100%;
+    vertical-align: central;
+}*/
+
+
+
+.iphone {
+    height: 100%;
+    width: 100%;
+    background-image: url(phone.png);
+
+}
+
+.phoneBox{
+    height: 73%;
+    width: 18%;
+    margin-top: 15%;
+    margin-bottom: 13%;
+    margin-right: 2.5%;
+    margin-left: 0%;
+}

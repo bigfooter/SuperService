@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<c:Screen xmlns:c="BitMobile.Controls" xmlns:s="BitMobile.ValueStack" StyleSheet="Client\contacts.css">
+<c:Screen xmlns:c="BitMobile.Controls" xmlns:s="BitMobile.ValueStack" StyleSheet="contacts.css">
 <!--<s:Push Id="init" Value="$initvalues()"/>
 <s:Push Id="search" Value="$param1"/>
 <s:Push Id="s" Value="$SetListType()"></s:Push> -->
@@ -36,13 +36,19 @@
 				<s:Iterator Id="allClientsItem" Value="$allClients">
 
 	          <c:HorizontalLine/>
-	          <c:HorizontalLayout CssClass="grid">
-	            <c:VerticalLayout>
+	          <c:DockLayout CssClass="grid">
+              <s:If Test="$PhoneExists($allClientsItem.Tel)">
+  							<c:HorizontalLayout CssClass="phone"  OnClickAction="$MoreMakeContactCall($allClientsItem.Tel)"> 
+  								<c:Image CssClass="iphone" />
+  							</c:HorizontalLayout>
+  						</s:If>
+              <c:VerticalLayout>
 	              <c:TextView Text="$allClientsItem.FIO" CssClass="main_row"></c:TextView>
-	              <c:TextView Text="$allClientsItem.Tel" CssClass="description_row"></c:TextView>
+                <c:TextView Text="$allClientsItem.Position" CssClass="description_row"></c:TextView>
+                <c:TextView Text="$allClientsItem.Tel" CssClass="description_row"></c:TextView>
 	            </c:VerticalLayout>
-	            <c:Image />
-	          </c:HorizontalLayout>
+
+	          </c:DockLayout>
 
 	        </s:Iterator>
 			<c:HorizontalLine/>
