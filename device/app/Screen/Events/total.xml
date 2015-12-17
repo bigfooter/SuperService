@@ -18,7 +18,8 @@
     </c:DockLayout>
 
     <c:DockLayout CssClass="footer" OnClickAction="$createReminder($param1)">
-		<c:DockLayout CssClass="btn_bottom_footer">
+    <c:HorizontalLine/>
+    <c:DockLayout CssClass="btn_bottom_footer">
 			<c:TextView Text="#send#" />
 		</c:DockLayout>
 	</c:DockLayout>

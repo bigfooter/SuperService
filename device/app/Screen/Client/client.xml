@@ -15,7 +15,8 @@
     </c:DockLayout>
 
 	<c:DockLayout CssClass="footer">
-		<c:DockLayout CssClass="btn_left_footer" OnClickAction="$DoAction(ShowContacts, $clientRef)">
+	<c:HorizontalLine/>
+    <c:DockLayout CssClass="btn_left_footer" OnClickAction="$DoAction(ShowContacts, $clientRef)">
 			<c:TextView Text="#contacts#" />
 		</c:DockLayout>
 
