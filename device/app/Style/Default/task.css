@@ -38,3 +38,17 @@ dock-align: right;
             color: #b96f18;
             font: 38% Arial;
         }
+
+.green_mark {
+  height: 100%;
+  width: 0.5mm;
+  dock-align: left;
+  background-color: #00a86b;
+}
+
+.red_mark {
+  height: 100%;
+  width: 0.5mm;
+  dock-align: left;
+  background-color: #ffc0cb;
+}

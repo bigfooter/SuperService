@@ -288,3 +288,23 @@ function getStatusStyle(status){
     return "red_mark";
   }
 }
+
+function isDone(task){
+	if (task.Result == DB.Current.Constant.ResultEvent.New) {
+		return false;
+	} else {
+		return	true;
+	}
+}
+function askIfRollback(sender, task) {
+
+	Dialog.Ask(Translate["#questionRollback#"], RollbackTask, task);
+}
+
+function RollbackTask(state, args) {
+	var objtask = state.GetObject();
+	objtask.Result = DB.Current.Constant.ResultEvent.New;
+	objtask.Comment = $.taskComment.Text;
+	objtask.Save();
+	Workflow.Refresh([$.task]);
+}

@@ -6,7 +6,6 @@
 	<s:Push Id="event" Value="$param3" />-->
 
 	<c:DockLayout>
-
 		<c:DockLayout CssClass="top_navigator">
 			<c:HorizontalLayout CssClass="btn_back" OnEvent="Back" OnClickAction="$SaveAndBack($task.Id)">
          <c:Image/>
@@ -19,6 +18,15 @@
 
 		<c:HorizontalLine />
 
+		<s:If Test="$isDone($task)">
+			<c:DockLayout CssClass="footer">
+					<c:HorizontalLine/>
+					<c:DockLayout CssClass="btn_bottom_footer" OnClick="$askIfRollback($task)">
+						<c:TextView Text="#Abort#" />
+					</c:DockLayout>
+			</c:DockLayout>
+		</s:If>
+		<s:Else>
 		<c:DockLayout CssClass="footer">
 			<c:HorizontalLine />
 			<c:DockLayout CssClass="btn_left_footer" OnClick="$NotDoneTask($task.Id)">
@@ -30,7 +38,11 @@
 			</c:DockLayout>
 
 		</c:DockLayout>
+	</s:Else>
 
+	<s:If Test="$isDone($task)">
+		<c:VerticalLayout CssClass="$getStatusStyle($task.Result)"></c:VerticalLayout>
+	</s:If>
 		<c:ScrollView Id="grScrollView">
 
 			<c:HorizontalLayout CssClass="margin_top" />
