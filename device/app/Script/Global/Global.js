@@ -14,7 +14,7 @@ function DateTimeDialog(entity, attribute, date, control) {
 function checkUsr(){
 	var mskCO = '@ref[Catalog_Departments]:4859e3db-e14d-11dc-93e2-000e0c3ec513';
 	var userObject = $.common.UserRef;
-	return isInDepartment(mskCO, userObject.Department);	
+	return isInDepartment(mskCO, userObject.Department);
 }
 
 function isInDepartment(valCheck, val){
@@ -30,6 +30,14 @@ function isInDepartment(valCheck, val){
 		}
 	} else{
 		return true;
-	}		
+	}
 }
 
+function GenerateGuid() {
+
+	return (S4() + S4() + "-" + S4() + "-" + S4() + "-" + S4() + "-" + S4() + S4() + S4());
+}
+
+function S4() {
+	return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
+}

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<c:Screen xmlns:c="BitMobile.Controls" xmlns:s="BitMobile.ValueStack" StyleSheet="task.css">
+
+	<s:Push Id="task" Value="$param1" />
+	<!--<s:Push Id="visitTask" Value="$param2" />
+	<s:Push Id="event" Value="$param3" />-->
+
+	<c:DockLayout>
+		<c:DockLayout CssClass="top_navigator">
+			<c:HorizontalLayout CssClass="btn_back" OnEvent="Back" OnClickAction="$SaveAndBack($task.Id)">
+         <c:Image/>
+        <c:TextView Text="#back#"/>
+      </c:HorizontalLayout>
+			<c:HorizontalLayout>
+				<c:TextView Text="#task#" />
+			</c:HorizontalLayout>
+		</c:DockLayout>
+
+		<c:HorizontalLine />
+
+		<s:If Test="$isDone($task)">
+			<c:DockLayout CssClass="footer">
+					<c:HorizontalLine/>
+					<c:DockLayout CssClass="btn_bottom_footer" OnClick="$askIfRollback($task)">
+						<c:TextView Text="#Abort#" />
+					</c:DockLayout>
+			</c:DockLayout>
+		</s:If>
+		<s:Else>
+		<c:DockLayout CssClass="footer">
+			<c:HorizontalLine />
+			<c:DockLayout CssClass="btn_left_footer" OnClick="$NotDoneTask($task.Id)">
+				<c:TextView Text="#Undone#" />
+			</c:DockLayout>
+
+			<c:DockLayout CssClass="btn_right_footer" OnClick="$CompleteTask($task.Id)">
+				<c:TextView Text="#done#"/>
+			</c:DockLayout>
+
+		</c:DockLayout>
+	</s:Else>
+
+	<s:If Test="$isDone($task)">
+		<c:VerticalLayout CssClass="$getStatusStyle($task.Result)"></c:VerticalLayout>
+	</s:If>
+		<c:ScrollView Id="grScrollView">
+
+			<c:HorizontalLayout CssClass="margin_top" />
+			<c:HorizontalLine />
+
+
+
+			<c:HorizontalLayout CssClass="grid">
+				<c:VerticalLayout>
+					<c:TextView Text="#devices#" CssClass="description_row"></c:TextView>
+					<c:TextView Text="$task.Equipment.Description" CssClass="main_row" />
+				</c:VerticalLayout>
+			</c:HorizontalLayout>
+			<c:HorizontalLine />
+
+			<c:HorizontalLayout CssClass="grid">
+				<c:VerticalLayout>
+					<c:TextView Text="#Terget#" CssClass="description_row"></c:TextView>
+					<c:TextView Text="$task.Terget" CssClass="main_row" />
+				</c:VerticalLayout>
+			</c:HorizontalLayout>
+			<c:HorizontalLine />
+
+			<c:HorizontalLayout CssClass="memo_block">
+				<c:VerticalLayout>
+					<c:TextView Text="#comment#" CssClass="description_row"></c:TextView>
+					<c:MemoEdit Id="taskComment" Value="$task.Comment" CssClass="main_row" Placeholder="—" OnChange="$checkCommentLength()"></c:MemoEdit>
+				</c:VerticalLayout>
+			</c:HorizontalLayout>
+			<c:HorizontalLine />
+			<c:DockLayout CssClass="snapshot_grid">
+					<c:Button Text="#add#" OnClick="$AddSnapshot($task.Ref, $task.Equipment)"/>
+					<c:TextView Text="#Snapshots#" />
+			</c:DockLayout>
+			<s:If Test="$isSnapShotInEventExists($task.Ref, $task.Equipment)">
+						<c:SwipeHorizontalLayout Id="snapshotLayout" CssClass="carousel" Alignment="Center">
+							<s:Iterator Id="snapshot" Value="$GetSnapShots($task.Ref, $task.Equipment)" Status="statusCount">
+								<s:Push Id="index" Value="$statusCount.Index" />
+										<s:If Test="$SnapshotExists($task.Ref, $task.Equipment, $snapshot.UIDPhoto)">
+											<c:VerticalLayout OnClick="$SnapshotActions($task.Ref, $task.Equipment, $snapshot.UIDPhoto)">
+												<s:Push Id="path" Value="$GetPrivateImage($task.Ref, $snapshot.UIDPhoto)" />
+												<c:Image Id="image{$index}" Source="$path" />
+											</c:VerticalLayout>
+										</s:If>
+										<s:Else>
+											<c:VerticalLayout CssClass="no_image">
+												<c:Image Id="image{$index}" />
+												<c:TextView Text="#imageNotAvailable#" CssClass="text"></c:TextView>
+											</c:VerticalLayout>
+										</s:Else>
+							</s:Iterator>
+						</c:SwipeHorizontalLayout>
+						<c:HorizontalLine />
+			</s:If>
+
+		</c:ScrollView>
+
+
+
+	</c:DockLayout>
+
+</c:Screen>

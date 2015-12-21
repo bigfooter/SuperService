@@ -8,7 +8,12 @@ body {
 	text-align: center;
 	margin-top: 30%;
 	color: #c0c0c0;
-	padding-top: 80%;	
+	padding-top: 80%;
+}
+
+WebMapGoogle{
+	width: 100%;
+	height: 100%;
 }
 
 line {
@@ -85,7 +90,7 @@ MemoEdit {
 	background-color: #ffffff;
 }
 
-.top_navigator {
+/*.top_navigator {
     height: 7.6sp;
     dock-align: top;
 	width: 100%;
@@ -105,11 +110,50 @@ MemoEdit {
             text-align: center;
             color: #000000;
             font: 38% Arial;
-        }
+        }*/
+
+.top_navigator {
+    height: 6.7mm;
+    dock-align: top;
+    background-color: #ffffff;
+}
+
+.top_navigator Button {
+    selected-color: #D3D3D3;
+}
+
+.top_navigator hl {
+    width: 100%;
+    height: 100%;
+    dock-align: top;
+    horizontal-align: central;
+}
+
+.top_navigator hl TextView {
+    width: 100%;
+    height: 100%;
+    margin-left: 0%;
+    padding-top: 26%;
+    horizontal-align: central;
+    text-align: center;
+    color: #000000;
+    font: 39.5% arial;
+    selected-color: #D3D3D3;
+}
+
+.top_navigator hl Image {
+    selected-color: #D3D3D3;
+}
+
+.top_navigator dl {
+    width: 16.3mm;
+    height: 100%;
+}
 
     .menu {
     background-color: #555351;
     width: 90%;
+    padding-top: 2%;
 }
 
     .menu line {
@@ -136,7 +180,7 @@ MemoEdit {
     .menu hl {
         width: 100%;
     }
-    
+
     .menu dl {
         width: 100%;
     }
@@ -161,7 +205,7 @@ MemoEdit {
             .menu dl hl TextView {
                 width: 60%;
                 height: 40%;
-                margin-left: 4%;                
+                margin-left: 4%;
                 vertical-align: central;
                 color: #ffffff;
                 font: 90% arial;
@@ -170,7 +214,7 @@ MemoEdit {
 .header {
     height: 8sp;
     width: 100%;
-    margin-top: 2%;
+    margin-left: 0mm;
     background-color: #e6891b;
 }
 
@@ -179,8 +223,9 @@ MemoEdit {
 }
 
 .btn_summary {
-    height: 65%;
-    margin-left: 5%;
+    height: 44%;
+    margin-left: 1%;
+    margin-right: 1%;
     vertical-align: central;
     background-image: url(SuperShield.png);
 }
@@ -269,40 +314,83 @@ MemoEdit {
         margin-left: 5%;
         margin-bottom: 20%;
     }
-
-.btn_forward {
-    width: 23%;
-    height: 100%;
-    dock-align: right;
-    margin-right: 2%;
-    margin-left: 11%;
-    color: #b96f18;
-    text-align: right;
-    font: 42% arial;
-}
-
+/*
 .btn_back {
-    width: 30%;
+    width: 16.3mm;
     height: 100%;
     dock-align: left;
 }
 
-    .btn_back TextView {
-        width: 100%;
-        height: 100%;
-        margin-left: 5%;
-        padding-top: 25%;
-        text-align: left;
+.btn_back TextView {
+    width: 100%;
+    height: 100%;
+    margin-left: 1mm;
+    padding-top: 26%;
+    text-align: left;
+    dock-align: left;
         color: #b96f18;
-        font: 41% arial;
-    }
+    font: 39.5% arial;
+}
 
-    .btn_back img {
-        background-image: url(arrow_left.png);
-        margin-top: 24%;
-        margin-left: 5%;
-        height: 50%;
-    }
+.btn_back img {
+    background-image: url(arrow_left.png);
+    margin-top: 24%;
+    margin-left: 1mm;
+    dock-align: left;
+    height: 50%;
+}
+
+*/
+.btn_forward {
+    width: 16.3mm;
+    height: 100%;
+    dock-align: right;
+}
+
+.btn_forward TextView {
+    width: 100%;
+    height: 100%;
+    margin-right: 1mm;
+    padding-top: 26%;
+    text-align: right;
+    dock-align: right;
+    color: #b96f18;
+    font: 39.5% arial;
+}
+
+.btn_forward img {
+    background-image: url(arrow.png);
+    margin-top: 24%;
+    margin-left: 1mm;
+    dock-align: right;
+    height: 50%;
+}
+
+
+.btn_back {
+    width: 16.3mm;
+    height: 100%;
+    dock-align: left;
+}
+
+.btn_back TextView {
+    width: 100%;
+    height: 100%;
+    margin-left: 1mm;
+    padding-top: 26%;
+    text-align: left;
+    dock-align: left;
+        color: #b96f18;
+    font: 39.5% arial;
+}
+
+.btn_back img {
+    background-image: url(arrow_left.png);
+    margin-top: 24%;
+    margin-left: 1mm;
+    dock-align: left;
+    height: 50%;
+}
 
 .mode_left_button_on {
     background-image: url(mode_left_button_on.png);
@@ -310,41 +398,44 @@ MemoEdit {
     height: 67%;
     margin-top: 5.7%;
     margin-left: 2%;
+    horizontal-align: central;
 }
 
-    .mode_left_button_on select_zone {
-        selected-color: #b96f18;
-    }
+.mode_left_button_on select_zone {
+    selected-color: #b96f18;
+}
 
-        .mode_left_button_on select_zone TextView {
-            color: #f8f8f8;
-        }
+.mode_left_button_on select_zone TextView {
+    color: #f8f8f8;
+}
 
 .mode_right_button_off {
     background-image: url(mode_right_button_off.png);
     width: 48%;
     height: 67%;
     margin-top: 5.7%;
+    horizontal-align: central;
 }
 
-    .mode_right_button_off select_zone TextView {
-        color: #b96f18;
-    }
+.mode_right_button_off select_zone TextView {
+    color: #b96f18;
+}
 
 .mode_right_button_on {
     background-image: url(mode_right_button_on.png);
     width: 48%;
     height: 67%;
     margin-top: 5.7%;
+    horizontal-align: central;
 }
 
-    .mode_right_button_on select_zone {
-        selected-color: #b96f18;
-    }
+.mode_right_button_on select_zone {
+    selected-color: #b96f18;
+}
 
-        .mode_right_button_on select_zone TextView {
-            color: #f8f8f8;
-        }
+.mode_right_button_on select_zone TextView {
+    color: #f8f8f8;
+}
 
 .mode_left_button_off {
     background-image: url(mode_left_button_off.png);
@@ -352,88 +443,95 @@ MemoEdit {
     height: 67%;
     margin-top: 5.7%;
     margin-left: 2%;
+    horizontal-align: central;
 }
 
-    .mode_left_button_off select_zone TextView {
-        color: #b96f18;
-    }
+.mode_left_button_off select_zone TextView {
+    color: #b96f18;
+}
 
 .small_grid {
-    height: 7.6%;
+    height: 6.7mm;
+    width: 49.6mm;
     selected-color: #bacdce;
     dock-align: top;
+    horizontal-align: central;
 }
 
-    .small_grid hl select_zone {
-        width: 90%;
-        height: 90%;
-        margin-top: 5%;
-        margin-left: 5%;
-    }
+.small_grid hl select_zone {
+    width: 100%;
+    height: 90%;
+    margin-top: 5%;
+    /*margin-left: 5%;*/
+}
 
-        .small_grid hl select_zone TextView {
-            width: 100%;
-            height: 100%;
-            text-align: center;
-            padding-top: 20%;
-            font: 50% arial;
-        }
+.small_grid hl select_zone TextView {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    padding-top: 20%;
+    font: 50% arial;
+}
 
 .search {
-    height: 7.6sp;
-    background-color: #d6d9dd;
+    height: 6.7mm;
+    background-color: #ffffff;
     dock-align: top;
 }
 
-    .search dl {
-        height: 64%;
-        width: 75%;
-        vertical-align: central;
-        margin-left: 2%;
-        padding-top: 5%;
-        padding-bottom: 5%;
-        border-style: solid;
-        border-width: 1px;
-        border-color: #ffffff;
-        border-radius: 10px;
-        background-color: #ffffff;
-    }
+.search dl {
+    height: 64%;
+    width: 100%;
+    dock-align: left;
+    vertical-align: central;
+    margin-left: 1.7mm;
+    margin-top: 20%;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #ffffff;
+    border-radius: 1mm;
+    background-color: #ffffff;
+}
 
-        .search dl img {
-            background-image: url(search.png);
-            height: 46.4%;
-            margin-top: 20%;
-            margin-left: 2%;
-            margin-right: 1.5%;
-            background-color: #ffffff;
-            dock-align: left;
-        }
+.search dl img {
+    background-image: url(search.png);
+    height: 46.4%;
+    margin-top: 20%;
+    margin-left: 2%;
+    margin-right: 1.5%;
+    background-color: #ffffff;
+    dock-align: left;
+}
 
-    .search Button {
-        margin-left: 2%;
-        margin-top: 18%;
-        width: 19%;
-        height: 64%;
-        background-color: #e6891b;
-        color: #f8f8f8;
-        border-style: solid;
-        border-width: 1px;
-        border-color: #43acfd;
-        border-radius: 10px;
-        font: 55% arial;
-    }
+.search Button {
+    margin-left: 1.7mm;
+    margin-top: 18%;
+    margin-right: 1.7mm;
+    width: 10mm;
+    height: 65%;
+    dock-align: right;
+    background-color: #e6891b;
+    color: #f8f8f8;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #f8f8f8;
+    border-radius: 1mm;
+    font: 55% arial;
+}
 
-    .search dl EditText {
-        width: auto;
-        height: 100%;
-        margin-right: 2%;
-        padding-top: 10%;
-        background-color: #ffffff;
-        color: #000000;
-        border-style: none;
-        dock-align: right;
-        font: 60% arial;
-    }
+.search dl EditText {
+    width: auto;
+    height: 100%;
+    margin-right: 2%;
+    padding-top: 10%;
+    background-color: #ffffff;
+    color: #000000;
+    border-style: none;
+    dock-align: right;
+    font: 60% arial;
+}
 
 
 .caption_grid {
@@ -455,11 +553,45 @@ MemoEdit {
     }
 
 .empty_caption_grid {
-    height: 3.8sp;
+    height: 3.3mm;
     selected-color: #bacdce;
     background-color: #efeff4;
     dock-align: top;
 }
+
+.half_grid {
+    height: 6.7mm;
+    width: 100%;
+    background-color: #ffffff;
+    padding-left: 2.4mm;
+    padding-right: 2.4mm;
+}
+
+.half_grid Button {
+    height: 100%;
+    width: 100%;
+    vertical-align: central;
+    font: 37% arial;
+}
+
+.half_grid TextView {
+    height: 40%;
+    width: 45%;
+    vertical-align: central;
+    white-space: nowrap;
+    font: 80% Arial;
+    color: #2d89cf;
+}
+
+.half_grid hlf_value {
+    text-align: right;
+    color: #8e8e93;
+}
+
+.positive_decision {
+    color: #32CD32;
+}
+
 
 .margin_top {
     height: 5sp;
@@ -474,26 +606,29 @@ MemoEdit {
     background-color: #efeff4;
     dock-align: top;
 }
-
 .grid {
-    height: 15.9sp;
+    height: 13.8mm;
     width: 100%;
     background-color: #ffffff;
+    selected-color: #bacdce;
 }
 
-    .grid line {
-        width: 100%;
-        height: 1px;
-        background-color: #c8c7cc;
-    }
+.grid line {
+    width: 100%;
+    height: 1px;
+    background-color: #c8c7cc;
+}
 
-    .grid img {
-        height: 15.4%;
-        margin-top: 16%;
-        margin-left: 2.5%;
-        background-image: url(arrow.png);
-    }
-    
+.grid img {
+    height: 1.9mm;
+    width: 1.3mm;
+    margin-top: 16%;
+    dock-align: right;
+    margin-right: 2.4mm;
+    background-image: url(arrow.png);
+}
+
+/*del*/
     .grid iphone {
         height: 8%;
         width: 9%;
@@ -503,57 +638,62 @@ MemoEdit {
         margin-left: 20%;
         background-image: url(phone.png);
     }
+/*del*/
 
-    .grid vl {
-        width: 100%;
-        height: 100%;
-        padding-top: 11%;
-        padding-left: 5%;
-    }
 
-        .grid vl MemoEdit {
-            height: 60%;
-            width: 90%;
-            font: 30% Arial;
-        }
+.grid vl {
+    width: 100%;
+    height: 100%;
+    dock-align: left;
+    padding-top: 11%;
+    padding-left: 2.4mm;
+}
 
-        .grid vl EditText {
-            height: 60%;
-            width: 90%;
-            font: 30% Arial;
-            color: #2d89cf;
-        }
 
-        .grid vl dl {
-            height: 21%;
-            width: 100%;
-        }
+.grid vl MemoEdit {
+    height: 40%;
+    width: 90%;
+    font: 45% Arial;
+    placeholder-color: #2d89cf;
+}
 
-            .grid vl dl TextView {
-                width: 100%;
-                height: 100%;
-                margin-top: 5%;
-                white-space: normal;
-                font: 68% Arial;
-                color: #8e8e93;
-                dock-align: left;
-            }
+.grid vl EditText {
+    height: 40%;
+    width: 90%;
+    font: 45% Arial;
+    color: #2d89cf;
+}
 
-            .grid vl dl Button {
-                width: 32%;
-                height: 100%;
-                dock-align: right;
-                margin-left: -32%;
-                margin-right: 3%;
-                margin-top: 0%;
-                border-style: solid;
-                border-width: 2px;
-                border-color:  #e6891b;
-                border-radius: 5px;
-                color:  #e6891b;
-                text-align: center;
-                font: 65% arial;
-            }
+.grid vl dl {
+    height: 21%;
+    width: 100%;
+}
+
+.grid vl dl TextView {
+    width: 100%;
+    height: 100%;
+    margin-top: 5%;
+    white-space: normal;
+    font: 68% Arial;
+    color: #8e8e93;
+    dock-align: left;
+}
+
+.grid vl dl Button {
+    width: 13.5mm;
+    height: 100%;
+    dock-align: right;
+    margin-left: -32%;
+    margin-right: 3%;
+    margin-top: 0%;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #e6891b;
+    border-radius: 5px;
+    color: #e6891b;
+    text-align: center;
+    font: 65% arial;
+}
 
 
 .main_row {
@@ -567,7 +707,7 @@ MemoEdit {
     width: 100%;
     height: 23%;
     white-space: normal;
-    font: 80% Arial;
+    font: 62% Arial;
     color: #8e8e93;
 }
 
@@ -576,12 +716,13 @@ MemoEdit {
     height: 0%;
     width: 4.1%;
     margin-left: 2%;
-    margin-right: 0%;    
+    margin-right: 0%;
 }
 
 .no_mark {
     height: 100%;
-    width: 6.1%;
+    width: 4.7mm;
+    dock-align: left;
 }
 
 .1_scroll {
@@ -628,39 +769,63 @@ MemoEdit {
     height: 2px;
     dock-align: top;
 }
-
-.parameter_grid {
+ .parameter_grid {
     width: 100%;
-    height: 7.8sp;
+    height: 6.7mm;
     dock-align: top;
 }
 
-    .parameter_grid TextView {
-        width: 70%;
-        height: 100%;
-        margin-left: 3.5%;
-        padding-top: 30%;
-        color: #b96f18;
-        dock-align: left;
-        font: 36% arial;
-    }
+.parameter_grid TextView {
+    width: 50% auto;
+    height: 100%;
+    margin-left: 2.7mm;
+    padding-top: 30%;
+    color: #b96f18;
+    dock-align: left;
+    font: 36% arial;
+}
 
-    .parameter_grid img {
-        height: 35%;
-        margin-left: 15%;
-        margin-top: 35%;
-        background-image: url(arrow.png);
-        dock-align: left;
-    }
+.parameter_grid img {
+    height: 1.9mm;
+    width: 1.3mm;
+    margin-right: 2.4mm;
+    margin-top: 35%;
+    background-image: url(arrow.png);
+    dock-align: right;
+}
 
-    .parameter_grid EditText {
-        width: 74%;
-        height: 100%;
-        color: #2d89cf;
-        padding-top: 30%;
-        dock-align: left;
-        font: 37% arial;
-    }
+.parameter_grid EditText {
+    width: 50%;
+    height: 100%;
+    color: #2d89cf;
+    padding-top: 30%;
+    dock-align: left;
+    font: 37% arial;
+    placeholder-color: #2d89cf;
+}
+
+.parameter_grid hl {
+    width: 50%;
+    margin-left: 2.4mm;
+    dock-align: left;
+}
+
+.parameter_grid hl TextView {
+    width: 100%;
+    height: 100%;
+    padding-top: 30%;
+    color: #2d89cf;
+    font: 36% arial;
+}
+
+.parameter_image {
+    height: 100%;
+    margin-right: 2.4mm;
+    margin-top: 1.5%;
+    margin-bottom: 1.5%;
+    background-image: url(arrow.png);
+    dock-align: right;
+}
 
 .tick {
     height: 35%;
@@ -803,7 +968,7 @@ MemoEdit {
 .memo_block {
     height: 48sp;
 }
- 
+
 
     .memo_block vl {
         width: 98%;
@@ -813,9 +978,16 @@ MemoEdit {
         padding-left: 0%;
     }
 
-        .memo_block vl description_row {
-            height: 9%;
-        }
+.memo_block vl description_row {
+    height: 3.2mm;
+}
+
+.memo_block vl main_row {
+    height: 78%;
+    width: 100%;
+    margin-left: 0%;
+    font: 2.2mm Arial;
+}
 
         .memo_block vl MemoEdit {
             height: 80%;
@@ -824,3 +996,157 @@ MemoEdit {
             font: 12% Arial;
             color: #b96f18;
         }
+
+.btn_bottom_footer {
+    width: 100%;
+    height: 100%;
+    dock-align: bottom;
+}
+
+    .btn_bottom_footer TextView {
+        width: 100%;
+        height: 100%;
+        margin-left: 0%;
+        padding-top: 25%;
+        text-align: center;
+        color: #e6891b;
+        font: 38% Arial;
+    }
+
+
+    .snapshot_grid{
+    	width: 100%;
+    	height: 6.7mm;
+    	dock-align: top;
+    }
+
+    .snapshot_grid TextView{
+    	width: 100%;
+    	height: 100%;
+    	white-space: nowrap;
+    	margin-left: 2.4mm;
+    	padding-top: 35%;
+    	font: 28% Arial;
+    	color: #8e8e93;
+    	dock-align: left;
+    	text-align: left;
+    }
+
+    .snapshot_grid Button{
+    	height: 48%;
+    	width: 10.7mm;
+    	dock-align: right;
+    	margin-right: 2.4mm;
+    	margin-top: 25.9%;
+    	border-style : solid;
+    	border-width: 1px;
+    	border-color: #e6891b;
+    	border-radius: 5px;
+    	text-align: center;
+    	font: 60% arial;
+    }
+
+    .no_image{
+    	background-color: #eeeeee;
+    	height: 100%;
+    	width: 45.7mm;
+    	margin-top: 0.5mm;
+    	margin-bottom: 2.3mm;
+    	margin-left: 3mm;
+    	margin-right: 3mm;
+    }
+
+    .no_image TextView {
+    	height: 100%;
+    	width: 25mm;
+    	color: #8e8e93;
+    	text-align: center;
+    	horizontal-align: central;
+    	padding-top: 0mm;
+    	padding-left: 2mm;
+    	padding-right: 2mm;
+    	white-space: normal;
+    	font: 25% arial;
+    }
+
+    .no_image img {
+    	height: 12mm;
+    	width: 12mm;
+    	background-image: url(no_image_big.png);
+    	margin-top: 10%;
+    	horizontal-align: center;
+    }
+
+    .no_single_image {
+    	height: 25.6mm;
+    	background-color: #ffffff;
+    	width: 45.7mm;
+    	margin-top: 0.5mm;
+    	margin-bottom: 2.3mm;
+    	horizontal-align: center;
+    }
+
+    .carousel{
+    	height: 25.6mm;
+    	background-color: #ffffff;
+    }
+
+    .carousel vl{
+    	height: 100%;
+    	width: 45.7mm;
+    	margin-top: 0.5mm;
+    	margin-bottom: 2.3mm;
+    }
+
+    .carousel vl img{
+    	height: 100%;
+    	horizontal-align: central;
+    }
+
+    .carousel vl TextView{
+    	height: 100%;
+    	width: 35mm;
+    	color: #8e8e93;
+    	text-align: center;
+    	horizontal-align: central;
+    	border-style: solid;
+    	border-width: 1px;
+    	border-color: #000000;
+    	padding-top: 35%;
+    	padding-left: 2mm;
+    	padding-right: 2mm;
+    	white-space: normal;
+    	font: 10% arial;
+    }
+
+.no_image_small {
+	width: 7mm;
+	height: 100%;
+	dock-align: right;
+	margin-top: 0.3mm;
+	margin-bottom: 0.3mm;
+	margin-right: 2.4mm;
+	background-color: #eeeeee;
+}
+
+.no_image_small img {
+	height: 5mm;
+	width: 5mm;
+	margin-top: 10%;
+	background-image: url(no_image_small.png);
+	horizontal-align: center;
+}
+
+.coordButton {
+	width: 15mm;
+	height: 4.1mm;
+	vertical-align: central;
+	margin-top: 10%;
+	border-style : solid;
+	border-width: 1px;
+	border-color: #43acfd;
+	border-radius: 5px;
+	color: #2d89cf;
+	text-align: center;
+	font: 60% arial;
+}

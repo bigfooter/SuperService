@@ -1,5 +1,7 @@
 function OnLoading(){
 	SetListType();
+	backupStartPeriod = recvStartPeriod;
+	backupStopPeriod = recvStopPeriod;
 }
 
 function CloseMenu() {
@@ -39,7 +41,7 @@ function filterDate(dt){
 }
 
 function MakeFilterSettingsBackUp(){
-	
+
 	if ($.Exists("BUFilterCopy") == true){
 		$.Remove("BUFilterCopy");
 		$.Add("BUFilterCopy", new Dictionary());
@@ -50,23 +52,15 @@ function MakeFilterSettingsBackUp(){
 		$.BUFilterCopy.Add("Start", recvStartPeriod);
 		$.BUFilterCopy.Add("Stop", recvStopPeriod);
 	}
-	
+
 }
 
-function getGlobalStart(){
-	return Vars.getRecvStartPeriod();
-}
-
-
-function getGlobalStop(){
-	return Vars.getRecvStartPeriod();
-}
 
 function RollBackAndBack(){
-	Vars.setRecvStartPeriod($.BUFilterCopy.Start);
-	Vars.setRecvStopPeriod($.BUFilterCopy.Stop);
+	recvStartPeriod = backupStartPeriod;
+	recvStopPeriod = backupStopPeriod;
 	Workflow.Back();
-	
+
 }
 
 function clearmyfilter(){
@@ -79,36 +73,37 @@ function clearmyfilter(){
 function SetBeginDate() {
 	var header = Translate["#enterDateTime#"];
 	if(recvStartPeriod != undefined){
-		Dialog.ShowDateTime(header, recvStartPeriod, SetBeginDateNow);
+		Dialog.DateTime(header, recvStartPeriod, SetBeginDateNow);
 	} else {
-		Dialog.ShowDateTime(header, SetBeginDateNow);
+		Dialog.DateTime(header, SetBeginDateNow);
 	}
 }
 
-function SetBeginDateNow(key) {
-	$.beginDate.Text = filterDate(key);
-	recvStartPeriod = BegOfDay(key);
+function SetBeginDateNow(state, args) {
+	$.beginDate.Text = filterDate(args.Result);
+	recvStartPeriod = BegOfDay(args.Result);
 	//Workflow.Refresh([]);
 }
 
 function SetEndDate() {
 	var header = Translate["#enterDateTime#"];
 	if(recvStopPeriod != undefined){
-		Dialog.ShowDateTime(header, recvStopPeriod, SetEndDateNow);
+		Dialog.DateTime(header, recvStopPeriod, SetEndDateNow);
 	} else {
-		Dialog.ShowDateTime(header, SetEndDateNow);
+		Dialog.DateTime(header, SetEndDateNow);
 	}
 }
 
-function SetEndDateNow(key) {
-	$.endDate.Text = filterDate(key);
-	recvStopPeriod = EndOfDay(key);
+function SetEndDateNow(state, args) {
+	$.endDate.Text = filterDate(args.Result);
+	recvStopPeriod = EndOfDay(args.Result);
+	//Dialog.Debug(BegOfDay(key));
 	//Workflow.Refresh([]);
 }
 
 function ClearFilter(){
-	recvStartPeriod = undefined;
-	recvStopPeriod = undefined;
+	recvStartPeriod = "";
+	recvStopPeriod = "";
 	Workflow.Refresh([]);
 }
 
@@ -129,9 +124,9 @@ function ChangeListAndRefresh(control) {
 function GetTodaysActiveTask() {
 	var q = new Query();
 
-	var queryText = "SELECT DE.id AS Id, CC.Description AS Description, strftime('%d.%m %H:%M', DE.StartDatePlan) AS StartTime, CC.Address AS Address" + 
-		" FROM Document_Event DE LEFT JOIN Catalog_Client CC ON DE.Client = CC.Id" + 
-		" WHERE DE.ActualEndDate >= @DateStart AND DE.ActualEndDate <= @DateEnd AND DE.Status = @StatusEx";
+	var queryText = "SELECT DE.Id AS Id, CC.Description AS Description, strftime('%d.%m %H:%M', DE.StartDatePlan) AS StartTime, CC.Address AS Address" +
+		" FROM Document_Event DE LEFT JOIN Catalog_Client CC ON DE.Client = CC.Id" +
+		" WHERE DE.StartDatePlan >= @DateStart AND DE.StartDatePlan <= @DateEnd AND DE.Status = @StatusEx";
 
 	if ($.Exists("searchToDay")) {
 		var searchString = $.searchToDay;
@@ -146,7 +141,7 @@ function GetTodaysActiveTask() {
 	q.AddParameter("StatusEx", DB.Current.Constant.StatusyEvents.Appointed);
 	q.AddParameter("DateStart", DateTime.Now.Date);
 	q.AddParameter("DateEnd", DateTime.Now.Date.AddDays(1));
-	
+
 	return q.Execute().Unload();
 }
 
@@ -164,37 +159,36 @@ function findinalltext(key){
 
 function GetAllsActiveTask() {
 	var q = new Query();
-
-	var queryText = "SELECT DE.Id AS Id, CC.Description AS Description, strftime('%d.%m %H:%M', DE.StartDatePlan) AS StartTime, CC.Address AS Address" + 
-		" FROM Document_Event DE LEFT JOIN Catalog_Client CC ON DE.Client = CC.Id" + 
+	var queryText = "SELECT DE.Id AS Id, CC.Description AS Description, strftime('%d.%m %H:%M', DE.StartDatePlan) AS StartTime, CC.Address AS Address" +
+		" FROM Document_Event DE LEFT JOIN Catalog_Client CC ON DE.Client = CC.Id" +
 		" WHERE DE.Status = @StatusEx";
 
 	if ($.Exists("searchAll")) {
 		var searchString = $.searchAll;
-		if (searchString != null && searchString != ""){
+		//	Dialog.Debug(searchString());
+		if ($.searchAll != null && $.searchAll != ""){
 			var searchtail = " AND  (Contains(CC.Description, @SearchText) OR Contains(CC.Address , @SearchText))";
 			q.AddParameter("SearchText", searchString);
 			queryText = queryText + searchtail;
 		}
+}
 
-	if (recvStartPeriod() != undefined){
+	if (!IsNullOrEmpty(recvStartPeriod)){
 		var starttail = " AND DE.StartDatePlan >= @DateStart";//AND REQ.PlanStartDataTime < @DateEnd
 		q.AddParameter("DateStart", recvStartPeriod);
 		queryText = queryText + starttail;
-		
+
 	}
-	
-	if (recvStopPeriod() != undefined){
+
+	if (!IsNullOrEmpty(recvStopPeriod)){
 		var stoptail = " AND DE.StartDatePlan < @DateEnd";//AND REQ.PlanStartDataTime < @DateEnd
 		q.AddParameter("DateEnd", recvStopPeriod);
 		queryText = queryText + stoptail;
 	}
-	
-	}
 	q.Text = queryText;
 	//q.AddParameter("StatusComp", DB.Current.Constant.VisitStatus.Completed);
 	q.AddParameter("StatusEx", DB.Current.Constant.StatusyEvents.Appointed);
-	Dialog.Debug("now");
+	//Dialog.Debug("now");
 	return q.Execute().Unload();
 }
 

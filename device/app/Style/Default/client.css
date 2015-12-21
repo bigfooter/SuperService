@@ -1,0 +1,270 @@
+.grid vl {
+	width: 100%;
+	}
+
+.grid img {
+        height: 25px;
+        margin-top: 16%;
+        margin-left: 2.5%;
+        background-image: url(arrow.png);
+    }
+
+.coord {
+			  width: 10.3mm;
+			  height: 9mm;
+			  dock-align: right;
+			  background-image: url(geo_set.png);
+		}
+
+.memo_block {
+	height: 24sp;
+}
+
+.memo_block img {
+        height: 25px;
+        margin-top: 11%;
+        margin-left: 2.5%;
+        background-image: url(arrow.png);
+    }
+
+.parameter_grid TextView {
+    color: #e6891b;
+    width: 50%;
+    height: 100%;
+    dock-align: left;
+    font: 36% arial;
+    margin-left: 3.5%;
+    padding-top: 30%;
+}
+
+.disableItem {
+	color: #000000;
+    width: 50%;
+    height: 100%;
+    dock-align: left;
+    font: 36% arial;
+    margin-left: 3.5%;
+    padding-top: 30%;
+}
+
+.main_row_custname{
+	width: 100%;
+    height: 54%;
+    white-space: normal;
+    font: 40% Arial;
+    margin-top: 0%;
+
+
+}
+
+.main_row_contact{
+    width: 50%;
+    height: 25%;
+    white-space: normal;
+    font: 90% Arial;
+    margin-top: 0%;
+
+
+}
+
+.main_row_phone{
+    width: 50%;
+    height: 20%;
+    white-space: normal;
+    font: 90% Arial;
+    margin-top: 10%;
+}
+
+/*.main_row {
+    width: 100%;
+    height: 40%;
+    white-space: normal;
+    font: 60% Arial;
+    margin-top: 10%;
+}*/
+
+.memo_block vl description_row{
+	font: 80% Arial;
+	height: 18%;
+	width: 100%;
+
+
+}
+
+.memo_block vl main_row {
+   	font: 40% Arial;
+        }
+
+.requestTextBox {
+	width: 87%;
+}
+
+.main_row_addr {
+    width: 100%;
+    height: 50%;
+    white-space: normal;
+    font: 40% Arial;
+    margin-top: 0%;
+}
+
+.main_row_reqtext{
+	width: 100%;
+    height: 75%;
+    white-space: normal;
+    font: 21% Arial;
+    margin-top: 0%;
+}
+
+.main_row_reqtext_edit{
+	width: 100%;
+    height: 75%;
+    white-space: normal;
+    font: 21% Arial;
+    margin-top: 0%;
+    color: #e6891b;
+}
+
+.main_row_metro_edit{
+	width: 100%;
+    height: 75%;
+    white-space: normal;
+    font: 35% Arial;
+    margin-top: 0%;
+    color: #e6891b;
+}
+
+.main_row_metro_disabled{
+    width: 100%;
+    height: 75%;
+    white-space: normal;
+    font: 35% Arial;
+    margin-top: 0%;
+    color: #000000;
+}
+
+.phone_numbrs {
+    width: 100%;
+    height: 50%;
+    white-space: normal;
+    font: 40% Arial;
+    margin-top: 0%;
+}
+
+.btn_left_footer
+{
+width: 40%;
+height: 100%;
+dock-align: left;
+}
+
+	.btn_left_footer TextView {
+            width: 100%;
+            height: 100%;
+            margin-left: 0%;
+            padding-top: 25%;
+            text-align: center;
+            color: #b96f18;
+            font: 38% Arial;
+        }
+
+.btn_right_footer
+{
+width: 40%;
+height: 100%;
+dock-align: right;
+}
+
+	.btn_right_footer TextView {
+            width: 100%;
+            height: 100%;
+            margin-left: 0%;
+            padding-top: 25%;
+            text-align: center;
+            color: #b96f18;
+            font: 38% Arial;
+        }
+
+.vlmanager {
+        width: 100%;
+        height: 100%;
+        padding-top: 11%;
+        padding-left: 5%;
+    }
+
+
+.main_row_manager{
+	width: 100%;
+    height: 54%;
+    white-space: normal;
+    font: 45% Arial;
+    margin-top: -5%;
+}
+
+.long_value {
+    width: 100%;
+    height: 100%;
+    white-space: normal;
+    margin-right: 4%;
+    font: 28% Arial;
+    color: #8e8e93;
+    dock-align: right;
+    text-align: right;
+}
+
+.infoPlaceWithPhone {
+    margin-left: -3%;
+    width: 80%;
+    }
+
+.phone {
+    width: 3.5mm;
+    height: 3.5mm;
+    margin-top: 37%;
+    margin-right: 3mm;
+    dock-align: right;
+}
+
+.phone vl{
+    background-image: url(phone.png);
+    height: 0%;
+    width: 100%;
+    vertical-align: central;
+}
+
+
+
+.iphone {
+    height: 100%;
+    width: 100%;
+    background-image: url(phone.png);
+}
+
+.phoneBox{
+    height: 73%;
+    width: 18%;
+    margin-top: 15%;
+    margin-bottom: 13%;
+    margin-right: 2.5%;
+    margin-left: 0%;
+}
+
+.description_row_contact {
+    width: 50%;
+    height: 23%;
+    white-space: normal;
+    font: 80% Arial;
+    color: #8e8e93;
+}
+
+.description_row {
+    height: 40%;
+    font: 42% Arial;
+
+}
+
+.top_navigator {
+    height: 6.7mm;
+    dock-align: top;
+    background-color: #ffffff;
+    padding-right: 16.3mm;
+}
