@@ -85,7 +85,7 @@
 
               <c:HorizontalLayout CssClass="grid" >
 
-              <c:TextView Text="$eventsToDay.StartTime" CssClass="bl_description_row"></c:TextView>
+              <c:TextView Text="$ConvertEmptyDate($eventsToDay.StartTime)" CssClass="bl_description_row"></c:TextView>
 
               <c:TextView Text="$eventsToDay.Address" CssClass="description_row"></c:TextView>
               </c:HorizontalLayout>
@@ -151,7 +151,7 @@
 
                 <c:HorizontalLayout CssClass="grid" >
 
-	              <c:TextView Text="$allEventsItem.StartTime" CssClass="bl_description_row"></c:TextView>
+	              <c:TextView Text="$ConvertEmptyDate($allEventsItem.StartTime)" CssClass="bl_description_row"></c:TextView>
 
 	              <c:TextView Text="$allEventsItem.Address" CssClass="description_row"></c:TextView>
 				        </c:HorizontalLayout>
