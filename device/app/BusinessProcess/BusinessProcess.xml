@@ -28,6 +28,7 @@
     </bp:Step>
 
 
+
   </bp:Workflow>
 
    <bp:Workflow Name="Event" Controller="Events\event.js">
@@ -36,10 +37,15 @@
            <bp:Action Name="tasks" NextStep="tasks"></bp:Action>
            <bp:Action Name="ShowContacts" NextStep="contacts" />
            <bp:Action Name="Map" NextStep="Map" />
+           <bp:Action Name="fullText" NextStep="fullText" />
         </bp:Step>
         <bp:Step Name="contacts" Screen="Client\contacts.xml" Controller="Client\contacts.js">
 
         </bp:Step>
+
+        <bp:Step Name="fullText" Screen="Common\fulltext.xml" Controller="Common\fulltext.js">
+        </bp:Step>
+
          <bp:Step Name="tasks" Screen="Events\tasks.xml" Controller="Events\tasks.js">
             <bp:Action Name="Total" NextStep="Total"></bp:Action>
             <bp:Action Name="task" NextStep="task"></bp:Action>
@@ -47,6 +53,7 @@
 
         <bp:Step Name="task" Screen="Events\task.xml" Controller="Events\tasks.js">
             <bp:Action Name="Forward" NextStep="tasks" />
+            <bp:Action Name="fullText" NextStep="fullText" />
         </bp:Step>
 
         <bp:Step Name="Total" Screen="Events\total.xml" Controller="Events\total.js">

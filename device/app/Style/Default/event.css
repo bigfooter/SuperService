@@ -9,6 +9,14 @@
         background-image: url(arrow.png);
     }
 
+.arrow {
+		    height: 1.9mm;
+		    width: 1.3mm;
+		    margin-top: 16%;
+		    dock-align: right;
+		    margin-right: 2.4mm;
+		    background-image: url(arrow.png);
+		}
 
 .coord {
 	  width: 10.3mm;

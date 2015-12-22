@@ -58,12 +58,13 @@
 			</c:HorizontalLayout>
 			<c:HorizontalLine />
 
-			<c:HorizontalLayout CssClass="grid">
+			<c:DockLayout CssClass="grid" OnClickAction="$DoAction(fullText,	#Terget#, $task.Terget)">
+				<c:Image />
 				<c:VerticalLayout>
 					<c:TextView Text="#Terget#" CssClass="description_row"></c:TextView>
 					<c:TextView Text="$task.Terget" CssClass="main_row" />
 				</c:VerticalLayout>
-			</c:HorizontalLayout>
+			</c:DockLayout>
 			<c:HorizontalLine />
 
 			<c:HorizontalLayout CssClass="memo_block">

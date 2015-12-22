@@ -56,7 +56,8 @@
 
 		<c:HorizontalLine/>
 
-				<c:DockLayout CssClass="grid">
+				<c:DockLayout CssClass="grid" OnClickAction="$DoAction(fullText,	#address#, $event.Client.Address)">
+				<c:Image CssClass="arrow"/>
 				<c:VerticalLayout>
 				  <c:TextView Text="#address#" CssClass="description_row"></c:TextView>
 				  <c:TextView Id="Address" Text="$event.Client.Address" CssClass="main_row"></c:TextView>
@@ -101,12 +102,13 @@
 	  </c:HorizontalLayout>
 
 	  <c:HorizontalLine/>
-	  <c:HorizontalLayout CssClass="grid">
-		<c:VerticalLayout>
-		  <c:TextView Text="#eventComment#" CssClass="description_row"></c:TextView>
-		  <c:TextView Id="eventComment" Text="$event.Comment" CssClass="main_row"></c:TextView>
-		</c:VerticalLayout>
-	  </c:HorizontalLayout>
+	  <c:DockLayout CssClass="grid" OnClickAction="$DoAction(fullText,	#eventComment#, $event.Comment)">
+			<c:Image CssClass="arrow"/>	
+			<c:VerticalLayout>
+			  <c:TextView Text="#eventComment#" CssClass="description_row"></c:TextView>
+			  <c:TextView Id="eventComment" Text="$event.Comment" CssClass="main_row"></c:TextView>
+			</c:VerticalLayout>
+	  </c:DockLayout>
 
 
 
