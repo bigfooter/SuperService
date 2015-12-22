@@ -116,12 +116,11 @@ function SetListType() {
 }
 
 function ConvertEmptyDate(date) {
-	Dialog.Debug(date);
 	if (date == "01.01 00:00") {
 		return Translate["#NoDate#"];
 	} else {
 		return date;
-	}	
+	}
 }
 
 function ChangeListAndRefresh(control) {

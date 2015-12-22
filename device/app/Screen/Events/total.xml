@@ -17,20 +17,18 @@
       </c:HorizontalLayout>
     </c:DockLayout>
 
-    <c:DockLayout CssClass="footer" OnClickAction="$createReminder($param1)">
-    <c:HorizontalLine/>
-    <c:DockLayout CssClass="btn_bottom_footer">
-			<c:TextView Text="#send#" />
-		</c:DockLayout>
-	</c:DockLayout>
-
-
-
     <c:ScrollView>
+    <c:HorizontalLine/>
+    <c:HorizontalLayout CssClass="memo_block">
+       <c:VerticalLayout>
+         <c:TextView Text="#ExecutiveComment#" CssClass="description_row"></c:TextView>
+         <c:MemoEdit Id="ExecutiveComment" Text="$param1.CommentContractor" CssClass="main_row" OnLostFocus="$SetExecutiveComment($param1)"></c:MemoEdit>
+       </c:VerticalLayout>
+   </c:HorizontalLayout>
+   <c:HorizontalLine/>
 
 	<c:DockLayout CssClass="gameBox">
 	<c:HorizontalLayout CssClass="buttonBox">
-		<!--  <s:If Test="$isProgress($requestId.Status)"> -->
 			<c:VerticalLayout CssClass="buttonBlock" OnClick="$isHungry()">
 				<c:Image Id="HungryImageFalse" CssClass="iconFalseMoney"/>
 				<c:Image Id="HungryImageTrue" CssClass="iconTrueMoney" Visible="false"/>
@@ -41,21 +39,6 @@
 				<c:Image Id="AngryImageFalse" CssClass="iconFalseFace"/>
 				<c:Image Id="AngryImageTrue" CssClass="iconTrueFace" Visible="false"/>
 			</c:VerticalLayout>
-		<!-- </s:If> -->
-
-		<!--<s:Else>
-			<c:VerticalLayout CssClass="buttonBlock">
-				<c:Image Id="HungryImageFalse" CssClass="iconFalseMoney"/>
-				<c:Image Id="HungryImageTrue" CssClass="iconTrueMoney" Visible="false"/>
-			</c:VerticalLayout>
-
-
-			<c:VerticalLayout CssClass="buttonBlock">
-				<c:Image Id="AngryImageFalse" CssClass="iconFalseFace"/>
-				<c:Image Id="AngryImageTrue" CssClass="iconTrueFace" Visible="false"/>
-			</c:VerticalLayout>
-
-		</s:Else> -->
 	</c:HorizontalLayout>
 	</c:DockLayout>
 
@@ -73,9 +56,12 @@
     </c:HorizontalLayout>
     <c:HorizontalLine/>
 
-
-
-
+      <c:DockLayout CssClass="footer" OnClickAction="$createReminder($param1)">
+        <c:HorizontalLine/>
+        <c:DockLayout CssClass="btn_bottom_footer">
+    			<c:TextView Text="#send#" />
+    		</c:DockLayout>
+  	  </c:DockLayout>
     </c:ScrollView>
 
   </c:DockLayout>

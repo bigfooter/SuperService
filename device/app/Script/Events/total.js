@@ -18,8 +18,6 @@ function isHungry(sender){
 
 }
 
-
-
 function isAngry(sender){
 
 	if ($.AngryImageFalse.Visible == true){
@@ -94,9 +92,26 @@ function askCommit(sender, event){
 
 
 function CommitEvent(state, args){
+	if (StrLen($.ExecutiveComment.Text) > 500) {
+		Dialog.Message(Translate["#ToLongText500#"] +  StrLen($.ExecutiveComment.Text));
+		return;
+	}
+
 	obj = state.GetObject();
 	obj.Status = DB.Current.Constant.StatusyEvents.Done;
+	obj.CommentContractor = $.ExecutiveComment.Text;
 	obj.ActualEndDate = DateTime.Now;
 	obj.Save();
 	Workflow.Commit();
+}
+
+function SetExecutiveComment(sender, ref) {
+	if (StrLen($.ExecutiveComment.Text) <= 500){
+		obj = ref.GetObject();
+		obj.CommentContractor = $.ExecutiveComment.Text;
+		obj.Save();
+	} else {
+		Dialog.Message(Translate["#ToLongText500#"] + StrLen($.ExecutiveComment.Text));
+	}
+
 }
