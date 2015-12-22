@@ -86,12 +86,18 @@
 			</c:DockLayout>
 			<c:HorizontalLine />
 
+		<c:HorizontalLayout CssClass="grid">
+			<c:VerticalLayout>
+			  <c:TextView Text="#OrderNum#" CssClass="description_row"></c:TextView>
+			  <c:TextView Id="OrderNum" Text="$event.Number" CssClass="main_row"></c:TextView>
+			</c:VerticalLayout>
+	  </c:HorizontalLayout>
+		<c:HorizontalLine />
 	  <c:HorizontalLayout CssClass="grid">
-
-		<c:VerticalLayout>
-		  <c:TextView Text="#Author#" CssClass="description_row"></c:TextView>
-		  <c:TextView Id="eventAuthor" Text="$event.Author.Description" CssClass="main_row"></c:TextView>
-		</c:VerticalLayout>
+			<c:VerticalLayout>
+			  <c:TextView Text="#Author#" CssClass="description_row"></c:TextView>
+			  <c:TextView Id="eventAuthor" Text="$event.Author.Description" CssClass="main_row"></c:TextView>
+			</c:VerticalLayout>
 	  </c:HorizontalLayout>
 
 	  <c:HorizontalLine/>
