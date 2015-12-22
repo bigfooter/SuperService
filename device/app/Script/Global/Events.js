@@ -22,6 +22,8 @@ function OnWorkflowStart(name) {
         $.AddGlobal("onGPS", true)
      }
     }
+
+
 }
 
 function OnApplicationBackground(workflow) {
@@ -41,7 +43,12 @@ function OnWorkflowForwarding(workflowName, lastStep, nextStep, parameters) {
     $.Remove("onGPS");
   }
 
-
+  if (nextStep == "Total"){
+    GPS.StartTracking(-1);
+    if($.Exists("onGPS")){
+       $.AddGlobal("onGPS", true);
+  }
+ }
 
   if (nextStep == "Main" && workflowName == "Event"){
     GPS.StartTracking(-1);
@@ -59,10 +66,20 @@ function OnWorkflowBack(workflow, lastStep, nextStep) {
       $.AddGlobal("onGPS", true);
     }
   }
+
+  if (nextStep == "tasks" && workflow == "Event"){
+    GPS.StopTracking();
+    $.Remove("onGPS");
+  }
 }
 
 function OnWorkflowFinished(workflow, reason) {
     if (reason == "rollback") {
+      GPS.StopTracking();
+      $.Remove("onGPS");
+    }
+
+    if (reason == "commit") {
       GPS.StopTracking();
       $.Remove("onGPS");
     }

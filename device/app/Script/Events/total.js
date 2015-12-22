@@ -96,13 +96,38 @@ function CommitEvent(state, args){
 		Dialog.Message(Translate["#ToLongText500#"] +  StrLen($.ExecutiveComment.Text));
 		return;
 	}
+	var location = GPS.CurrentLocation;
+	if(ActualLocation(location)) {
+		SaveEvent(state, location);
+		Workflow.Commit();
+	} else {
+		Dialog.Choose(Translate["#noVisitCoordinats#"], [[1, Translate["#Yes#"]],[0, Translate["#No#"]], [2, Translate["#TryAgain#"]]], NoCoordinatVariats, event);
+	}
+}
 
-	obj = state.GetObject();
+function NoCoordinatVariats(state, args){
+	if (args.Result == 1){
+		SaveEvent(state, undefined);
+	}
+
+	if (args.Result == 2){
+		CommitEvent(state, args);
+	}
+
+
+}
+
+function SaveEvent(ref, loc){
+	obj = ref.GetObject();
 	obj.Status = DB.Current.Constant.StatusyEvents.Done;
 	obj.CommentContractor = $.ExecutiveComment.Text;
 	obj.ActualEndDate = DateTime.Now;
+	if (loc != undefined){
+		obj.Latitude = location.Latitude;
+		obj.Longitude = location.Longitude;
+		obj.GPSTime = location.Time;
+	}
 	obj.Save();
-	Workflow.Commit();
 }
 
 function SetExecutiveComment(sender, ref) {
