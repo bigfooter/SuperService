@@ -4,6 +4,10 @@ function OnLoad(){
 
 }
 
+function GetEqParams(eqRef) {
+  var q = new Query("");
+}
+
 function getDetails(eq){
   $.DescEQ.Text = eq.Description;
   $.SN.Text = eq.SerialNumber;

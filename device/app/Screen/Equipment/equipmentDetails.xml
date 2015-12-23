@@ -33,16 +33,18 @@
    <c:Image/>
    </c:HorizontalLayout>
 
+<s:Iterator Id="eqParams" Value="$GetEqParams()">
   <c:HorizontalLine/>
 
   <c:HorizontalLayout CssClass="grid">
 
   <c:VerticalLayout>
     <c:TextView Text="#serialNum#" CssClass="description_row"></c:TextView>
-    <c:TextView Id="SN" CssClass="main_row_custname"></c:TextView>
+    <c:TextView Id="SN" CssClass="main_row"></c:TextView>
   </c:VerticalLayout>
-  <c:Image/>
+
   </c:HorizontalLayout>
+</s:Iterator>
 <c:HorizontalLine/>
   <c:HorizontalLayout CssClass="grid">
 
