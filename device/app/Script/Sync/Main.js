@@ -54,7 +54,7 @@ function SyncData() {
 	  $.dataSyncReport.Visible = true;
 	  $.dataSyncError.Visible = false;
 	  $.buttonSendLog.Visible = false;
-
+		Global.SetMobileSettings();
 	 } else {
 	  $.dataSyncError.Text = Translate["#error#"] + ": " + date + at + time;
 	  $.dataSyncError.Visible = true;

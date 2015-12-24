@@ -5,13 +5,14 @@ function OnLoad(){
 }
 
 function GetEqParams(eqRef) {
+  Dialog.Debug(TypeOf(parseInt("")));
   var q = new Query("SELECT CEO.Description AS Parameter, CEP.Val Val, ETDP.Name AS Type " +
   "FROM Catalog_Equipment_Parameters CEP " +
   "LEFT JOIN Catalog_EquipmentOptions CEO " +
   "ON CEP.Parameter = CEO.Id  " +
   "LEFT JOIN Enum_TypesDataParameters ETDP " +
-  "ON CEO.DataTypeParameter = ETDP.ID "
-  "WHERE CEO.DisplayingBMA == 1 AND CEP.Ref = @eqRef");
+  "ON CEO.DataTypeParameter = ETDP.ID " +
+  "WHERE CEO.DisplayingBMA = 1 AND CEP.Ref = @eqRef");
 
   q.AddParameter("eqRef", eqRef);
 

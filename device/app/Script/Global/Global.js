@@ -41,3 +41,26 @@ function GenerateGuid() {
 function S4() {
 	return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
 }
+
+function SetMobileSettings(){
+  if ($.Exists("MobileSettings"))
+      $.Remove("MobileSettings");
+
+  $.AddGlobal("MobileSettings", new Dictionary);
+
+  var solVersion  = new Query("SELECT Value FROM ___SolutionInfo WHERE key='version'");
+  $.MobileSettings.Add("solVersion", solVersion.ExecuteScalar());
+  var UsedEquipment = new Query("SELECT LogicValue FROM Catalog_SettingMobileApplication WHERE Description = 'UsedEquipment'");
+  $.MobileSettings.Add("UsedEquipment", UsedEquipment.ExecuteScalar());
+  var PictureSize = new Query("SELECT NumericValue FROM Catalog_SettingMobileApplication WHERE Description = 'PictureSize'");
+  var resPS = PictureSize.ExecuteScalar();
+  if (isNaN(parseInt(resPS))){
+    $.MobileSettings.Add("PictureSize", 300);
+  } else {
+    if (parseInt(resPS)> 0) {
+        $.MobileSettings.Add("PictureSize", parseInt(PictureSize.ExecuteScalar()));
+    } else {
+        $.MobileSettings.Add("PictureSize", 300);
+    }
+  }
+}
