@@ -22,7 +22,7 @@
 		<c:Image/>
 		<c:VerticalLayout>
 		  <c:TextView Text="$Eq.Description" CssClass="main_row"></c:TextView>
-		  <c:TextView Text="$Eq.SerialNumber" CssClass="main_row"></c:TextView>
+		  <!--<c:TextView Text="$Eq.SerialNumber" CssClass="main_row"></c:TextView> -->
 		</c:VerticalLayout>
 
 	  </c:DockLayout>

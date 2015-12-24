@@ -50,7 +50,7 @@ function CompleteTheTask(itask, event) {
 }
 
 function checkCommentLength(sender){
-	if (StrLen(sender.Text) > 250){
+	if (StrLen(sender.Text) > 1000){
 	sender.Text = Left(sender.Text, StrLen(sender.Text) - 1);
 	}
 }
