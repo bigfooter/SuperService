@@ -136,7 +136,10 @@ function actionDoSelect(p){
 
 function AddSnapshot(sender, objectRef, eqRef) { // optional: title, path
 		var listChoice = new List;
-		listChoice.Add([0, Translate["#addFromGallery#"]]);
+		if ($.MobileSettings.AllowGalery) {
+			listChoice.Add([0, Translate["#addFromGallery#"]]);
+		}
+		//listChoice.Add([0, Translate["#addFromGallery#"]]);
 		listChoice.Add([1, Translate["#makeSnapshot#"]]);
 
 		Dialog.Choose(Translate["#snapshot#"], listChoice, AddSnapshotHandler, [objectRef,eqRef]);

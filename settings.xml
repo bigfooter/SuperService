@@ -2,10 +2,10 @@
 <configuration>
  <resource>
 
- <version version="1.0.0.39"></version>
+ <version version="1.0.0.40"></version>
 
  </resource>
  <client>
-  <supportedCore version="2.4.8.120" />
+  <supportedCore version="2.5.3.120" />
  </client>
 </configuration>
