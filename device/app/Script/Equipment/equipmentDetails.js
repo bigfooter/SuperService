@@ -3,9 +3,21 @@ function OnLoad(){
   getDetails($.param1);
 
 }
+// # Begin Parameters
+function SnapshotExists(filePath) {
+	return FileSystem.Exists(filePath);
+}
+
+function GetSnapShotPath(fileName) {
+  var q = new Query("SELECT FullFileName" +
+                    " FROM Catalog_Equipment_Files" +
+                    " WHERE FileName == @fn");
+
+  q.AddParameter("fn", fileName);
+  return q.ExecuteScalar();
+}
 
 function GetEqParams(eqRef) {
-  Dialog.Debug(TypeOf(parseInt("")));
   var q = new Query("SELECT CEO.Description AS Parameter, CEP.Val Val, ETDP.Name AS Type " +
   "FROM Catalog_Equipment_Parameters CEP " +
   "LEFT JOIN Catalog_EquipmentOptions CEO " +
@@ -15,9 +27,10 @@ function GetEqParams(eqRef) {
   "WHERE CEO.DisplayingBMA = 1 AND CEP.Ref = @eqRef");
 
   q.AddParameter("eqRef", eqRef);
-
   return q.Execute();
 }
+
+// # End Parameters
 
 function getDetails(eq){
   $.DescEQ.Text = eq.Description;

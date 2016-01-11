@@ -255,7 +255,6 @@ function SnapshotExists(event, eq, pictId) {
 		var fileFound = !String.IsNullOrEmpty(filename);
 		var fileExists = (fileFound ? FileSystem.Exists(GetPrivateImagePath(event, pictId, ".jpg")) : false);
 		return fileFound && fileExists;
-
 }
 
 function SnapshotActions(sender, objectRef, eqRef, pictId) { // optional: title, path
