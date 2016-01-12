@@ -15,6 +15,35 @@ function DoActionAndSave(step, req, cust, outlet) {
 
 }
 
+// # Begin Parameters
+function SnapshotExists(filePath) {
+	return FileSystem.Exists(filePath);
+}
+
+function GetSnapShotPath(fileName) {
+  var q = new Query("SELECT FullFileName" +
+                    " FROM Catalog_Client_Files" +
+                    " WHERE FileName == @fn");
+
+  q.AddParameter("fn", fileName);
+  return q.ExecuteScalar();
+}
+
+function GetCustParams(custRef) {
+  var q = new Query("SELECT CCO.Description AS Parameter, CCP.Val AS Val, ETDP.Name AS Type " +
+  "FROM Catalog_Client_Parameters CCP " +
+  "LEFT JOIN Catalog_ClientOptions CCO " +
+  "ON CCP.Parameter = CCO.Id  " +
+  "LEFT JOIN Enum_TypesDataParameters ETDP " +
+  "ON CCO.DataTypeParameter = ETDP.ID " +
+  "WHERE CCO.DisplayingBMA = 1 AND CCP.Ref = @custRef");
+
+  q.AddParameter("custRef", custRef);
+  return q.Execute();
+}
+
+// # End Parameters
+
 function GetClientDetails() {
 	var client = Vars.getClient();
 

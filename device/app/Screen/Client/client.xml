@@ -55,6 +55,41 @@
       </c:DockLayout>
     </s:Else>
 
+    <s:Iterator Id="Params" Value="$GetCustParams($clientRef)">
+
+
+      <s:If Test="$Params.Type == 'Snapshot'">
+        <s:Push Id="snapshotPath" Value="$GetSnapShotPath($Params.Val)" />
+        <c:DockLayout CssClass="snapshot_grid">
+            <c:TextView Text="$Params.Parameter" />
+        </c:DockLayout>
+              <c:SwipeHorizontalLayout Id="snapshotLayout" CssClass="carousel" Alignment="Center">
+                      <s:If Test="$SnapshotExists($snapshotPath)">
+                        <c:VerticalLayout>
+                          <c:Image Source="$snapshotPath" />
+                        </c:VerticalLayout>
+                      </s:If>
+                      <s:Else>
+                        <c:VerticalLayout CssClass="no_image">
+                          <c:Image />
+                          <c:TextView Text="#imageNotAvailable#" CssClass="text"></c:TextView>
+                        </c:VerticalLayout>
+                      </s:Else>
+              </c:SwipeHorizontalLayout>
+              <c:HorizontalLine />
+
+      </s:If>
+      <s:Else>
+          <c:HorizontalLine/>
+          <c:HorizontalLayout CssClass="grid">
+          <c:VerticalLayout>
+            <c:TextView Text="$Params.Parameter" CssClass="description_row"></c:TextView>
+            <c:TextView Text="$Params.Val"  CssClass="main_row"></c:TextView>
+          </c:VerticalLayout>
+          </c:HorizontalLayout>
+      </s:Else>
+    </s:Iterator>
+
 
 	</c:ScrollView>
 </c:DockLayout>
