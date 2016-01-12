@@ -7,6 +7,36 @@ function DoActionAndSave(step, req, cust, outlet) {
 
 }
 
+// # Begin Parameters
+function SnapshotExists(filePath) {
+	return FileSystem.Exists(filePath);
+}
+
+function GetSnapShotPath(fileName) {
+  var q = new Query("SELECT FullFileName" +
+                    " FROM Document_Event_Files" +
+                    " WHERE FileName == @fn");
+
+  q.AddParameter("fn", fileName);
+  return q.ExecuteScalar();
+}
+
+function GetEventParams(custRef) {
+  var q = new Query("SELECT CEO.Description AS Parameter, DEP.Val AS Val, ETDP.Name AS Type " +
+  "FROM Document_Event_Parameters DEP " +
+  "LEFT JOIN Catalog_EventOptions CEO " +
+  "ON DEP.Parameter = CEO.Id  " +
+  "LEFT JOIN Enum_TypesDataParameters ETDP " +
+  "ON CEO.DataTypeParameter = ETDP.ID " +
+  "WHERE CEO.DisplayingBMA = 1 AND DEP.Ref = @custRef");
+
+  q.AddParameter("custRef", custRef);
+  return q.Execute();
+}
+
+// # End Parameters
+
+
 function GetEventDetails() {
 	return Vars.getEvent();
 }
