@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<c:Screen xmlns:c="BitMobile.Controls" xmlns:s="BitMobile.ValueStack" StyleSheet="photoView.css">
+
+	<s:Push Id="caption" Value="$param1"></s:Push>
+	<s:Push Id="source" Value="$param2"/>
+
+
+	<c:DockLayout>
+
+		<c:DockLayout CssClass="top_navigator">
+			<c:DockLayout Id="btnBack" CssClass="btn_back" OnEvent="Back" OnClickAction="$DoBack()">
+				<c:Image />
+				<c:TextView Text="#back#" />
+			</c:DockLayout>
+			<c:DockLayout CssClass="btn_forward"></c:DockLayout>
+			<c:HorizontalLayout>
+				<c:TextView Text="$caption" />
+			</c:HorizontalLayout>
+		</c:DockLayout>
+
+
+			<c:ScrollView CssClass="image_output" >
+				<c:Image Source="$source"/>
+			</c:ScrollView>
+
+	</c:DockLayout>
+
+</c:Screen>

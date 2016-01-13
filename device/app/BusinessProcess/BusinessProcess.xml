@@ -38,7 +38,11 @@
            <bp:Action Name="ShowContacts" NextStep="contacts" />
            <bp:Action Name="Map" NextStep="Map" />
            <bp:Action Name="fullText" NextStep="fullText" />
+           <bp:Action Name="photoView" NextStep="photoView" />
         </bp:Step>
+
+        <bp:Step Name="photoView" Screen="Common\photoView.xml" Controller="Common\photoView.js"></bp:Step>
+
         <bp:Step Name="contacts" Screen="Client\contacts.xml" Controller="Client\contacts.js">
 
         </bp:Step>
@@ -66,7 +70,8 @@
 
         <bp:Step Name="equipmentDetails" Screen="Equipment\equipmentDetails.xml" Controller="Equipment\equipmentDetails.js">
           <bp:Action Name="eqHistory" NextStep="eqHistory"></bp:Action>
-        </bp:Step>
+          <bp:Action Name="photoView" NextStep="photoView" />
+       </bp:Step>
 
         <bp:Step Name="eqHistory" Screen="Equipment\eqHistory.xml" Controller="Equipment\eqHistory.js">
         </bp:Step>
@@ -123,7 +128,10 @@
            <bp:Action Name="ShowContacts" NextStep="contacts" />
            <bp:Action Name="Equipment" NextStep="Equipment"></bp:Action>
            <bp:Action Name="Map" NextStep="Map" />
+           <bp:Action Name="photoView" NextStep="photoView" />
     </bp:Step>
+
+    <bp:Step Name="photoView" Screen="Common\photoView.xml" Controller="Common\photoView.js"></bp:Step>
     <bp:Step Name="contacts" Screen="Client\contacts.xml" Controller="Client\contacts.js">
 
     </bp:Step>
@@ -134,8 +142,8 @@
 
     <bp:Step Name="equipmentDetails" Screen="Equipment\equipmentDetails.xml" Controller="Equipment\equipmentDetails.js">
       <bp:Action Name="eqHistory" NextStep="eqHistory"></bp:Action>
-    </bp:Step>
-
+      <bp:Action Name="photoView" NextStep="photoView" />
+  </bp:Step>
     <bp:Step Name="eqHistory" Screen="Equipment\eqHistory.xml" Controller="Equipment\eqHistory.js">
     </bp:Step>
 

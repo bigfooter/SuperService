@@ -43,7 +43,7 @@
     </c:DockLayout>
           <c:SwipeHorizontalLayout Id="snapshotLayout" CssClass="carousel" Alignment="Center">
                   <s:If Test="$SnapshotExists($snapshotPath)">
-                    <c:VerticalLayout>
+                    <c:VerticalLayout OnClickAction="$DoAction(photoView, $eqParams.Parameter, $snapshotPath)">
                       <c:Image Source="$snapshotPath" />
                     </c:VerticalLayout>
                   </s:If>
