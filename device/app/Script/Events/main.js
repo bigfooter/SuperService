@@ -139,7 +139,7 @@ function GetTodaysActiveTask() {
 		" FROM Document_Event DE LEFT JOIN Catalog_Client CC ON DE.Client = CC.Id" +
 		" LEFT JOIN Enum_StatusImportance ESI ON DE.Importance = ESI.Id" +
 		" WHERE DE.StartDatePlan >= @DateStart " +
-		" AND DE.StartDatePlan <= @DateEnd AND DE.Status = @StatusEx";
+		" AND DE.StartDatePlan < @DateEnd AND DE.Status = @StatusEx";
 
 	if ($.Exists("searchToDay")) {
 		var searchString = $.searchToDay;
@@ -154,7 +154,6 @@ function GetTodaysActiveTask() {
 	q.AddParameter("StatusEx", DB.Current.Constant.StatusyEvents.Appointed);
 	q.AddParameter("DateStart", DateTime.Now.Date);
 	q.AddParameter("DateEnd", DateTime.Now.Date.AddDays(1));
-
 	return q.Execute().Unload();
 }
 
