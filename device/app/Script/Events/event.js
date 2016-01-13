@@ -28,7 +28,8 @@ function GetEventParams(custRef) {
   "ON DEP.Parameter = CEO.Id  " +
   "LEFT JOIN Enum_TypesDataParameters ETDP " +
   "ON CEO.DataTypeParameter = ETDP.ID " +
-  "WHERE CEO.DisplayingBMA = 1 AND DEP.Ref = @custRef");
+  "WHERE CEO.DisplayingBMA = 1 AND DEP.Ref = @custRef " +
+	"ORDER BY DEP.LineNumber");
 
   q.AddParameter("custRef", custRef);
   return q.Execute();

@@ -24,7 +24,8 @@ function GetEqParams(eqRef) {
   "ON CEP.Parameter = CEO.Id  " +
   "LEFT JOIN Enum_TypesDataParameters ETDP " +
   "ON CEO.DataTypeParameter = ETDP.ID " +
-  "WHERE CEO.DisplayingBMA = 1 AND CEP.Ref = @eqRef");
+  "WHERE CEO.DisplayingBMA = 1 AND CEP.Ref = @eqRef " +
+	"ORDER BY CEP.LineNumber");
 
   q.AddParameter("eqRef", eqRef);
   return q.Execute();
