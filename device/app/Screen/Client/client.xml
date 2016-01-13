@@ -60,6 +60,7 @@
 
       <s:If Test="$Params.Type == 'Snapshot'">
         <s:Push Id="snapshotPath" Value="$GetSnapShotPath($Params.Val)" />
+        <c:HorizontalLine />
         <c:DockLayout CssClass="snapshot_grid">
             <c:TextView Text="$Params.Parameter" />
         </c:DockLayout>
@@ -76,7 +77,7 @@
                         </c:VerticalLayout>
                       </s:Else>
               </c:SwipeHorizontalLayout>
-              <c:HorizontalLine />
+
 
       </s:If>
       <s:Else>
@@ -89,7 +90,7 @@
           </c:HorizontalLayout>
       </s:Else>
     </s:Iterator>
-
+    <c:HorizontalLine />
 
 	</c:ScrollView>
 </c:DockLayout>

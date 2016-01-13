@@ -8,9 +8,11 @@ function DoBackAndClean(){
 
 
 function GetAllsActiveContact(ref) {
-	var q = new Query("SELECT CCC.Id, CCC.FIO, CCC.Tel, CCC.Position" +
-		" FROM Catalog_Client_Contact CCC " +
-		"WHERE Ref = @ref");
+	var q = new Query("SELECT CC.Id, CC.Description AS FIO, CC.Tel, CC.Position" +
+		" FROM Catalog_Client_Contacts CCC " +
+		" LEFT JOIN Catalog_Contacts CC" +
+		" ON CCC.Contact = CC.Id" +
+		" WHERE CCC.Actual = 1 AND CCC.Ref = @ref");
 
 	q.AddParameter("ref", ref);
 

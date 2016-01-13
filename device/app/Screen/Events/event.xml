@@ -41,15 +41,15 @@
 	 <c:HorizontalLine/>
 	  <c:DockLayout CssClass="grid">
 						<s:If Test="$PhoneExists($event.Call)">
-							<c:HorizontalLayout CssClass="phone"  OnClickAction="$MoreMakeContactCall($event.Call)">
+							<c:HorizontalLayout CssClass="phone"  OnClickAction="$MoreMakeContactCall($event.ContactVisiting.Tel)">
 								<c:Image CssClass="iphone" />
 							</c:HorizontalLayout>
 						</s:If>
 
 					<c:VerticalLayout>
 					  <c:TextView Text="#mainContact#" CssClass="description_row"></c:TextView>
-					  <c:TextView Text="$event.ContactVisiting" CssClass="main_row"></c:TextView>
-					  <c:TextView Text="$event.Call" CssClass="main_row"></c:TextView>
+					  <c:TextView Text="$event.ContactVisiting.Description" CssClass="main_row"></c:TextView>
+					  <c:TextView Text="$event.ContactVisiting.Tel" CssClass="main_row"></c:TextView>
 					</c:VerticalLayout>
 	  </c:DockLayout>
 
