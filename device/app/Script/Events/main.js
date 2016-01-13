@@ -132,9 +132,14 @@ function ChangeListAndRefresh(control) {
 function GetTodaysActiveTask() {
 	var q = new Query();
 
-	var queryText = "SELECT DE.Id AS Id, CC.Description AS Description, strftime('%d.%m %H:%M', DE.StartDatePlan) AS StartTime, CC.Address AS Address" +
+	var queryText = "SELECT DE.Id AS Id, CC.Description AS Description," +
+		" strftime('%d.%m %H:%M', DE.StartDatePlan) AS StartTime," +
+		" CC.Address AS Address, ESI.Name As Importance," +
+		" CASE WHEN ESI.Name = 'Critical' THEN 1 WHEN ESI.Name = 'High' THEN 2 ELSE 3 END AS ImpRang" +
 		" FROM Document_Event DE LEFT JOIN Catalog_Client CC ON DE.Client = CC.Id" +
-		" WHERE DE.StartDatePlan >= @DateStart AND DE.StartDatePlan <= @DateEnd AND DE.Status = @StatusEx";
+		" LEFT JOIN Enum_StatusImportance ESI ON DE.Importance = ESI.Id" +
+		" WHERE DE.StartDatePlan >= @DateStart " +
+		" AND DE.StartDatePlan <= @DateEnd AND DE.Status = @StatusEx";
 
 	if ($.Exists("searchToDay")) {
 		var searchString = $.searchToDay;
@@ -144,7 +149,7 @@ function GetTodaysActiveTask() {
 			queryText = queryText + searchtail;
 		}
 	}
-	q.Text = queryText;
+	q.Text = queryText + " ORDER BY ImpRang, DE.StartDatePlan";
 	//q.AddParameter("StatusComp", DB.Current.Constant.VisitStatus.Completed);
 	q.AddParameter("StatusEx", DB.Current.Constant.StatusyEvents.Appointed);
 	q.AddParameter("DateStart", DateTime.Now.Date);
@@ -167,9 +172,13 @@ function findinalltext(key){
 
 function GetAllsActiveTask() {
 	var q = new Query();
-	var queryText = "SELECT DE.Id AS Id, CC.Description AS Description, strftime('%d.%m %H:%M', DE.StartDatePlan) AS StartTime, CC.Address AS Address" +
-		" FROM Document_Event DE LEFT JOIN Catalog_Client CC ON DE.Client = CC.Id" +
-		" WHERE DE.Status = @StatusEx";
+	var queryText = "SELECT DE.Id AS Id, CC.Description AS Description," +
+	" strftime('%d.%m %H:%M', DE.StartDatePlan) AS StartTime," +
+	" CC.Address AS Address, ESI.Name As Importance," +
+	" CASE WHEN ESI.Name = 'Critical' THEN 1 WHEN ESI.Name = 'High' THEN 2 ELSE 3 END AS ImpRang" +
+	" FROM Document_Event DE LEFT JOIN Catalog_Client CC ON DE.Client = CC.Id" +
+	" LEFT JOIN Enum_StatusImportance ESI ON DE.Importance = ESI.Id" +
+	" WHERE DE.Status = @StatusEx";
 
 	if ($.Exists("searchAll")) {
 		var searchString = $.searchAll;
@@ -193,7 +202,7 @@ function GetAllsActiveTask() {
 		q.AddParameter("DateEnd", recvStopPeriod);
 		queryText = queryText + stoptail;
 	}
-	q.Text = queryText;
+	q.Text = queryText + " ORDER BY ImpRang, DE.StartDatePlan";
 	//q.AddParameter("StatusComp", DB.Current.Constant.VisitStatus.Completed);
 	q.AddParameter("StatusEx", DB.Current.Constant.StatusyEvents.Appointed);
 	//Dialog.Debug("now");
