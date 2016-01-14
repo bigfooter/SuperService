@@ -49,13 +49,12 @@ function CompleteTheTask(itask, event) {
 		Workflow.Refresh([]);
 }
 
-function checkCommentLength(sender){
-	if (StrLen(sender.Text) > 1000){
-	sender.Text = Left(sender.Text, StrLen(sender.Text) - 1);
-	}
-}
-
 function SaveAndBack(task){
+	if (StrLen($.taskComment.Text) >= 1000) {
+		Dialog.Message(Translate["#ToLongText1000#"] + " " +  StrLen($.taskComment.Text));
+		return;
+	}
+
 	var objtask = task.GetObject();
 	objtask.Comment = $.taskComment.Text;
 	objtask.Save();
@@ -63,6 +62,11 @@ function SaveAndBack(task){
 }
 
 function CompleteTask(sender, task) {
+	if (StrLen($.taskComment.Text) >= 1000) {
+		Dialog.Message(Translate["#ToLongText1000#"] + " " +  StrLen($.taskComment.Text));
+		return;
+	}
+
 	var objtask = task.GetObject();
 	objtask.Result = DB.Current.Constant.ResultEvent.Done;
 	objtask.Comment = $.taskComment.Text;
@@ -71,6 +75,11 @@ function CompleteTask(sender, task) {
 }
 
 function NotDoneTask(sender, task) {
+	if (StrLen($.taskComment.Text) >= 1000) {
+		Dialog.Message(Translate["#ToLongText1000#"] + " " +  StrLen($.taskComment.Text));
+		return;
+	}
+
 	if (!IsNullOrEmpty($.taskComment.Text)){
 		var objtask = task.GetObject();
 		objtask.Result = DB.Current.Constant.ResultEvent.NotDone;

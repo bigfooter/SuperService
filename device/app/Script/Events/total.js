@@ -44,6 +44,11 @@ function checkCommentLength(sender){
 }
 
 function createReminder(event){
+	if (StrLen($.RemindComment.Text) > 1000) {
+		Dialog.Message(Translate["#ToLongText1000#"] +  StrLen($.RemindComment.Text));
+		return;
+	}
+
 	if ($.HungryImageTrue.Visible || $.AngryImageTrue.Visible) {
 
 		if (!IsNullOrEmpty($.RemindComment.Text)){
@@ -92,8 +97,8 @@ function askCommit(sender, event){
 
 
 function CommitEvent(state, args){
-	if (StrLen($.ExecutiveComment.Text) > 500) {
-		Dialog.Message(Translate["#ToLongText500#"] +  StrLen($.ExecutiveComment.Text));
+	if (StrLen($.ExecutiveComment.Text) > 1000) {
+		Dialog.Message(Translate["#ToLongText1000#"] + " " +  StrLen($.ExecutiveComment.Text));
 		return;
 	}
 	var location = GPS.CurrentLocation;

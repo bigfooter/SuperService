@@ -71,7 +71,7 @@
 			<c:HorizontalLayout CssClass="memo_block">
 				<c:VerticalLayout>
 					<c:TextView Text="#comment#" CssClass="description_row"></c:TextView>
-					<c:MemoEdit Id="taskComment" Value="$task.Comment" CssClass="main_row" Placeholder="—" OnChange="$checkCommentLength()"></c:MemoEdit>
+					<c:MemoEdit Id="taskComment" Value="$task.Comment" CssClass="main_row" Placeholder="—"></c:MemoEdit>
 				</c:VerticalLayout>
 			</c:HorizontalLayout>
 			<c:HorizontalLine />
