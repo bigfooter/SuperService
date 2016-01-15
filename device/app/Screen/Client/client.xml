@@ -39,8 +39,8 @@
 		<c:HorizontalLine/>
     <s:If Test="$isEmptyCoordinats($clientRef)">
   	  <c:DockLayout CssClass="grid">
-  		<c:VerticalLayout>
-  		  <c:TextView Text="#address#" CssClass="description_row"></c:TextView>
+  		<c:VerticalLayout OnClickAction="$DoAction(fullText,	#address#, $clientRef.Address)">
+  		  <c:TextView Text="#address#" CssClass="description_row" ></c:TextView>
   		  <c:TextView Id="Address" CssClass="main_row"></c:TextView>
   		</c:VerticalLayout>
   	  </c:DockLayout>
@@ -48,7 +48,7 @@
     <s:Else>
       <c:DockLayout CssClass="grid" OnClickAction="$DoAction(Map, $clientRef)">
           <c:Image CssClass="coord" />
-      <c:VerticalLayout>
+      <c:VerticalLayout OnClickAction="$DoAction(fullText,	#address#, $clientRef.Address)">
         <c:TextView Text="#address#" CssClass="description_row"></c:TextView>
         <c:TextView Id="Address" CssClass="main_row"></c:TextView>
       </c:VerticalLayout>

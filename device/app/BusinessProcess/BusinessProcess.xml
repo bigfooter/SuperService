@@ -129,10 +129,12 @@
            <bp:Action Name="Equipment" NextStep="Equipment"></bp:Action>
            <bp:Action Name="Map" NextStep="Map" />
            <bp:Action Name="photoView" NextStep="photoView" />
+           <bp:Action Name="fullText" NextStep="fullText" />
     </bp:Step>
 
     <bp:Step Name="photoView" Screen="Common\photoView.xml" Controller="Common\photoView.js"></bp:Step>
-    <bp:Step Name="contacts" Screen="Client\contacts.xml" Controller="Client\contacts.js">
+    <bp:Step Name="contacts" Screen="Client\contacts.xml" Controller="Client\contacts.js"></bp:Step>
+    <bp:Step Name="fullText" Screen="Common\fulltext.xml" Controller="Common\fulltext.js">
 
     </bp:Step>
 
