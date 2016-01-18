@@ -40,7 +40,7 @@
 
 	 <c:HorizontalLine/>
 	  <c:DockLayout CssClass="grid">
-						<s:If Test="$PhoneExists($event.Call)">
+						<s:If Test="$PhoneExists($event.ContactVisiting.Tel)">
 							<c:HorizontalLayout CssClass="phone"  OnClickAction="$MoreMakeContactCall($event.ContactVisiting.Tel)">
 								<c:Image CssClass="iphone" />
 							</c:HorizontalLayout>

@@ -82,15 +82,11 @@
           <c:HorizontalLayout CssClass="grid" OnClickAction="$actionDoSelect($eventsToDay.Id)">
             <!-- Begin Importance Incation Block -->
             <s:If Test="$eventsToDay.Importance == 'High'">
-              <c:VerticalLayout CssClass="imp_mark">
-                <c:TextView Text="!" CssClass="impHigh"></c:TextView>
-            </c:VerticalLayout>
+               <c:VerticalLayout CssClass="high_mark"></c:VerticalLayout>
             </s:If>
 
             <s:If Test="$eventsToDay.Importance == 'Critical'">
-              <c:VerticalLayout CssClass="imp_mark">
-                <c:TextView Text="!" CssClass="impCritical"></c:TextView>
-            </c:VerticalLayout>
+              <c:VerticalLayout CssClass="critical_mark"></c:VerticalLayout>
             </s:If>
             <!-- End Importance Incation Block -->
           <c:VerticalLayout>
