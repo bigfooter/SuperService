@@ -39,9 +39,12 @@
            <bp:Action Name="Map" NextStep="Map" />
            <bp:Action Name="fullText" NextStep="fullText" />
            <bp:Action Name="photoView" NextStep="photoView" />
+           <bp:Action Name="checklist" NextStep="checklist" />
         </bp:Step>
 
         <bp:Step Name="photoView" Screen="Common\photoView.xml" Controller="Common\photoView.js"></bp:Step>
+
+        <bp:Step Name="checklist" Screen="Events\CheckList.xml" Controller="Events\CheckList.js"></bp:Step>
 
         <bp:Step Name="contacts" Screen="Client\contacts.xml" Controller="Client\contacts.js">
 
@@ -53,6 +56,7 @@
          <bp:Step Name="tasks" Screen="Events\tasks.xml" Controller="Events\tasks.js">
             <bp:Action Name="Total" NextStep="Total"></bp:Action>
             <bp:Action Name="task" NextStep="task"></bp:Action>
+            <bp:Action Name="checklist" NextStep="checklist" />
         </bp:Step>
 
         <bp:Step Name="task" Screen="Events\task.xml" Controller="Events\tasks.js">

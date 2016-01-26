@@ -7,6 +7,27 @@ function DoActionAndSave(step, req, cust, outlet) {
 
 }
 
+function DoNextStep(param){
+		if ($.MobileSettings.UsedEquipment){
+			DoAction("tasks", param);
+			return;
+		}
+
+		if ($.MobileSettings.UsedCheckLists){
+			var q = new Query("SELECT DEC.Id " +
+		                "FROM Document_Event_CheckList DEC " +
+		                "WHERE DEC.Ref = @event")
+			q.AddParameter("event", param);
+			if (q.ExecuteCount() > 0) {
+				DoAction("checklist", param);
+			} else {
+				DoAction("Total", param);
+			}
+
+			return;
+		}
+}
+
 // # Begin Parameters
 function SnapshotExists(filePath) {
 	return FileSystem.Exists(filePath);

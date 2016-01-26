@@ -21,7 +21,7 @@
          <c:Image/>
         <c:TextView Text="#back#"/>
       </c:HorizontalLayout>
-				<c:HorizontalLayout CssClass="btn_forward" OnEvent="Back" OnClickAction="$DoAction(Total, $event)">
+				<c:HorizontalLayout CssClass="btn_forward" OnEvent="Back" OnClickAction="$DoNextStep($param1)">
 				<c:TextView Text="#next#"/>
 				</c:HorizontalLayout>
       <c:HorizontalLayout>

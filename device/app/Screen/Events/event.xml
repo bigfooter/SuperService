@@ -8,25 +8,34 @@
          <c:Image/>
         <c:TextView Text="#back#"/>
       </c:HorizontalLayout>
-				<c:HorizontalLayout CssClass="btn_forward" OnEvent="Back" OnClickAction="$DoAction(tasks, $event)">
+				<c:HorizontalLayout CssClass="btn_forward" OnEvent="Back" OnClickAction="$DoNextStep($event)"> <!-- $DoAction(tasks, $event) -->
 				<c:TextView Text="#next#"/>
 				</c:HorizontalLayout>
       <c:HorizontalLayout>
         <c:TextView Text="#visit#" />
       </c:HorizontalLayout>
     </c:DockLayout>
+		<s:If Test="$MobileSettings.UsedEquipment">
+			<c:DockLayout CssClass="footer">
+				<c:HorizontalLine/>
+				<c:DockLayout CssClass="btn_left_footer" OnClickAction="$DoAction(ShowContacts, $event.Client)">
+					<c:TextView Text="#contacts#" />
+				</c:DockLayout>
 
-	<c:DockLayout CssClass="footer">
-		<c:HorizontalLine/>
-		<c:DockLayout CssClass="btn_left_footer" OnClickAction="$DoAction(ShowContacts, $event.Client)">
-			<c:TextView Text="#contacts#" />
+				<c:DockLayout CssClass="btn_right_footer" OnClickAction="$DoAction(Equipment, $event.Client)">
+					<c:TextView Text="#devices#" />
+				</c:DockLayout>
+
+			</c:DockLayout>
+	</s:If>
+	<s:Else>
+		<c:DockLayout CssClass="footer">
+			<c:HorizontalLine/>
+			<c:DockLayout CssClass="btn_bottom_footer" OnClickAction="$DoAction(ShowContacts, $event.Client)">
+				<c:TextView Text="#contacts#" />
+			</c:DockLayout>
 		</c:DockLayout>
-
-		<c:DockLayout CssClass="btn_right_footer" OnClickAction="$DoAction(Equipment, $event.Client)">
-			<c:TextView Text="#devices#" />
-		</c:DockLayout>
-
-	</c:DockLayout>
+	</s:Else>
 	<c:ScrollView>
 	 <c:HorizontalLine/>
 	  <c:HorizontalLayout CssClass="grid">

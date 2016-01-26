@@ -3,6 +3,27 @@ function DoBackAndClean(){
 	//DB.Rollback();
 }
 
+function DoNextStep(param){
+		Dialog.Debug($.MobileSettings.UsedCheckLists);
+
+		if ($.MobileSettings.UsedCheckLists){
+			var q = new Query("SELECT DEC.Id " +
+		                "FROM Document_Event_CheckList DEC " +
+		                "WHERE DEC.Ref = @event")
+			q.AddParameter("event", param);
+			var res = q.ExecuteCount();
+			if (res > 0) {
+				DoAction("checklist", param);
+			} else {
+				DoAction("Total", param);
+			}
+
+			return;
+		}
+
+		DoAction("Total", param);
+}
+
 function GetEventDetails() {
 
 	return Vars.getEvent();

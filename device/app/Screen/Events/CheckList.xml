@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<c:Screen xmlns:c="BitMobile.Controls" xmlns:s="BitMobile.ValueStack" StyleSheet="CheckList.css">
+
+	<s:Push Id="event" Value="$param1" />
+	<!--<s:Push Id="visitTask" Value="$param2" />
+	<s:Push Id="event" Value="$param3" />-->
+
+	<c:DockLayout>
+		<c:DockLayout CssClass="top_navigator">
+			<c:HorizontalLayout CssClass="btn_back" OnEvent="Back" OnClickAction="$DoBack()">
+         <c:Image/>
+        <c:TextView Text="#back#"/>
+      </c:HorizontalLayout>
+      <c:HorizontalLayout Id="nextButton" CssClass="btn_forward" Visible="$CanForward($param1)" OnClickAction="$DoAction(Total, $event)">
+      <c:TextView Text="#next#"/>
+      </c:HorizontalLayout>
+			<c:HorizontalLayout>
+				<c:TextView Text="#CheckList#" />
+			</c:HorizontalLayout>
+		</c:DockLayout>
+
+		<c:HorizontalLine />
+
+
+		<c:ScrollView Id="grScrollView">
+    <s:Iterator Id="actions" Value="$GetCheckList($param1)" Status="statusCount">
+    <s:Push Id="index" Value="{$statusCount.Index}"></s:Push>
+
+      <!--Begin String Action -->
+          <s:If Test="$actions.AType == 'String'">
+              <c:DockLayout CssClass="grid">
+                <s:If Test="$actions.Req">
+              		<c:VerticalLayout Id="marker{$index}" CssClass="$getStatusStyle($actions.Result)"></c:VerticalLayout>
+              	</s:If>
+        				<c:VerticalLayout>
+        					<c:TextView Text="$actions.Desc" CssClass="description_row"></c:TextView>
+        					<c:EditText Id="action{$index}" Text="$actions.Result" Placeholder="—" CssClass="main_row" OnLostFocus="$SetStringValue($param1, $actions.Action, $index)"/>
+        				</c:VerticalLayout>
+        			</c:DockLayout>
+        			<c:HorizontalLine />
+          </s:If>
+      <!--End String Action -->
+
+      <!--Begin Integer Action -->
+          <s:If Test="$actions.AType =='Integer'">
+              <c:DockLayout CssClass="grid">
+                <s:If Test="$actions.Req">
+              		<c:VerticalLayout Id="marker{$index}" CssClass="$getStatusStyle($actions.Result)"></c:VerticalLayout>
+              	</s:If>
+        				<c:VerticalLayout>
+        					<c:TextView Text="$actions.Desc" CssClass="description_row"></c:TextView>
+        					<c:EditText Id="action{$index}" Text="$actions.Result" Placeholder="—"  CssClass="main_row"
+                    Keyboard="numeric" OnLostFocus="$SetIntegerValue($param1, $actions.Action, $index)"/>
+        				</c:VerticalLayout>
+        			</c:DockLayout>
+        			<c:HorizontalLine />
+          </s:If>
+      <!--End Integer Action -->
+
+      <!--Begin Decimal Action -->
+          <s:If Test="$actions.AType == 'Decimal'">
+              <c:DockLayout CssClass="grid">
+                <s:If Test="$actions.Req">
+              		<c:VerticalLayout Id="marker{$index}" CssClass="$getStatusStyle($actions.Result)"></c:VerticalLayout>
+              	</s:If>
+        				<c:VerticalLayout>
+        					<c:TextView Text="$actions.Desc" CssClass="description_row"></c:TextView>
+        					<c:EditText Id="action{$index}" Text="$actions.Result" Placeholder="—" CssClass="main_row"
+                    Keyboard="numeric" OnLostFocus="$SetDecimalValue($param1, $actions.Action, $index)"/>
+        				</c:VerticalLayout>
+        			</c:DockLayout>
+        			<c:HorizontalLine />
+          </s:If>
+      <!--End Decimal Action -->
+
+      <!--Begin Boolean Action -->
+          <s:If Test="$actions.AType == 'Boolean'">
+              <c:DockLayout CssClass="grid" OnClickAction="$GetBooleanDialog($param1, action{$index}, $actions.Action, $actions.Desc, $index)">
+                <s:If Test="$actions.Req">
+              		<c:VerticalLayout Id="marker{$index}" CssClass="$getStatusStyle($actions.Result)"></c:VerticalLayout>
+              	</s:If>
+        				<c:VerticalLayout>
+        					<c:TextView Text="$actions.Desc" CssClass="description_row"></c:TextView>
+        					<c:TextView Id="action{$index}" Text="$actions.Result" CssClass="main_row" />
+        				</c:VerticalLayout>
+        			</c:DockLayout>
+        			<c:HorizontalLine />
+          </s:If>
+      <!--End Boolean Action -->
+
+      <!--Begin DateTime Action -->
+          <s:If Test="$actions.AType == 'DateTime'">
+              <c:DockLayout CssClass="grid"  OnClickAction="$GetDateDialog($param1, action{$index}, $actions.Action, $actions.Desc, $actions.Result, $index)">
+                <s:If Test="$actions.Req">
+              		<c:VerticalLayout Id="marker{$index}" CssClass="$getStatusStyle($actions.Result)"></c:VerticalLayout>
+              	</s:If>
+        				<c:VerticalLayout>
+        					<c:TextView Text="$actions.Desc" CssClass="description_row"></c:TextView>
+        					<c:TextView Id="action{$index}" Text="$FormatDate($actions.Result)" CssClass="main_row" />
+        				</c:VerticalLayout>
+        			</c:DockLayout>
+        			<c:HorizontalLine />
+          </s:If>
+      <!--End DateTime Action -->
+
+      <!--Begin ValList Action -->
+          <s:If Test="$actions.AType == 'ValList'">
+              <c:DockLayout CssClass="grid" OnClickAction="$GetValueListDialog($param1, action{$index}, $actions.Action, $actions.Desc, $index)">
+                <s:If Test="$actions.Req">
+              		<c:VerticalLayout Id="marker{$index}" CssClass="$getStatusStyle($actions.Result)"></c:VerticalLayout>
+              	</s:If>
+        				<c:VerticalLayout>
+        					<c:TextView Text="$actions.Desc" CssClass="description_row"></c:TextView>
+        					<c:TextView Id="action{$index}" Text="$actions.Result" CssClass="main_row" />
+        				</c:VerticalLayout>
+        			</c:DockLayout>
+        			<c:HorizontalLine />
+          </s:If>
+      <!--End ValList Action -->
+
+      <!--Begin Snapshot Action -->
+          <s:If Test="$actions.AType == 'Snapshot'">
+                  <c:DockLayout CssClass="snapshot_grid">
+                      <s:If Test="$actions.Req">
+                    		<c:VerticalLayout Id="marker{$index}" CssClass="$getStatusStyle($actions.Result)"></c:VerticalLayout>
+                    	</s:If>
+                      <c:Button Text="#add#" OnClick="$AddSnapshot($param1, $actions.Action, $index)"/>
+                      <c:TextView Text="$actions.Desc" />
+                  </c:DockLayout>
+                  <s:If Test="$isSnapShotInEventExists($actions.Result)">
+
+                        <s:If Test="$SnapshotExists($param1, $actions.Result)">
+                          <c:SwipeHorizontalLayout Id="snapshotLayout" CssClass="carousel" Alignment="Center">
+                              <c:VerticalLayout OnClick="$SnapshotActions($param1, $actions.Action, $actions.Result)"><!-- <c:VerticalLayout OnClickAction="$DoAction(photoView, $eqParams.Parameter, $snapshotPath)"> -->
+                                <c:Image Source="$GetPrivateImage($param1, $actions.Result)" />
+                              </c:VerticalLayout>
+                          </c:SwipeHorizontalLayout>
+                        </s:If>
+
+                  </s:If>
+                  <c:HorizontalLine />
+          </s:If>
+      <!--End Snapshot Action -->
+    </s:Iterator>
+
+
+
+		</c:ScrollView>
+
+
+
+	</c:DockLayout>
+
+</c:Screen>

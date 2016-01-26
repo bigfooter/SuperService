@@ -1,0 +1,34 @@
+.snapshot_grid {
+    height: 13.8mm;
+}
+
+.snapshot_grid TextView {
+    height: 53%;
+}
+
+.snapshot_grid Button{
+  height: 30%;
+  width: 12.7mm;
+
+  font: 60% arial;
+}
+/*
+.top_navigator {
+    height: 6.7mm;
+    dock-align: top;
+    background-color: #ffffff;
+    /padding-right: 16.3mm;
+}*/
+.green_mark {
+  height: 100%;
+  width: 0.5mm;
+  dock-align: left;
+  background-color: #00a86b;
+}
+
+.red_mark {
+  height: 100%;
+  width: 0.5mm;
+  dock-align: left;
+  background-color: #ffc0cb;
+}

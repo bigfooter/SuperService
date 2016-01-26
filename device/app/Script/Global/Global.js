@@ -52,6 +52,8 @@ function SetMobileSettings(){
   $.MobileSettings.Add("solVersion", solVersion.ExecuteScalar());
   var UsedEquipment = new Query("SELECT LogicValue FROM Catalog_SettingMobileApplication WHERE Description = 'UsedEquipment'");
   $.MobileSettings.Add("UsedEquipment", UsedEquipment.ExecuteScalar());
+  var UsedCL = new Query("SELECT LogicValue FROM Catalog_SettingMobileApplication WHERE Description = 'UsedCheckLists'");
+  $.MobileSettings.Add("UsedCheckLists", UsedCL.ExecuteScalar());
   var UsedEquipment = new Query("SELECT LogicValue FROM Catalog_SettingMobileApplication WHERE Description = 'AllowGalery'");
   $.MobileSettings.Add("AllowGalery", UsedEquipment.ExecuteScalar());
   var PictureSize = new Query("SELECT NumericValue FROM Catalog_SettingMobileApplication WHERE Description = 'PictureSize'");
