@@ -3,7 +3,9 @@ function GetHistoryDetails(ref){
                     "EH.Comment AS Comment, " +
                     "strftime('%d.%m.%Y',EH.Period) AS Period, " +
                     "CE.Description AS Equip, " +
+                    "EH.Equiements AS EquipRef, " +
                     "EH.Executor AS Executor, " +
+                    "EH.ObjectGet AS Event, " +
                     "CASE WHEN ERE.Id == @NotDone " +
                           "THEN @NeVyp " +
                           "ELSE ERE.Description END AS Status " +
@@ -45,4 +47,33 @@ function GetTaskPhotos(event, eq) {
   var q = new Query("SELECT UIDPhoto " +
                     "FROM Document_Event_Photos " +
                     "WHERE Ref = @event AND Equipment = @Equipment");
+
+      q.AddParameter("event", event);
+      q.AddParameter("Equipment", eq);
+
+      return q.Execute();
+}
+
+function GetTaskPhotosCount(event, eq) {
+  var q = new Query("SELECT UIDPhoto " +
+                    "FROM Document_Event_Photos " +
+                    "WHERE Ref = @event AND Equipment = @Equipment");
+
+      q.AddParameter("event", event);
+      q.AddParameter("Equipment", eq);
+
+      return q.ExecuteCount();
+}
+
+function SnapshotExists(filePath) {
+	return FileSystem.Exists(filePath);
+}
+
+function GetSnapShotPath(fileName) {
+  var q = new Query("SELECT FullFileName" +
+                    " FROM Catalog_Equipment_Files" +
+                    " WHERE FileName == @fn");
+
+  q.AddParameter("fn", fileName);
+  return q.ExecuteScalar();
 }

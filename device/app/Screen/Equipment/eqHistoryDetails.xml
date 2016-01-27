@@ -65,6 +65,34 @@
           <c:TextView  Text="$historyItem.Comment" CssClass="main_row"></c:TextView>
         </c:VerticalLayout>
         </c:DockLayout>
+		<c:HorizontalLine/>
+
+		<!-- <s:If Test="$GetTaskPhotosCount($historyItem.event, $historyItem.EquipRef) > 0">
+	    <s:Push Id="snapshots" Value="$GetTaskPhotos($historyItem.event, $historyItem.EquipRef)" />
+	    <c:DockLayout CssClass="snapshot_grid">
+	        <c:TextView Text="$eqParams.Parameter" />
+	    </c:DockLayout>
+
+	          <c:SwipeHorizontalLayout Id="snapshotLayout" CssClass="carousel" Alignment="Center">
+								<s:Iterator Id="" Value="snapshots">
+							  	<s:Push Id="snapshotPath" Value="$GetSnapShotPath($snapshotsItem.UIDPhoto)" />
+	                  <s:If Test="$SnapshotExists($snapshotPath)">
+	                    <c:VerticalLayout OnClickAction="$DoAction(photoView, #ExecutorComment# , $snapshotPath)">
+	                      <c:Image Source="$snapshotPath" />
+	                    </c:VerticalLayout>
+	                  </s:If>
+	                  <s:Else>
+	                    <c:VerticalLayout CssClass="no_image">
+	                      <c:Image />
+	                      <c:TextView Text="#imageNotAvailable#" CssClass="text"></c:TextView>
+	                    </c:VerticalLayout>
+	                  </s:Else>
+									</s:Iterator>
+	          </c:SwipeHorizontalLayout>
+	          <c:HorizontalLine />
+
+	  </s:If> -->
+
 
 	</c:ScrollView>
 </c:DockLayout>
