@@ -12,7 +12,12 @@
         <c:TextView Text="#back#"/>
       </c:HorizontalLayout>
       <c:HorizontalLayout  CssClass="btn_forward" OnClickAction="$DoNext($event)"> <!-- Visible="$CanForward($param1)"-->
-      <c:TextView Id="nextButton" Text="#next#"/>
+				<s:If Test="$CanForwardRefresh($param1)">
+						<c:TextView Id="nextButton" CssClass="forward_orange" Text="#next#"/>
+				</s:If>
+				<s:Else>
+						<c:TextView Id="nextButton" CssClass="forward_gray" Text="#next#"/>
+				</s:Else>
       </c:HorizontalLayout>
 			<c:HorizontalLayout>
 				<c:TextView Text="#CheckList#" />

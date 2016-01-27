@@ -1,11 +1,10 @@
 function OnLoad() {
-    Dialog.Debug(CanForward($.param1));
-    CanForward($.param1);
+    //CanForward($.param1);
 }
 
 function DoNext(param) {
   if (CanForward($.param1)){
-    Workflow.Action("Total",param);
+    DoAction("Total", param);
   }
 }
 
@@ -37,12 +36,29 @@ function CanForward(event){
   var cnt =  q.ExecuteCount();
 
   if (cnt == 0) {
+    $.nextButton.Refresh();
     $.nextButton.CssClass = "forward_orange";
     $.nextButton.Refresh();
     return true;
   } else {
+    $.nextButton.Refresh();
     $.nextButton.CssClass = "forward_gray";
     $.nextButton.Refresh();
+    return false;
+  }
+}
+
+function CanForwardRefresh(event){
+  var q = new Query("SELECT length(trim(DEC.Result)) AS Res, DEC.Required AS Req " +
+                "FROM Document_Event_CheckList DEC " +
+                "WHERE DEC.Ref = @event AND DEC.Required = 1 " +
+                "AND Res = 0");
+  q.AddParameter("event", event);
+  var cnt =  q.ExecuteCount();
+
+  if (cnt == 0) {
+    return true;
+  } else {
     return false;
   }
 }

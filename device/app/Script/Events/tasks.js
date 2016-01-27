@@ -4,8 +4,6 @@ function DoBackAndClean(){
 }
 
 function DoNextStep(param){
-		Dialog.Debug($.MobileSettings.UsedCheckLists);
-
 		if ($.MobileSettings.UsedCheckLists){
 			var q = new Query("SELECT DEC.Id " +
 		                "FROM Document_Event_CheckList DEC " +

@@ -31,6 +31,9 @@ next	Далее
 contacts	Контакты
 devices	Оборудование
 visit	Визит
+Executor		Исполнитель
+doDate		Дата выполнения
+ExecutorComment		Комментарий Исполнителя
 CheckList	Check-лист
 call	Позвонить
 synchronizationData	СИНХРОНИЗАЦИЯ ДАННЫХ

@@ -45,7 +45,9 @@
 
         <bp:Step Name="photoView" Screen="Common\photoView.xml" Controller="Common\photoView.js"></bp:Step>
 
-        <bp:Step Name="checklist" Screen="Events\CheckList.xml" Controller="Events\CheckList.js"></bp:Step>
+        <bp:Step Name="checklist" Screen="Events\CheckList.xml" Controller="Events\CheckList.js">
+            <bp:Action Name="Total" NextStep="Total"></bp:Action>
+        </bp:Step>
 
         <bp:Step Name="contacts" Screen="Client\contacts.xml" Controller="Client\contacts.js">
 
@@ -79,6 +81,10 @@
        </bp:Step>
 
         <bp:Step Name="eqHistory" Screen="Equipment\eqHistory.xml" Controller="Equipment\eqHistory.js">
+            <bp:Action Name="eqHistoryDetails" NextStep="eqHistoryDetails"></bp:Action>
+        </bp:Step>
+
+        <bp:Step Name="eqHistoryDetails" Screen="Equipment\eqHistoryDetails.xml" Controller="Equipment\eqHistoryDetails.js">
         </bp:Step>
 
         <bp:Step Name="Map" Screen="Common\mapview.xml" Controller="Common\mapview.js">
@@ -152,6 +158,10 @@
       <bp:Action Name="photoView" NextStep="photoView" />
   </bp:Step>
     <bp:Step Name="eqHistory" Screen="Equipment\eqHistory.xml" Controller="Equipment\eqHistory.js">
+      <bp:Action Name="eqHistoryDetails" NextStep="eqHistoryDetails"></bp:Action>
+    </bp:Step>
+
+    <bp:Step Name="eqHistoryDetails" Screen="Equipment\eqHistoryDetails.xml" Controller="Equipment\eqHistoryDetails.js">
     </bp:Step>
 
     <bp:Step Name="Map" Screen="Common\mapview.xml" Controller="Common\mapview.js">
