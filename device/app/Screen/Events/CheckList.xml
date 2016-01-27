@@ -2,8 +2,8 @@
 <c:Screen xmlns:c="BitMobile.Controls" xmlns:s="BitMobile.ValueStack" StyleSheet="CheckList.css">
 
 	<s:Push Id="event" Value="$param1" />
-	<!--<s:Push Id="visitTask" Value="$param2" />
-	<s:Push Id="event" Value="$param3" />-->
+
+	<!--<s:Push Id="event" Value="$param3" />-->
 
 	<c:DockLayout>
 		<c:DockLayout CssClass="top_navigator">
@@ -11,14 +11,14 @@
          <c:Image/>
         <c:TextView Text="#back#"/>
       </c:HorizontalLayout>
-      <c:HorizontalLayout Id="nextButton" CssClass="btn_forward" Visible="$CanForward($param1)" OnClickAction="$DoAction(Total, $event)">
-      <c:TextView Text="#next#"/>
+      <c:HorizontalLayout  CssClass="btn_forward" OnClickAction="$DoNext($event)"> <!-- Visible="$CanForward($param1)"-->
+      <c:TextView Id="nextButton" Text="#next#"/>
       </c:HorizontalLayout>
 			<c:HorizontalLayout>
 				<c:TextView Text="#CheckList#" />
 			</c:HorizontalLayout>
 		</c:DockLayout>
-
+		<!--<s:Push Id="CanForward" Value="$CanForward($param1)" />-->
 		<c:HorizontalLine />
 
 
