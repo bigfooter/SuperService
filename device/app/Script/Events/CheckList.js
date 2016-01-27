@@ -1,3 +1,14 @@
+function OnLoad() {
+    Dialog.Debug(CanForward($.param1));
+    CanForward($.param1);
+}
+
+function DoNext(param) {
+  if (CanForward($.param1)){
+    Workflow.Action("Total",param);
+  }
+}
+
 function GetCheckList(event){
     var q = new Query("SELECT CA. Description AS Desc, " +
                       "ETDP.Name AS AType, " +
@@ -26,8 +37,12 @@ function CanForward(event){
   var cnt =  q.ExecuteCount();
 
   if (cnt == 0) {
+    $.nextButton.CssClass = "forward_orange";
+    $.nextButton.Refresh();
     return true;
   } else {
+    $.nextButton.CssClass = "forward_gray";
+    $.nextButton.Refresh();
     return false;
   }
 }
@@ -147,7 +162,7 @@ function SetForAllActions(event, act, result, index) {
         }
       }
 
-      $.nextButton.Visible = CanForward(event);
+     CanForward(event);
   }
 
 }
@@ -287,19 +302,13 @@ function SnapshotActionsHandler(state, args){
 		}
 }
 
-function DeleteSnapShot(event, eq, pictId) {
-	q = new Query("SELECT DEP.Id FROM Document_Event_Photos DEP WHERE DEP.Ref == @event AND DEP.Equipment == @eq AND DEP.UIDPhoto == @pict");
-	q.AddParameter("event", event);
-	q.AddParameter("eq", eq);
-	q.AddParameter("pict", pictId);
-	res = q.ExecuteScalar();
-	DB.Delete(res);
-
+function DeleteSnapShot(event, act, pictId) {
+  SetForAllActions(event, act, "");
 	if (FileSystem.Exists(GetPrivateImagePath(event, pictId, ".jpg"))){
 	 	FileSystem.Delete(GetPrivateImagePath(event, pictId, ".jpg"));
 	}
 
-	Workflow.Refresh([$.task]);
+	Workflow.Refresh([$.param1]);
 }
 
 function getStatusStyle(status){
