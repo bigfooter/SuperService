@@ -12,7 +12,7 @@ function GetAllsActiveContact(ref) {
 		" FROM Catalog_Client_Contacts CCC " +
 		" LEFT JOIN Catalog_Contacts CC" +
 		" ON CCC.Contact = CC.Id" +
-		" WHERE CCC.Actual = 1 AND CCC.Ref = @ref");
+		" WHERE CCC.Actual = 0 AND CCC.Ref = @ref");
 
 	q.AddParameter("ref", ref);
 
