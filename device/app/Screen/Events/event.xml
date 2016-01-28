@@ -38,14 +38,13 @@
 	</s:Else>
 	<c:ScrollView>
 	 <c:HorizontalLine/>
-	  <c:HorizontalLayout CssClass="grid">
-
+	  <c:DockLayout CssClass="grid" OnClickAction="$ShowClient($event.Client)">
+			<c:Image CssClass="arrow"/>
 		<c:VerticalLayout>
 		  <c:TextView Text="#descriptioncust#" CssClass="description_row"></c:TextView>
 		  <c:TextView Text="$event.Client.Description" CssClass="main_row"></c:TextView>
 		</c:VerticalLayout>
-		<c:Image/>
-	  </c:HorizontalLayout>
+	  </c:DockLayout>
 
 	 <c:HorizontalLine/>
 	  <c:DockLayout CssClass="grid">

@@ -127,3 +127,8 @@ function coordinatsCallBack(state, args){
 		Workflow.Refresh([state[1]]);
 	}
 }
+
+function ShowClient(p){
+	Vars.setClient(p);
+	Workflow.Action("showClient",[]);
+}

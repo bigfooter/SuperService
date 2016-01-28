@@ -40,6 +40,7 @@
            <bp:Action Name="fullText" NextStep="fullText" />
            <bp:Action Name="photoView" NextStep="photoView" />
            <bp:Action Name="checklist" NextStep="checklist" />
+           <bp:Action Name="showClient" NextWorkflow="ClentView"></bp:Action>
            <bp:Action Name="Total" NextStep="Total"></bp:Action>
         </bp:Step>
 
