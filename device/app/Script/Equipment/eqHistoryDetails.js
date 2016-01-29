@@ -65,10 +65,6 @@ function GetTaskPhotosCount(event, eq) {
       return q.ExecuteCount();
 }
 
-function SnapshotExists(filePath) {
-	return FileSystem.Exists(filePath);
-}
-
 function GetSnapShotPath(fileName) {
   var q = new Query("SELECT FullFileName" +
                     " FROM Catalog_Equipment_Files" +

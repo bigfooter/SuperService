@@ -76,3 +76,10 @@ function ActualLocation(location){
 
     return (location.NotEmpty && actualTime);
 }
+
+function SnapshotExists(filePath) {
+	if (!IsNullOrEmpty(filePath)){
+		return FileSystem.Exists(filePath);
+	}
+	return false //FileSystem.Exists(filePath);
+}

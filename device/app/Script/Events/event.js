@@ -29,10 +29,6 @@ function DoNextStep(param){
 }
 
 // # Begin Parameters
-function SnapshotExists(filePath) {
-	return FileSystem.Exists(filePath);
-}
-
 function GetSnapShotPath(fileName) {
   var q = new Query("SELECT FullFileName" +
                     " FROM Document_Event_Files" +

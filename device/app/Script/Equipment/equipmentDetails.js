@@ -4,9 +4,6 @@ function OnLoad(){
 
 }
 // # Begin Parameters
-function SnapshotExists(filePath) {
-	return FileSystem.Exists(filePath);
-}
 
 function GetSnapShotPath(fileName) {
   var q = new Query("SELECT FullFileName" +

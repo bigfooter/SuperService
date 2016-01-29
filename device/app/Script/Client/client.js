@@ -16,9 +16,6 @@ function DoActionAndSave(step, req, cust, outlet) {
 }
 
 // # Begin Parameters
-function SnapshotExists(filePath) {
-	return FileSystem.Exists(filePath);
-}
 
 function GetSnapShotPath(fileName) {
   var q = new Query("SELECT FullFileName" +
