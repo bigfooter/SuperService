@@ -59,13 +59,7 @@ function CompleteTheTask(itask, event) {
 	var event_task_obj = itask.GetObject();
 	event_task_obj.Result = DB.Current.Constant.ResultEvent.Done;
 	event_task_obj.Save();
-	if (Variables.Exists("itask"))
-
-		Workflow.Refresh([ $.itask, event_task_obj.Id ]);
-
-
-	else
-		Workflow.Refresh([]);
+	Workflow.Refresh([$.param1]);
 }
 
 function SaveAndBack(task){

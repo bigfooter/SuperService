@@ -41,7 +41,7 @@
 			<s:Iterator Id="itask" Value="$newTasks">
 
 				<c:SwipeHorizontalLayout Id="swipe_layout1" CssClass="swipe_layout" Index="1">
-					<c:HorizontalLayout CssClass="green_swipe" OnClickAction="$CompleteTheTask($itask.Id, $workflow.tasks, $param1)">
+					<c:HorizontalLayout CssClass="green_swipe" OnClickAction="$CompleteTheTask($itask.Id, $param1)">
 						<c:VerticalLayout>
 							<c:Image></c:Image>
 							<c:TextView Text="#execute#"></c:TextView>
