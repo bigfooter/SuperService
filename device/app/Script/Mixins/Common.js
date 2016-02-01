@@ -83,3 +83,11 @@ function SnapshotExists(filePath) {
 	}
 	return false //FileSystem.Exists(filePath);
 }
+
+function dateDDMMYYYYMMHH(dt) {
+	if (!IsNullOrEmpty(dt)){
+		return String.Format("{0:dd.MM.yyyy HH:mm}", DateTime.Parse(dt));
+	} else {
+		return "";
+	}
+}

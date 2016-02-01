@@ -20,7 +20,8 @@ function GetCheckList(event){
                       "LEFT JOIN Enum_TypesDataParameters ETDP " +
                       "ON DEC.ActionType = ETDP.Id " +
                       "WHERE DEC.Ref = @event " +
-                      "GROUP BY CA.Description, ETDP.Name, DEC.Action, DEC.Result, DEC.Required");
+                      "GROUP BY CA.Description, ETDP.Name, DEC.Action, DEC.Result, DEC.Required " +
+                      "ORDER BY DEC.LineNumber");
 
     q.AddParameter("event", event);
 

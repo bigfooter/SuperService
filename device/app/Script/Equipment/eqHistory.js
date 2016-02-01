@@ -1,5 +1,5 @@
 function getEqHistory(eq){
-  var q = new Query("SELECT CEEH.Id, CEEH.Ref, CEEH.Period, " +
+  var q = new Query("SELECT CEEH.Id, CEEH.Ref, strftime('%d.%m.%Y %H:%M', CEEH.Period) As Period, " +
 	  "ESE.Description AS Result, CEEH.Target AS Target, CEEH.Comment, CU.Description AS Executor " +
     "FROM Catalog_Equipment_EquiementsHistory CEEH " +
     "LEFT JOIN Enum_ResultEvent ESE ON CEEH.Result = ESE.Id " +

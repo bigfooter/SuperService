@@ -34,7 +34,7 @@
 	  <c:HorizontalLayout CssClass="grid">
 		<c:VerticalLayout>
 		  <c:TextView Text="#doDate#" CssClass="description_row"></c:TextView>
-		  <c:TextView Text="{$historyItem.Period} ({$historyItem.Status})" CssClass="main_row"></c:TextView>
+		  <c:TextView Text="{$dateDDMMYYYYMMHH($historyItem.Period)} ({$historyItem.Status})" CssClass="main_row"></c:TextView>
 		</c:VerticalLayout>
 	  </c:HorizontalLayout>
 
@@ -43,7 +43,7 @@
 
 				<c:DockLayout CssClass="grid">
 				<c:VerticalLayout>
-				  <c:TextView Text="#device#" CssClass="description_row"></c:TextView>
+				  <c:TextView Text="#devices#" CssClass="description_row"></c:TextView>
 				  <c:TextView  Text="$historyItem.Equip" CssClass="main_row"></c:TextView>
 				</c:VerticalLayout>
 			  </c:DockLayout>

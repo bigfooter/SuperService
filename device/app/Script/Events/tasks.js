@@ -32,7 +32,8 @@ function GetExecutedTasks(event) {
 	"FROM Document_Event_Equipments DEE " +
 	"LEFT JOIN Catalog_Equipment CE " +
 	"ON DEE.Equipment = CE.Id " +
-	"WHERE DEE.Ref = @ref AND (DEE.Result = @done OR DEE.Result = @undone)");
+	"WHERE DEE.Ref = @ref AND (DEE.Result = @done OR DEE.Result = @undone) " +
+	"ORDER BY DEE.LineNumber");
 //		var query = new Query("select * from Document_Event_Equipments WHERE Ref = @ref AND  Result = @result");
 
 
@@ -49,7 +50,8 @@ function GetNotExecutedTasks(event) {
 	"FROM  Document_Event_Equipments DEE " +
 	"LEFT JOIN Catalog_Equipment CE " +
 	"ON DEE.Equipment = CE.Id " +
-	"WHERE DEE.Ref = @ref AND DEE.Result = @result");
+	"WHERE DEE.Ref = @ref AND DEE.Result = @result " +
+	"ORDER BY DEE.LineNumber");
 	q.AddParameter("ref", event);
 	q.AddParameter("result",  DB.Current.Constant.ResultEvent.New);
 	return q.Execute();
