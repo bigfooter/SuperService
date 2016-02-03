@@ -15,13 +15,14 @@ function GetSnapShotPath(fileName) {
 }
 
 function GetEqParams(eqRef) {
-  var q = new Query("SELECT CEO.Description AS Parameter, CEP.Val Val, ETDP.Name AS Type " +
+  var q = new Query("SELECT CEO.Description AS Parameter, CEP.Val AS Val, " +
+  "ETDP.Name AS Type, length(trim(CEP.Val)) AS VL " +
   "FROM Catalog_Equipment_Parameters CEP " +
   "LEFT JOIN Catalog_EquipmentOptions CEO " +
   "ON CEP.Parameter = CEO.Id  " +
   "LEFT JOIN Enum_TypesDataParameters ETDP " +
   "ON CEO.DataTypeParameter = ETDP.ID " +
-  "WHERE CEO.DisplayingBMA = 1 AND CEP.Ref = @eqRef " +
+  "WHERE CEO.DisplayingBMA = 1 AND CEP.Ref = @eqRef AND VL > 0 " +
 	"ORDER BY CEP.LineNumber");
 
   q.AddParameter("eqRef", eqRef);
