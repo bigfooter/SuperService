@@ -106,7 +106,7 @@ function CommitEvent(state, args){
 		SaveEvent(state, location);
 		Workflow.Commit();
 	} else {
-		Dialog.Choose(Translate["#noVisitCoordinats#"], [[1, Translate["#Yes#"]],[0, Translate["#No#"]], [2, Translate["#TryAgain#"]]], NoCoordinatVariats, event);
+		Dialog.Choose(Translate["#noVisitCoordinats#"], [[1, Translate["#Yes#"]],[0, Translate["#No#"]], [2, Translate["#TryAgain#"]]], NoCoordinatVariats, state);
 	}
 }
 
@@ -123,7 +123,7 @@ function NoCoordinatVariats(state, args){
 }
 
 function SaveEvent(ref, loc){
-	obj = ref.GetObject();
+	var obj = ref.GetObject();
 	obj.Status = DB.Current.Constant.StatusyEvents.Done;
 	obj.CommentContractor = $.ExecutiveComment.Text;
 	obj.ActualEndDate = DateTime.Now;

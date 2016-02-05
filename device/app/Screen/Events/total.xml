@@ -9,7 +9,7 @@
         <c:Image/>
         <c:TextView Text="#back#"/>
       </c:HorizontalLayout>
-      <c:HorizontalLayout CssClass="btn_forward" OnEvent="Back" OnClick="$askCommit($param1)">
+      <c:HorizontalLayout CssClass="btn_forward"  OnClick="$askCommit($param1)">
       <c:TextView Text="#ready#"/>
       </c:HorizontalLayout>
       <c:HorizontalLayout>
