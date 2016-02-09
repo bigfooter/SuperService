@@ -35,7 +35,7 @@ details	Сведения
 Executor		Исполнитель
 doDate		Дата выполнения
 ExecutorComment		Комментарий Исполнителя
-CheckList	Check-лист
+CheckList	Чек-лист
 call	Позвонить
 synchronizationData	СИНХРОНИЗАЦИЯ ДАННЫХ
 synchronizationPhoto	СИНХРОНИЗАЦИЯ ФОТОГРАФИЙ
