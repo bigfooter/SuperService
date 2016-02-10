@@ -106,13 +106,23 @@ function CommitEvent(state, args){
 		SaveEvent(state, location);
 		Workflow.Commit();
 	} else {
-		Dialog.Choose(Translate["#noVisitCoordinats#"], [[1, Translate["#Yes#"]],[0, Translate["#No#"]], [2, Translate["#TryAgain#"]]], NoCoordinatVariats, state);
+		Dialog.Choose(Translate["#noVisitCoordinats#"], [[1, Translate["#Commit#"]], [2, Translate["#TryAgain#"]], [0, Translate["#Abort#"]],], NoCoordinatVariats, state);
 	}
+}
+
+function CommitEventNoCoordinats(state, args){
+	if (StrLen($.ExecutiveComment.Text) > 1000) {
+		Dialog.Message(Translate["#ToLongText1000#"] + " " +  StrLen($.ExecutiveComment.Text));
+		return;
+	}
+	SaveEvent(state, undefined);
+	Workflow.Commit();
+
 }
 
 function NoCoordinatVariats(state, args){
 	if (args.Result == 1){
-		SaveEvent(state, undefined);
+		CommitEventNoCoordinats(state, args);
 	}
 
 	if (args.Result == 2){
