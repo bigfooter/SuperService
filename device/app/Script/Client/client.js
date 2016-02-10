@@ -33,7 +33,7 @@ function GetCustParams(custRef) {
   "ON CCP.Parameter = CCO.Id  " +
   "LEFT JOIN Enum_TypesDataParameters ETDP " +
   "ON CCO.DataTypeParameter = ETDP.ID " +
-  "WHERE CCO.DisplayingBMA = 1 AND CCP.Ref = @custRef " +
+  "WHERE CCO.DisplayingBMA = 1 AND CCP.Ref = @custRef AND  CCO.DeletionMark = 0 " +
 	"ORDER BY CCP.LineNumber");
 
   q.AddParameter("custRef", custRef);

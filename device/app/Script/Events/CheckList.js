@@ -1,5 +1,5 @@
 function OnLoad() {
-    //CanForward($.param1);
+    CanForward($.param1);
 }
 
 function DoNext(param) {
@@ -11,7 +11,7 @@ function DoNext(param) {
 function GetCheckList(event){
     var q = new Query("SELECT CA. Description AS Desc, " +
                       "ETDP.Name AS AType, " +
-                      "DEC.Required AS Req, " +
+                      "MAX(DEC.Required) AS Req, " +
                       "DEC.Result, " +
                       "DEC.Action Action " +
                       "FROM Document_Event_CheckList DEC " +
@@ -20,7 +20,7 @@ function GetCheckList(event){
                       "LEFT JOIN Enum_TypesDataParameters ETDP " +
                       "ON DEC.ActionType = ETDP.Id " +
                       "WHERE DEC.Ref = @event " +
-                      "GROUP BY CA.Description, ETDP.Name, DEC.Action, DEC.Result, DEC.Required " +
+                      "GROUP BY CA.Description, ETDP.Name, DEC.Action, DEC.Result " +
                       "ORDER BY DEC.LineNumber");
 
     q.AddParameter("event", event);
@@ -40,14 +40,19 @@ function CanForward(event){
     $.nextButton.Refresh();
     $.nextButton.CssClass = "forward_orange";
     $.nextButton.Refresh();
+    $.nextButton.Text = Translate["#next#"];
     return true;
   } else {
     $.nextButton.Refresh();
     $.nextButton.CssClass = "forward_gray";
     $.nextButton.Refresh();
+    $.nextButton.Text = Translate["#next#"] + " (" + cnt + ")";
     return false;
   }
+
 }
+
+
 
 function CanForwardRefresh(event){
   var q = new Query("SELECT length(trim(DEC.Result)) AS Res, DEC.Required AS Req " +
