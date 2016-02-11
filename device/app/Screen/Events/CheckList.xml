@@ -39,7 +39,7 @@
               	</s:If>
         				<c:VerticalLayout>
         					<c:TextView Text="$actions.Desc" CssClass="description_row"></c:TextView>
-        					<c:EditText Id="action{$index}" Text="$actions.Result" Placeholder="—" CssClass="main_row" OnLostFocus="$SetStringValue($param1, $actions.Action, $index)"/>
+        					<c:EditText Id="action{$index}" Text="$actions.Result" Placeholder="—" CssClass="main_row" onChange="$OnChangeField($param1, $index, $actions.Req)" OnLostFocus="$SetStringValue($param1, $actions.Action, $index)"/>
         				</c:VerticalLayout>
         			</c:DockLayout>
         			<c:HorizontalLine />
@@ -55,7 +55,7 @@
         				<c:VerticalLayout>
         					<c:TextView Text="$actions.Desc" CssClass="description_row"></c:TextView>
         					<c:EditText Id="action{$index}" Text="$actions.Result" Placeholder="—"  CssClass="main_row"
-                    Keyboard="numeric" OnLostFocus="$SetIntegerValue($param1, $actions.Action, $index)"/>
+                    Keyboard="numeric" onChange="$OnChangeField($param1, $index, $actions.Req)" OnLostFocus="$SetIntegerValue($param1, $actions.Action, $index)"/>
         				</c:VerticalLayout>
         			</c:DockLayout>
         			<c:HorizontalLine />
@@ -71,7 +71,7 @@
         				<c:VerticalLayout>
         					<c:TextView Text="$actions.Desc" CssClass="description_row"></c:TextView>
         					<c:EditText Id="action{$index}" Text="$actions.Result" Placeholder="—" CssClass="main_row"
-                    Keyboard="numeric" OnLostFocus="$SetDecimalValue($param1, $actions.Action, $index)"/>
+                    Keyboard="numeric" onChange="$OnChangeField($param1, $index, $actions.Req)" OnLostFocus="$SetDecimalValue($param1, $actions.Action, $index)"/>
         				</c:VerticalLayout>
         			</c:DockLayout>
         			<c:HorizontalLine />
@@ -80,7 +80,7 @@
 
       <!--Begin Boolean Action -->
           <s:If Test="$actions.AType == 'Boolean'">
-              <c:DockLayout CssClass="grid" OnClickAction="$GetBooleanDialog($param1, action{$index}, $actions.Action, $actions.Desc, $index)">
+              <c:DockLayout CssClass="grid" OnClick="$GetBooleanDialog($param1, action{$index}, $actions.Action, $actions.Desc, $index, $actions.Req)">
                 <s:If Test="$actions.Req">
               		<c:VerticalLayout Id="marker{$index}" CssClass="$getStatusStyle($actions.Result)"></c:VerticalLayout>
               	</s:If>
@@ -95,7 +95,7 @@
 
       <!--Begin DateTime Action -->
           <s:If Test="$actions.AType == 'DateTime'">
-              <c:DockLayout CssClass="grid"  OnClickAction="$GetDateDialog($param1, action{$index}, $actions.Action, $actions.Desc, $actions.Result, $index)">
+              <c:DockLayout CssClass="grid"  OnClick="$GetDateDialog($param1, action{$index}, $actions.Action, $actions.Desc, $actions.Result, $index, $actions.Req)">
                 <s:If Test="$actions.Req">
               		<c:VerticalLayout Id="marker{$index}" CssClass="$getStatusStyle($actions.Result)"></c:VerticalLayout>
               	</s:If>
@@ -110,7 +110,7 @@
 
       <!--Begin ValList Action -->
           <s:If Test="$actions.AType == 'ValList'">
-              <c:DockLayout CssClass="grid" OnClickAction="$GetValueListDialog($param1, action{$index}, $actions.Action, $actions.Desc, $index)">
+              <c:DockLayout CssClass="grid" OnClick="$GetValueListDialog($param1, action{$index}, $actions.Action, $actions.Desc, $index, $actions.Req)">
                 <s:If Test="$actions.Req">
               		<c:VerticalLayout Id="marker{$index}" CssClass="$getStatusStyle($actions.Result)"></c:VerticalLayout>
               	</s:If>

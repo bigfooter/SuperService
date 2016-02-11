@@ -44,9 +44,11 @@ function checkCommentLength(sender){
 }
 
 function createReminder(event){
-	if (StrLen($.RemindComment.Text) > 1000) {
-		Dialog.Message(Translate["#ToLongText1000#"] +  StrLen($.RemindComment.Text));
-		return;
+	if (!IsNullOrEmpty($.RemindComment.Text)){
+		if (StrLen($.RemindComment.Text) > 1000) {
+			Dialog.Message(Translate["#ToLongText1000#"] + StrLen($.RemindComment.Text));
+			return;
+		}
 	}
 
 	if ($.HungryImageTrue.Visible || $.AngryImageTrue.Visible) {

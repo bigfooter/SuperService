@@ -77,12 +77,12 @@ function getStatusStyle(res){
   }
 }
 
-function GetBooleanDialog(event, control, act, actText, index){
+function GetBooleanDialog(sender, event, control, act, actText, index, req){
     var arr = [];
     arr.push([true, Translate["#Yes#"]]);
     arr.push([false, Translate["#No#"]]);
 
-    Dialog.Choose(actText, arr, SetBooleanValue, [event, control, act, actText, index]);
+    Dialog.Choose(actText, arr, SetBooleanValue, [event, control, act, actText, index, sender, req]);
 }
 
 function SetBooleanValue(state, args){
@@ -95,27 +95,29 @@ function SetBooleanValue(state, args){
 
     SetForAllActions(state[0],state[2], res, state[4]);
     Variables[state[1]].Text = res;
+    OnChangeField(state[5], state[0], state[4], state[6])
 }
 
-function GetValueListDialog(event, control, act, actText, index){
+function GetValueListDialog(sender, event, control, act, actText, index, req){
     var arr = [];
     var q = new Query("SELECT Val, Val FROM Catalog_Actions_ValueList WHERE Ref = @action");
     q.AddParameter("action", act);
-    Dialog.Choose(actText, q.Execute(), SetValueListValue, [event, control, act, actText, index]);
+    Dialog.Choose(actText, q.Execute(), SetValueListValue, [event, control, act, actText, index, sender, req]);
 }
 
 function SetValueListValue(state, args){
 
     SetForAllActions(state[0],state[2], args.Result, state[4]);
     Variables[state[1]].Text = args.Result;
+    OnChangeField(state[5], state[0], state[4], state[6])
 }
 
 
-function GetDateDialog(event, control, act, actText, curRes, index){
+function GetDateDialog(sender, event, control, act, actText, curRes, index, req){
     if (IsNullOrEmpty(curRes)){
-      Dialog.DateTime(actText, SetDateValue, [event, control, act, actText, index]);
+      Dialog.DateTime(actText, SetDateValue, [event, control, act, actText, index, sender, req]);
     } else {
-      Dialog.DateTime(actText, Date(curRes), SetDateValue, [event, control, act, actText, index]);
+      Dialog.DateTime(actText, Date(curRes), SetDateValue, [event, control, act, actText, index, sender, req]);
     }
 
 }
@@ -123,6 +125,7 @@ function GetDateDialog(event, control, act, actText, curRes, index){
 function SetDateValue(state, args){
     SetForAllActions(state[0], state[2], args.Result, state[4]);
     Variables[state[1]].Text = Format("{0:dd.MM.yyyy HH:mm}", args.Result);
+    OnChangeField(state[5], state[0], state[4], state[6])
 }
 
 function SetStringValue(sender, event, act, index){
@@ -174,19 +177,21 @@ function SetForAllActions(event, act, result, index) {
       obj.Result = result;
       obj.Save(false);
 
-      if (res.Req){
-        if (IsNullOrEmpty(result)){
-          Variables["marker" + index].CssClass = "red_mark";
-          Variables["marker" + index].Refresh();
-        } else {
-          Variables["marker" + index].CssClass = "green_mark";
-          Variables["marker" + index].Refresh();
-        }
-      }
-
-     CanForward(event);
   }
 
+}
+
+function OnChangeField(sender, event, index, req) {
+  if (req){
+    if (IsNullOrEmpty(sender.Text)){
+      Variables["marker" + index].CssClass = "red_mark";
+      Variables["marker" + index].Refresh();
+    } else {
+      Variables["marker" + index].CssClass = "green_mark";
+      Variables["marker" + index].Refresh();
+    }
+  }
+  CanForward(event);
 }
 
 function FormatDate(datetime) {

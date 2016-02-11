@@ -58,3 +58,8 @@
   .main_row {
     color: #b96f18;
   }
+
+  .fakeRefrash {
+    width: 0%;
+    height: 0%;
+  }
