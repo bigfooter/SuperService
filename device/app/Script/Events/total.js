@@ -148,12 +148,11 @@ function SaveEvent(ref, loc){
 }
 
 function SetExecutiveComment(sender, ref) {
-	if (StrLen($.ExecutiveComment.Text) <= 1000){
+	if (StrLen($.ExecutiveComment.Text) > 1000){
+		Dialog.Message(Translate["#ToLongText1000#"] + " " + StrLen($.ExecutiveComment.Text));
+	} else {
 		obj = ref.GetObject();
 		obj.CommentContractor = $.ExecutiveComment.Text;
 		obj.Save();
-	} else {
-		Dialog.Message(Translate["#ToLongText1000#"] + " " + StrLen($.ExecutiveComment.Text));
 	}
-
 }

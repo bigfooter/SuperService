@@ -65,7 +65,7 @@ function CompleteTheTask(itask, event) {
 }
 
 function SaveAndBack(task){
-	if (StrLen($.taskComment.Text) >= 1000) {
+	if (StrLen($.taskComment.Text) > 1000) {
 		Dialog.Message(Translate["#ToLongText1000#"] + " " +  StrLen($.taskComment.Text));
 		return;
 	}
@@ -77,7 +77,7 @@ function SaveAndBack(task){
 }
 
 function CompleteTask(sender, task) {
-	if (StrLen($.taskComment.Text) >= 1000) {
+	if (StrLen($.taskComment.Text) > 1000) {
 		Dialog.Message(Translate["#ToLongText1000#"] + " " +  StrLen($.taskComment.Text));
 		return;
 	}
@@ -90,7 +90,7 @@ function CompleteTask(sender, task) {
 }
 
 function NotDoneTask(sender, task) {
-	if (StrLen($.taskComment.Text) >= 1000) {
+	if (StrLen($.taskComment.Text) > 1000) {
 		Dialog.Message(Translate["#ToLongText1000#"] + " " +  StrLen($.taskComment.Text));
 		return;
 	}
