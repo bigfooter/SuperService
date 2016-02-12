@@ -45,8 +45,8 @@ function checkCommentLength(sender){
 
 function createReminder(event){
 	if (!IsNullOrEmpty($.RemindComment.Text)){
-		if (StrLen($.RemindComment.Text) >= 1000) {
-			Dialog.Message(Translate["#ToLongText1000#"]  + " " + StrLen($.RemindComment.Text));
+		if (StrLen($.RemindComment.Text) > 1000) {
+			Dialog.Message(Translate["#ToLongText1000#"]  + " " +  StrLen($.RemindComment.Text));
 			return;
 		}
 	}
@@ -99,7 +99,7 @@ function askCommit(sender, event){
 
 
 function CommitEvent(state, args){
-	if (StrLen($.ExecutiveComment.Text) >= 1000) {
+	if (StrLen($.ExecutiveComment.Text) > 1000) {
 		Dialog.Message(Translate["#ToLongText1000#"] + " " +  StrLen($.ExecutiveComment.Text));
 		return;
 	}
@@ -113,7 +113,7 @@ function CommitEvent(state, args){
 }
 
 function CommitEventNoCoordinats(state, args){
-	if (StrLen($.ExecutiveComment.Text) >= 1000) {
+	if (StrLen($.ExecutiveComment.Text) > 1000) {
 		Dialog.Message(Translate["#ToLongText1000#"] + " " +  StrLen($.ExecutiveComment.Text));
 		return;
 	}
