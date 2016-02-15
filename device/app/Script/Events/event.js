@@ -11,7 +11,7 @@ function DoNextStep(param){
 		if ($.MobileSettings.UsedEquipment){
 			DoAction("tasks", param);
 			return;
-		}
+		} 
 
 		if ($.MobileSettings.UsedCheckLists){
 			var q = new Query("SELECT DEC.Id " +
@@ -21,11 +21,11 @@ function DoNextStep(param){
 			if (q.ExecuteCount() > 0) {
 				DoAction("checklist", param);
 			} else {
-				DoAction("Total", param);
-			}
-
+				DoAction("Total", param);	}
 			return;
 		}
+
+		DoAction("Total", param);
 }
 
 // # Begin Parameters
