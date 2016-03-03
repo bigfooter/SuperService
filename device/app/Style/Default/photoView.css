@@ -1,0 +1,12 @@
+.image_output{
+	height: 100%;
+	width: 100%;
+	dock-align: top;
+}
+
+.image_output img {
+	width: 100%;
+	margin-top: 2.5mm;
+	margin-bottom: 2.5mm;
+	vertical-align: central;
+}

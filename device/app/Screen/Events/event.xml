@@ -7,80 +7,154 @@
       <c:HorizontalLayout CssClass="btn_back" OnEvent="Back" OnClickAction="$DoBackAndClean()">
          <c:Image/>
         <c:TextView Text="#back#"/>
-      </c:HorizontalLayout>     
-      	<c:Button Id="btnForward" Text="#next#" CssClass="btn_forward" OnClickAction="$DoActionAndSave(GoParams, $param1, $objCust, $objOutlet)"/>
+      </c:HorizontalLayout>
+				<c:HorizontalLayout CssClass="btn_forward" OnEvent="Back" OnClickAction="$DoNextStep($event)"> <!-- $DoAction(tasks, $event) -->
+				<c:TextView Text="#next#"/>
+				</c:HorizontalLayout>
       <c:HorizontalLayout>
         <c:TextView Text="#visit#" />
       </c:HorizontalLayout>
     </c:DockLayout>
-	
-	<c:DockLayout CssClass="footer">
-		<c:DockLayout CssClass="btn_left_footer" OnClickAction="$DoAction(Contacts)">
-			<c:TextView Text="#contacts#" />
+		<s:If Test="$MobileSettings.UsedEquipment">
+			<c:DockLayout CssClass="footer">
+				<c:HorizontalLine/>
+				<c:DockLayout CssClass="btn_left_footer" OnClickAction="$DoAction(ShowContacts, $event.Client)">
+					<c:TextView Text="#contacts#" />
+				</c:DockLayout>
+
+				<c:DockLayout CssClass="btn_right_footer" OnClickAction="$DoAction(Equipment, $event.Client)">
+					<c:TextView Text="#devices#" />
+				</c:DockLayout>
+
+			</c:DockLayout>
+	</s:If>
+	<s:Else>
+		<c:DockLayout CssClass="footer">
+			<c:HorizontalLine/>
+			<c:DockLayout CssClass="btn_bottom_footer" OnClickAction="$DoAction(ShowContacts, $event.Client)">
+				<c:TextView Text="#contacts#" />
+			</c:DockLayout>
 		</c:DockLayout>
-		
-		<c:DockLayout CssClass="btn_right_footer" OnClickAction="$DoAction(Options)">
-			<c:TextView Text="#devices#" />
-		</c:DockLayout>
-		
-	</c:DockLayout>
+	</s:Else>
 	<c:ScrollView>
 	 <c:HorizontalLine/>
-	  <c:HorizontalLayout CssClass="grid">
-		<c:VerticalLayout CssClass="no_mark"></c:VerticalLayout>
+	  <c:DockLayout CssClass="grid" OnClickAction="$ShowClient($event.Client)">
+			<c:Image CssClass="arrow"/>
 		<c:VerticalLayout>
 		  <c:TextView Text="#descriptioncust#" CssClass="description_row"></c:TextView>
-		  <c:TextView Text="$event.Client.Description" CssClass="main_row_custname"></c:TextView>		   
-		</c:VerticalLayout>	
-		<c:Image/>	
-	  </c:HorizontalLayout>
-	  
+		  <c:TextView Text="$event.Client.Description" CssClass="main_row"></c:TextView>
+		</c:VerticalLayout>
+	  </c:DockLayout>
+
 	 <c:HorizontalLine/>
-	  <c:HorizontalLayout CssClass="grid">
-		<c:VerticalLayout CssClass="no_mark"></c:VerticalLayout>
-		<c:VerticalLayout CssClass="infoPlaceWithPhone">
-		  <c:TextView Text="#mainContact#" CssClass="description_row_contact"></c:TextView>
-		  <c:TextView Text="$event.ContactVisiting" CssClass="main_row_contact"></c:TextView>
-		  <c:TextView Text="$event.Call" CssClass="main_row_phone"></c:TextView>
-		</c:VerticalLayout>	
-		
-			<s:If Test="$PhoneExists($event.Call)">
-				<c:HorizontalLayout CssClass="phoneBox"  OnClickAction="$MoreMakeContactCall($event.Call)">
-					<c:Image CssClass="iphone" />
-				</c:HorizontalLayout>	
-		  	</s:If>	  	
-	  	
-	  </c:HorizontalLayout>
-	  
-		
+	  <c:DockLayout CssClass="grid">
+						<s:If Test="$PhoneExists($event.ContactVisiting.Tel)">
+							<c:HorizontalLayout CssClass="phone"  OnClickAction="$MoreMakeContactCall($event.ContactVisiting.Tel)">
+								<c:Image CssClass="iphone" />
+							</c:HorizontalLayout>
+						</s:If>
+
+					<c:VerticalLayout>
+					  <c:TextView Text="#mainContact#" CssClass="description_row"></c:TextView>
+					  <c:TextView Text="$event.ContactVisiting.Description" CssClass="main_row"></c:TextView>
+					  <c:TextView Text="$event.ContactVisiting.Tel" CssClass="main_row"></c:TextView>
+					</c:VerticalLayout>
+	  </c:DockLayout>
+
+
 		<c:HorizontalLine/>
-	  <c:HorizontalLayout CssClass="memo_block">
-		<c:VerticalLayout>
-		  <c:TextView Text="#address#" CssClass="description_row"></c:TextView>
-		  <c:TextView Id="Address" Text="$event.Client.Address" CssClass="main_row_reqtext"></c:TextView>		  
-		</c:VerticalLayout>		
+
+				<c:DockLayout CssClass="grid" OnClickAction="$DoAction(fullText,	#address#, $event.Client.Address)">
+				<c:Image CssClass="arrow"/>
+				<c:VerticalLayout>
+				  <c:TextView Text="#address#" CssClass="description_row"></c:TextView>
+				  <c:TextView Id="Address" Text="$event.Client.Address" CssClass="main_row"></c:TextView>
+				</c:VerticalLayout>
+			  </c:DockLayout>
+ 			<c:HorizontalLine/>
+
+				<c:DockLayout CssClass="grid">
+				<s:If Test="$isEmptyCoordinats($event.Client.Id)">
+					<c:Image />
+				</s:If>
+				<s:Else>
+					<c:Button OnClickAction="$DoAction(Map, $event.Client.Id)" />
+				</s:Else>
+				<c:VerticalLayout>
+					<c:TextView Text="#Сoordinates#" CssClass="description_row"></c:TextView>
+					<s:If Test="$isEmptyCoordinats($event.Client.Id)">
+						<c:Button  Text="#set#" CssClass="coordButton" OnClick="$setCoordinats($event.Client.Id, $event)"/>
+					</s:If>
+					<s:Else>
+								<c:VerticalLayout OnClickAction="$updateCoordinats($event.Client.Id, $event)" CssClass="CoordinatsPlace">
+										<c:TextView Text="{$event.Client.Latitude}; {$event.Client.Longitude}" CssClass="main_row"></c:TextView>
+							<!--	<c:TextView Id="outletCoord" Text="{$workflow.outlet.Lattitude}; {$workflow.outlet.Longitude}" CssClass="main_row"></c:TextView> -->
+								</c:VerticalLayout>
+					</s:Else>
+				</c:VerticalLayout>
+			</c:DockLayout>
+			<c:HorizontalLine />
+
+		<c:HorizontalLayout CssClass="grid">
+			<c:VerticalLayout>
+			  <c:TextView Text="#OrderNum#" CssClass="description_row"></c:TextView>
+			  <c:TextView Id="OrderNum" Text="$event.Number" CssClass="main_row"></c:TextView>
+			</c:VerticalLayout>
 	  </c:HorizontalLayout>
- 
- 	<c:HorizontalLine/>
+		<c:HorizontalLine />
 	  <c:HorizontalLayout CssClass="grid">
-		<c:VerticalLayout>
-		  <c:TextView Text="#Author#" CssClass="description_row"></c:TextView>
-		  <c:TextView Id="eventAuthor" Text="$event.Author.Description" CssClass="main_row_custname"></c:TextView>		  
-		</c:VerticalLayout>		
+			<c:VerticalLayout>
+			  <c:TextView Text="#Author#" CssClass="description_row"></c:TextView>
+			  <c:TextView Id="eventAuthor" Text="$event.Author.Description" CssClass="main_row"></c:TextView>
+			</c:VerticalLayout>
 	  </c:HorizontalLayout>
 
 	  <c:HorizontalLine/>
-	  <c:HorizontalLayout CssClass="memo_block">
-		<c:VerticalLayout>
-		  <c:TextView Text="#eventComment#" CssClass="description_row"></c:TextView>
-		  <c:TextView Id="eventComment" Text="$event.Comment" CssClass="main_row_reqtext"></c:TextView>		  
-		</c:VerticalLayout>		
-	  </c:HorizontalLayout>
-	  
-	  
-	 
-	
-	
+	  <c:DockLayout CssClass="grid" OnClickAction="$DoAction(fullText,	#eventComment#, $event.Comment)">
+			<c:Image CssClass="arrow"/>
+			<c:VerticalLayout>
+			  <c:TextView Text="#eventComment#" CssClass="description_row"></c:TextView>
+			  <c:TextView Id="eventComment" Text="$event.Comment" CssClass="main_row"></c:TextView>
+			</c:VerticalLayout>
+	  </c:DockLayout>
+
+		<!-- Begin Parameters -->
+		<s:Iterator Id="Params" Value="$GetEventParams($event)">
+			<s:If Test="$Params.Type == 'Snapshot'">
+				<s:Push Id="snapshotPath" Value="$GetSnapShotPath($Params.Val)" />
+				<c:HorizontalLine />
+				<c:DockLayout CssClass="snapshot_grid">
+						<c:TextView Text="$Params.Parameter" />
+				</c:DockLayout>
+							<c:SwipeHorizontalLayout Id="snapshotLayout" CssClass="carousel" Alignment="Center">
+											<s:If Test="$SnapshotExists($snapshotPath)">
+												<c:VerticalLayout  OnClickAction="$DoAction(photoView, $Params.Parameter, $snapshotPath)">
+													<c:Image Source="$snapshotPath" />
+												</c:VerticalLayout>
+											</s:If>
+											<s:Else>
+												<c:VerticalLayout CssClass="no_image">
+													<c:Image />
+													<c:TextView Text="#imageNotAvailable#" CssClass="text"></c:TextView>
+												</c:VerticalLayout>
+											</s:Else>
+							</c:SwipeHorizontalLayout>
+
+
+			</s:If>
+			<s:Else>
+					<c:HorizontalLine/>
+					<c:HorizontalLayout CssClass="grid">
+					<c:VerticalLayout>
+						<c:TextView Text="$Params.Parameter" CssClass="description_row"></c:TextView>
+						<c:TextView Text="$Params.Val"  CssClass="main_row"></c:TextView>
+					</c:VerticalLayout>
+					</c:HorizontalLayout>
+			</s:Else>
+		</s:Iterator>
+			<c:HorizontalLine />
+		<!-- End Parameters -->
+
 	</c:ScrollView>
 </c:DockLayout>
 

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<c:Screen xmlns:c="BitMobile.Controls" xmlns:s="BitMobile.ValueStack" StyleSheet="client.css">
+
+  <c:DockLayout>
+
+    <c:DockLayout CssClass="top_navigator">
+      <c:HorizontalLayout CssClass="btn_back" OnEvent="Back" OnClickAction="$DoBackAndClean()">
+         <c:Image/>
+        <c:TextView Text="#back#"/>
+      </c:HorizontalLayout>
+    <!--  	<c:Button Id="btnForward" Text="#next#" CssClass="btn_forward" OnClickAction="$DoActionAndSave(GoParams, $param1, $objCust, $objOutlet)"/>-->
+      <c:HorizontalLayout>
+        <c:TextView Text="#client#" />
+      </c:HorizontalLayout>
+    </c:DockLayout>
+      <s:If Test="$MobileSettings.UsedEquipment">
+          	<c:DockLayout CssClass="footer">
+          	<c:HorizontalLine/>
+              <c:DockLayout CssClass="btn_left_footer" OnClickAction="$DoAction(ShowContacts, $clientRef)">
+          			<c:TextView Text="#contacts#" />
+          		</c:DockLayout>
+
+          		<c:DockLayout CssClass="btn_right_footer" OnClickAction="$DoAction(Equipment, $clientRef)">
+          			<c:TextView Text="#devices#" />
+          		</c:DockLayout>
+          	</c:DockLayout>
+      </s:If>
+      <s:Else>
+        <c:DockLayout CssClass="footer">
+        <c:HorizontalLine/>
+          <c:DockLayout CssClass="btn_bottom_footer" OnClickAction="$DoAction(ShowContacts, $clientRef)">
+            <c:TextView Text="#contacts#" />
+          </c:DockLayout>
+
+        </c:DockLayout>
+      </s:Else>
+
+	<c:ScrollView>
+	 <c:HorizontalLine/>
+    <c:HorizontalLayout CssClass="grid">
+  		<c:VerticalLayout>
+  		  <c:TextView Text="#descriptioncust#" CssClass="description_row"></c:TextView>
+  		  <c:TextView Id= "Description" CssClass="main_row"></c:TextView>
+  		</c:VerticalLayout>
+	  </c:HorizontalLayout>
+
+
+
+		<c:HorizontalLine/>
+    <s:If Test="$isEmptyCoordinats($clientRef)">
+  	  <c:DockLayout CssClass="grid">
+  		<c:VerticalLayout OnClickAction="$DoAction(fullText,	#address#, $clientRef.Address)">
+  		  <c:TextView Text="#address#" CssClass="description_row" ></c:TextView>
+  		  <c:TextView Id="Address" CssClass="main_row"></c:TextView>
+  		</c:VerticalLayout>
+  	  </c:DockLayout>
+    </s:If>
+    <s:Else>
+      <c:DockLayout CssClass="grid" OnClickAction="$DoAction(Map, $clientRef)">
+          <c:Image CssClass="coord" />
+      <c:VerticalLayout OnClickAction="$DoAction(fullText,	#address#, $clientRef.Address)">
+        <c:TextView Text="#address#" CssClass="description_row"></c:TextView>
+        <c:TextView Id="Address" CssClass="main_row"></c:TextView>
+      </c:VerticalLayout>
+      </c:DockLayout>
+    </s:Else>
+
+    <s:Iterator Id="Params" Value="$GetCustParams($clientRef)">
+
+
+      <s:If Test="$Params.Type == 'Snapshot'">
+        <s:Push Id="snapshotPath" Value="$GetSnapShotPath($Params.Val)" />
+        <c:HorizontalLine />
+        <c:DockLayout CssClass="snapshot_grid">
+            <c:TextView Text="$Params.Parameter" />
+        </c:DockLayout>
+              <c:SwipeHorizontalLayout Id="snapshotLayout" CssClass="carousel" Alignment="Center">
+                      <s:If Test="$SnapshotExists($snapshotPath)">
+                        <c:VerticalLayout OnClickAction="$DoAction(photoView, $Params.Parameter, $snapshotPath)">
+                          <c:Image Source="$snapshotPath" />
+                        </c:VerticalLayout>
+                      </s:If>
+                      <s:Else>
+                        <c:VerticalLayout CssClass="no_image">
+                          <c:Image />
+                          <c:TextView Text="#imageNotAvailable#" CssClass="text"></c:TextView>
+                        </c:VerticalLayout>
+                      </s:Else>
+              </c:SwipeHorizontalLayout>
+
+
+      </s:If>
+      <s:Else>
+          <c:HorizontalLine/>
+          <c:HorizontalLayout CssClass="grid">
+          <c:VerticalLayout>
+            <c:TextView Text="$Params.Parameter" CssClass="description_row"></c:TextView>
+            <c:TextView Text="$Params.Val"  CssClass="main_row"></c:TextView>
+          </c:VerticalLayout>
+          </c:HorizontalLayout>
+      </s:Else>
+    </s:Iterator>
+    <c:HorizontalLine />
+
+	</c:ScrollView>
+</c:DockLayout>
+
+
+</c:Screen>

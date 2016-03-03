@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<c:Screen xmlns:c="BitMobile.Controls" xmlns:s="BitMobile.ValueStack" StyleSheet="equipmentDetails.css">
+  <c:DockLayout>
+
+    <c:DockLayout CssClass="top_navigator">
+      <c:HorizontalLayout CssClass="btn_back" OnEvent="Back" OnClickAction="$DoBack()">
+         <c:Image/>
+        <c:TextView Text="#back#"/>
+      </c:HorizontalLayout>
+      <c:HorizontalLayout>
+        <c:TextView Text="#details#" />
+      </c:HorizontalLayout>
+    </c:DockLayout>
+
+    <c:DockLayout CssClass="footer" OnClickAction="$DoAction(eqHistory, $param1)">
+      	<c:HorizontalLine/>
+    <c:DockLayout CssClass="btn_bottom_footer">
+			<c:TextView Text="#history#" />
+		</c:DockLayout>
+	</c:DockLayout>
+
+
+	<c:ScrollView>
+
+
+	 <c:HorizontalLine/>
+   <c:HorizontalLayout CssClass="grid">
+
+   <c:VerticalLayout>
+     <c:TextView Text="#descriptionEQ#" CssClass="description_row"></c:TextView>
+     <c:TextView Id="DescEQ" CssClass="main_row_custname"></c:TextView>
+   </c:VerticalLayout>
+   <c:Image/>
+   </c:HorizontalLayout>
+
+<s:Iterator Id="eqParams" Value="$GetEqParams($param1)">
+  <c:HorizontalLine/>
+
+  <s:If Test="$eqParams.Type == 'Snapshot'">
+    <s:Push Id="snapshotPath" Value="$GetSnapShotPath($eqParams.Val)" />
+    <c:DockLayout CssClass="snapshot_grid">
+        <c:TextView Text="$eqParams.Parameter" />
+    </c:DockLayout>
+          <c:SwipeHorizontalLayout Id="snapshotLayout" CssClass="carousel" Alignment="Center">
+                  <s:If Test="$SnapshotExists($snapshotPath)">
+                    <c:VerticalLayout OnClickAction="$DoAction(photoView, $eqParams.Parameter, $snapshotPath)">
+                      <c:Image Source="$snapshotPath" />
+                    </c:VerticalLayout>
+                  </s:If>
+                  <s:Else>
+                    <c:VerticalLayout CssClass="no_image">
+                      <c:Image />
+                      <c:TextView Text="#imageNotAvailable#" CssClass="text"></c:TextView>
+                    </c:VerticalLayout>
+                  </s:Else>
+          </c:SwipeHorizontalLayout>
+          <c:HorizontalLine />
+
+  </s:If>
+  <s:Else>
+      <c:HorizontalLayout CssClass="grid">
+      <c:VerticalLayout>
+        <c:TextView Text="$eqParams.Parameter" CssClass="description_row"></c:TextView>
+        <c:TextView Text="$eqParams.Val"  CssClass="main_row"></c:TextView>
+      </c:VerticalLayout>
+      </c:HorizontalLayout>
+  </s:Else>
+</s:Iterator>
+<!-- <c:HorizontalLine/>
+  <c:HorizontalLayout CssClass="grid">
+
+  <c:VerticalLayout>
+    <c:TextView Text="#softVersion#" CssClass="description_row"></c:TextView>
+    <c:TextView Id="ver" CssClass="main_row_custname"></c:TextView>
+  </c:VerticalLayout>
+  <c:Image/>
+  </c:HorizontalLayout>
+
+ <c:HorizontalLine/>
+
+ <c:HorizontalLayout CssClass="grid">
+
+ <c:VerticalLayout>
+   <c:TextView Text="#remote#" CssClass="description_row"></c:TextView>
+   <c:TextView Id="remote" CssClass="main_row_custname"></c:TextView>
+ </c:VerticalLayout>
+ <c:Image/>
+ </c:HorizontalLayout>
+<c:HorizontalLine/>
+
+<c:HorizontalLayout Id="remoteDateBlock" CssClass="grid" Visible="false">
+
+<c:VerticalLayout>
+  <c:TextView Text="#remoteData#" CssClass="description_row"></c:TextView>
+  <c:TextView Id="remoteData" CssClass="main_row_custname"></c:TextView>
+</c:VerticalLayout>
+<c:Image/>
+</c:HorizontalLayout>
+<c:HorizontalLine/>-->
+
+
+
+
+
+
+	</c:ScrollView>
+</c:DockLayout>
+
+
+
+</c:Screen>

@@ -16,24 +16,19 @@ dl {
 }
 
 .description_row {
-    width: 100%;
     height: 40%;
-    white-space: normal;
     font: 42% Arial;
-    color: #8e8e93;
 }
 
-
-
-.grid {
-	background-color: #ffffff;
+.grid vl hl{
+    height: 40%;
+    width: 100%;
 }
 
-.grid vl {
-    width: 83.3%;
+.grid vl hl description_row{
     height: 100%;
-    padding-top: 13%;
-    padding-left: 2.7%;
+    font: 42% Arial;
+    /*background-color: #ccaacc;*/
 }
 
 .parameter_grid{
@@ -44,7 +39,7 @@ dl {
     height: 100%;
     text-align: center;
     color: #FF0000;
-    
+
 }
 
 .emptyRecordSetAllRequest {
@@ -53,12 +48,51 @@ dl {
 	text-align: center;
 	margin-top: -10%;
 	color: #c0c0c0;
-	padding-top: 80%;	
+	padding-top: 80%;
 }
 
 .top_navigator {
-	background-color:f8f8f8
+    height: 6.7mm;
+    dock-align: top;
+    background-color: #f8f8f8;
 }
+
+.top_navigator Button {
+    selected-color: #D3D3D3;
+}
+
+.top_navigator hl {
+    width: 100%;
+    height: 100%;
+    dock-align: top;
+    horizontal-align: central;
+}
+
+.top_navigator hl TextView {
+    width: 100%;
+    height: 100%;
+    margin-left: 0%;
+    padding-top: 26%;
+    horizontal-align: central;
+    text-align: center;
+    color: #000000;
+    font: 39.5% arial;
+    selected-color: #D3D3D3;
+}
+
+.top_navigator hl Image {
+    selected-color: #D3D3D3;
+}
+
+.top_navigator dl {
+    width: 16.3mm;
+    height: 100%;
+}
+
+/*
+.top_navigator {
+	background-color:f8f8f8
+}*/
 
 .footer {
 	height: 7.6sp;
@@ -85,7 +119,7 @@ dl {
 		        height: 100%;
 		        width: 174px;
 		    }
-		    
+
 		.grey_swipe vl TextView {
 		            height: 27%;
 		            width: 174px;
@@ -110,10 +144,21 @@ dl {
 
 .description_daterow {
     width: 100%;
-    height: 23%;
+    height:25%;
     white-space: normal;
     font: 80% Arial;
     color: #e6891b;
+}
+
+
+.bl_description_row{
+    width: 15% auto;
+    height: 100%;
+    white-space: normal;
+    padding-right: 7%;
+    color: #e6891b;
+    font: 42% Arial;
+    /*background-color: #bbaa00;*/
 }
 
 .periodcaption {
@@ -122,15 +167,17 @@ dl {
         margin-left: 3.5%;
         padding-top: 25%;
         color: #e6891b;
-        font: 40% arial;
+        font:39.5% arial;
 }
 
 .filterarrow {
-        height: 35%;
-        margin-left: 15%;
-        margin-top: 25%;
-        background-image: url(arrow.png);
-        
+    height: 1.9mm;
+    width: 1.3mm;
+    margin-left: 15%;
+    /*margin-top: 30%;*/
+    horizontal-align: central;
+    background-image: url(arrow.png);
+
     }
 
 .filtervalue {
@@ -141,7 +188,7 @@ dl {
     margin-right: -14%;
     font: 36% Arial;
     color: #8e8e93;
-    
+
     text-align: right;
 }
 
@@ -153,9 +200,9 @@ dl {
         color: #e6891b;
         dock-align: left;
         font: 36% arial;
-       
+
     }
-    
+
 .btn_left_footer {
 	width: 40%;
 	height: 100%;
@@ -181,7 +228,7 @@ height: 100%;
 dock-align: right;
 background-color: #ffffff;
 }
-	
+
 	.btn_right_footer TextView {
             width: 100%;
             height: 100%;
@@ -191,3 +238,17 @@ background-color: #ffffff;
             color: #e6891b;
             font: 38% Arial;
         }
+
+.high_mark {
+  height: 100%;
+  width: 0.5mm;
+  dock-align: left;
+  background-color: #e6891b;
+}
+
+.critical_mark {
+  height: 100%;
+  width: 0.5mm;
+  dock-align: left;
+  background-color: #ff0000;
+}

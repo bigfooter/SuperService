@@ -3,11 +3,8 @@
 function OnApplicationInit() {
     Variables.AddGlobal("lastDataSync", "-");
     Variables.AddGlobal("lastFtpSync", "-");
-    //Когда будет возможность обратиться к глобальному модулю
- // if ($.Exists("appStatuses"))
-	//	 $.Remove("appStatuses");
-	//	 Variables.AddGlobal("appStatuses", new Dictionary());
-	//	 Variables["appStatuses"].Add("UserInMskCO", Global.checkUsr());
+
+    Global.SetMobileSettings();
 }
 
 function OnWorkflowStart(name) {
@@ -15,51 +12,72 @@ function OnWorkflowStart(name) {
 		  $.Remove("workflow");
 	 Variables.AddGlobal("workflow", new Dictionary());
 	 Variables["workflow"].Add("name", name);
-	 
-	
+
+   if (name == "Event"){
+     GPS.StartTracking(-1);
+     if($.Exists("onGPS")){
+        $.AddGlobal("onGPS", true)
+     }
+    }
+
+
+}
+
+function OnApplicationBackground(workflow) {
+	 	GPS.StopTracking();
+}
+
+function OnApplicationRestore(workflow) {
+  if($.Exists("onGPS")){
+	 	GPS.StartTracking(-1);
+	}
 }
 
 function OnWorkflowForwarding(workflowName, lastStep, nextStep, parameters) {
-	if (nextStep == "DirtyHack") {
-		sendRequest($.sStaffName.Text, $.sClientName.Text, $.sComment.Text);
-		if ($.Exists("sent")){
-			$.Remove("sent");
-			$.AddGlobal("sent", true);		
-		} else {
-			$.AddGlobal("sent", true);
-		}
-		$.submitButton.Text = "Отправить запрос";		
-		$.sClientName.Text = "";
-		$.sComment.Text = "";
-		setCookie($.sStaffName.Text, "", "");
-		Workflow.Refresh([]);
-		
-		return false;
-		
-	}
-	
-	if (nextStep == "DirtyHackClient") {
-		if (sendClientRequest($.phone.Text, $.sClientName.Text, $.sComment.Text, $.contact.Text)) {
-			if ($.Exists("sent")){
-				$.Remove("sent");
-				$.AddGlobal("sent", true);		
-			} else {
-				$.AddGlobal("sent", true);
-			}
-					
-			$.sClientName.Text = "";
-			$.sComment.Text = "";
-			$.contact.Text = "";
-			$.phone.Text = "";
-			//setCookie($.sStaffName.Text, "", "");
-			Workflow.Refresh([]);
-		} else {
-			$.submitButton.Text = "Отправить запрос";
-			Workflow.Refresh([]);
-		}
-		return false;
-		
-	}
+
+  if (nextStep == "tasks"){
+    GPS.StopTracking();
+    $.Remove("onGPS");
+  }
+
+  if (nextStep == "Total"){
+    GPS.StartTracking(-1);
+    if($.Exists("onGPS")){
+       $.AddGlobal("onGPS", true);
+  }
+ }
+
+  if (nextStep == "Main" && workflowName == "Event"){
+    GPS.StartTracking(-1);
+    if($.Exists("onGPS")){
+      $.AddGlobal("onGPS", true);
+    }
+  }
 	return true;
 }
 
+function OnWorkflowBack(workflow, lastStep, nextStep) {
+  if (nextStep == "Main" && workflow == "Event"){
+    GPS.StartTracking(-1);
+    if($.Exists("onGPS")){
+      $.AddGlobal("onGPS", true);
+    }
+  }
+
+  if (nextStep == "tasks" && workflow == "Event"){
+    GPS.StopTracking();
+    $.Remove("onGPS");
+  }
+}
+
+function OnWorkflowFinished(workflow, reason) {
+    if (reason == "rollback") {
+      GPS.StopTracking();
+      $.Remove("onGPS");
+    }
+
+    if (reason == "commit") {
+      GPS.StopTracking();
+      $.Remove("onGPS");
+    }
+}

@@ -1,0 +1,16 @@
+.gamingHelpText {
+	width: 100%;
+	font: 3% Arial;
+	height: 100% auto;
+	padding-left: 2mm;
+	padding-top: 2mm;
+	padding-right: 2mm;
+	white-space: normal;
+}
+
+.top_navigator {
+    height: 6.7mm;
+    dock-align: top;
+    background-color: #ffffff;
+    padding-right: 16.3mm;
+}

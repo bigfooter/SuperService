@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c:Screen xmlns:c="BitMobile.Controls" xmlns:s="BitMobile.ValueStack" StyleSheet="total.css">
+<!-- <s:Push Id="requestId" Value="$FillValue($param1)"></s:Push> -->
+
+  <c:DockLayout>
+
+    <c:DockLayout CssClass="top_navigator">
+      <c:HorizontalLayout CssClass="btn_back" OnEvent="Back" OnClickAction="$DoBack()">
+        <c:Image/>
+        <c:TextView Text="#back#"/>
+      </c:HorizontalLayout>
+      <c:HorizontalLayout CssClass="btn_forward"  OnClick="$askCommit($param1)">
+      <c:TextView Text="#ready#"/>
+      </c:HorizontalLayout>
+      <c:HorizontalLayout>
+        <c:TextView Text="#visitTotal#" />
+      </c:HorizontalLayout>
+    </c:DockLayout>
+
+    <c:ScrollView>
+    <c:HorizontalLine/>
+    <c:HorizontalLayout CssClass="memo_block">
+       <c:VerticalLayout>
+         <c:TextView Text="#ExecutiveComment#" CssClass="description_row"></c:TextView>
+         <c:MemoEdit Id="ExecutiveComment" Text="$param1.CommentContractor" CssClass="main_row" OnLostFocus="$SetExecutiveComment($param1)"></c:MemoEdit>
+       </c:VerticalLayout>
+   </c:HorizontalLayout>
+   <c:HorizontalLine/>
+
+	<c:DockLayout CssClass="gameBox">
+	<c:HorizontalLayout CssClass="buttonBox">
+			<c:VerticalLayout CssClass="buttonBlock" OnClick="$isHungry()">
+				<c:Image Id="HungryImageFalse" CssClass="iconFalseMoney"/>
+				<c:Image Id="HungryImageTrue" CssClass="iconTrueMoney" Visible="false"/>
+			</c:VerticalLayout>
+
+
+			<c:VerticalLayout CssClass="buttonBlock" OnClick="$isAngry()">
+				<c:Image Id="AngryImageFalse" CssClass="iconFalseFace"/>
+				<c:Image Id="AngryImageTrue" CssClass="iconTrueFace" Visible="false"/>
+			</c:VerticalLayout>
+	</c:HorizontalLayout>
+	</c:DockLayout>
+
+     <c:HorizontalLine/>
+     <c:HorizontalLayout CssClass="memo_block">
+        <c:VerticalLayout>
+          <c:TextView Text="#comment#" CssClass="description_row"></c:TextView>
+      	<!--  <s:If Test="$isProgress($requestId.Status)">  -->
+          	<c:MemoEdit Id="RemindComment"  CssClass="main_row" OnChange="$checkCommentLength()"></c:MemoEdit>
+       	 <!-- </s:If>  -->
+     <!-- <s:Else>
+          	<c:TextView Id="VisitComment" Text = "$requestId.AHComment"  CssClass="main_row"></c:TextView>
+         </s:Else> -->
+        </c:VerticalLayout>
+    </c:HorizontalLayout>
+    <c:HorizontalLine/>
+
+      <c:DockLayout CssClass="footer" OnClickAction="$createReminder($param1)">
+        <c:HorizontalLine/>
+        <c:DockLayout CssClass="btn_bottom_footer">
+    			<c:TextView Text="#send#" />
+    		</c:DockLayout>
+  	  </c:DockLayout>
+    </c:ScrollView>
+
+  </c:DockLayout>
+
+</c:Screen>
